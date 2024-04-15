@@ -42,7 +42,16 @@ the generation in the future.
 ## Citation
 
 ```
-
+@software{Van_Assche_KROWN_A_Benchmark_2024,
+  author = {Van Assche, Dylan and Chaves-Fraga, David and Dimou, Anastasia},
+  doi = {TODO},
+  license = {MIT},
+  month = apr,
+  title = {{KROWN: A Benchmark for RDF Graph Materialization}},
+  url = {https://w3id.org/kg-construct/KROWN},
+  version = {1.0.0},
+  year = {2024}
+}
 ```
 
 ## License
