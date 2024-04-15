@@ -1,0 +1,14 @@
+title: "KROWN: A Benchmark for RDF Graph Materialization"
+license: MIT
+authors:
+  - family-names: Van Assche
+    given-names: Dylan
+  - family-names: Chaves-Fraga
+    given-names: David
+  - family-names: Dimou
+    given-names: Anastasia
+cff-version: 1.0.0
+version: 1.0.0
+doi: TODO
+date-released: 2024-04-18
+url: "https://w3id.org/kg-construct/KROWN"
