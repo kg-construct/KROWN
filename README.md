@@ -35,9 +35,21 @@ the generation in the future.
 
 ## Execution framework
 
+KROWN provides also an execution framework to reproducible execute benchmark
+scenarios as a pipeline of Docker containers while measuring metrics e.g.
+execution time, CPU time, memory consumption, storage usage, etc.
+
+**Example usage**
+
 ```
 ./exectool --runs=5 --root=/path/to/scenarios run
 ```
+
+The execution framework of KROWN has been used in the
+[Knowledge Graph Construction Workshop Challenges](https://w3id.org/kg-construct/workshop/2024/challenge.html)
+at ESWC 2023 and 2024.
+It was also used in benchmarking incremental mappings with
+[IncRML (under review)](https://semantic-web-journal.net/content/incrml-incremental-knowledge-graph-construction-heterogeneous-data-sources).
 
 ## Citation
 
