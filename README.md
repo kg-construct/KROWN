@@ -1,4 +1,4 @@
-# KROWN 👑: Knowledge Graph Construction Benchmark
+# KROWN 👑: A Benchmark for RDF Graph Materialization
 
 KROWN (Knowledge gRaph cOnstruction beNchmark) is a benchmark for 
 materialization systems to construct Knowledge Graphs from 
