@@ -268,7 +268,6 @@ class Scenario(ABC):
 
         return join_condition_iri
 
-
     def _add_triples_map_source(self, mapping: Graph, subject_value: Literal,
                                 source_path: Literal,
                                 number: int = 1) -> URIRef:
