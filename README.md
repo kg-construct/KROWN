@@ -67,7 +67,8 @@ It was also used in benchmarking incremental mappings with
 ## Sustainability plan and limitations
 
 See the READMEs of [data-generator](./data-generator/README.md) and
-[execution-framework](execution-framework/README.md)
+[execution-framework](execution-framework/README.md).
+A full list of Issues can be found [here](https://github.com/kg-construct/KROWN/issues).
 
 ## Citation
 

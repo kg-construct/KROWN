@@ -172,11 +172,16 @@ KROWN's data generator can be expanded dynamically and scale among multiple
 parameters, but some limitations are still applicable:
 
 1. Automatically execution of unittests
-on each GitHub Pull Request (GitHub Issue #2).
+on each GitHub Pull Request (GitHub [Issue #2](https://github.com/kg-construct/KROWN/issues/2)).
 This is currently not implemented yet as we want to tackle it together with
 enabling this feature for KROWN's execution framework as well.
+
+2. Configuration files described as RDF (GitHub Issue [#3](https://github.com/kg-construct/KROWN/issues/3)) which would
+allow querying the pipeline configurations using Semantic Web standards
+e.g. SPARQL. The configuration files are already written in such a way that
+they can be expanded with a JSON-LD context to overcome this limitation.
  
-2. RML modules test cases are not incorporated yet (GitHub issues #4).
+3. RML modules test cases are not incorporated yet (GitHub [Issue #4](https://github.com/kg-construct/KROWN/issues/4)).
 The 2024 edition of the Knowledge Graph Construction Workshop Challenge includes
 the test cases for the new RML modules which are currently under development.
 
