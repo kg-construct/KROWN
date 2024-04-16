@@ -69,6 +69,7 @@ It was also used in benchmarking incremental mappings with
 See the READMEs of [data-generator](./data-generator/README.md) and
 [execution-framework](execution-framework/README.md).
 A full list of Issues can be found [here](https://github.com/kg-construct/KROWN/issues).
+Their status is followed up in a [GitHub Project](https://github.com/orgs/kg-construct/projects/2/).
 
 ## Citation
 
