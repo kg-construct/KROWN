@@ -214,6 +214,10 @@ cd bench_executor
 ./tests/unit_tests
 ```
 
+## Citation
+
+See main [README](../README.md).
+
 ## License
 
 Licensed under the [MIT license](./LICENSE)<br>
