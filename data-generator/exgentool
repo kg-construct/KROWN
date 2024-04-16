@@ -60,10 +60,11 @@ if __name__ == '__main__':
                         help='Command to execute, available commands: '
                              '"list", "generate"', type=str)
     parser.add_argument('--root', dest='main_directory', default='.',
-                        help='Root directory for generated scenarios',
+                        help='Root directory for generating or '
+                             'listing scenarios',
                         type=str)
     parser.add_argument('--scenario', dest='scenario', default=None,
-                        help='Path to file with scenario\'s instances',
+                        help='Path to configuration file with scenarios',
                         type=str)
     parser.add_argument('--verbose', dest='verbose',
                         help='Turn on verbose output', action='store_true')
