@@ -194,11 +194,11 @@ label 'data-generator'.
 
 KROWN's data generator was created to support newer editions
 of the Knowledge Graph Construction Workshop Challenge because each edition
-we have to add more generators to expand each edition with new challenges.
-Currently, we are adding the test cases of the new RML modules to the
+the community has to add more generators to expand each edition with new challenges.
+Currently, the community is adding the test cases of the new RML modules to the
 data generator of the Challenge. After this edition (2024) ends,
 the generator for the test cases will be added to KROWN's data generator.
-We will keep developing KROWN's data generator to ease the introduction of
+The community will keep developing KROWN's data generator to ease the introduction of
 new scenarios for newer editions of the Knowledge Graph Construction Workshop
 Challenge.
 

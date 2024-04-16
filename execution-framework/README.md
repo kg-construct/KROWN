@@ -190,7 +190,7 @@ into KROWN's execution framework.
 KROWN's execution framework has a lot of features and flexibility,
 but some limitations still occur. The main limitations are:
 
-1. Execution across multiple machines is unsupported (GitHub [Issue #](https://github.com/kg-construct/KROWN/issues/1)1).
+1. Execution across multiple machines is unsupported (GitHub [Issue #1](https://github.com/kg-construct/KROWN/issues/1)).
 You can only execute pipelines on one machine.
 This would allow RMLStreamer to be benchmarked among multiple machines 
 (`cluster` mode) instead of only on one machine (`standalone` mode).
@@ -216,10 +216,10 @@ label 'execution-framework'.
 KROWN's execution framework has been used widely among multiple editions
 of the Knowledge Graph Construction Workshop Challenge 
 and for benchmarking incremental mappings (IncRML, under review).
-We plan to keep developing KROWN's execution framework in the future
+The community plans to keep developing KROWN's execution framework in the future
 to add new features and solve the current limitations 
-of KROWN's execution framework. We are currently collecting more feedback
-from the Challenge participants of the 2024 edition to improve KROWN's
+of KROWN's execution framework. The community is currently collecting more 
+feedback from the Challenge participants of the 2024 edition to improve KROWN's
 execution framework further for the next edition of the Challenge.
 
 ## Installation
