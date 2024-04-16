@@ -13,7 +13,7 @@ from signal import signal, SIGINT
 from zipfile import ZipFile
 from bench_executor.executor import Executor
 
-VERSION = '0.2.0'
+VERSION = '1.0.0'
 EXIT_CODE_SUCCESS = 0
 EXIT_CODE_UNKNOWN_COMMAND = -1
 EXIT_CODE_NO_CASES = -2
@@ -369,7 +369,8 @@ if __name__ == '__main__':
                         version=f'{parser.prog} {VERSION}')
     parser.add_argument(dest='command',
                         help='Command to execute, available commands: '
-                             '"list", "run"',
+                             '"list", "run", "clean", "stats", '
+                             '"download-challenge-2023"',
                         type=str)
     parser.add_argument('--root', dest='main_directory', default='.',
                         help='Root directory of all cases to execute, '
