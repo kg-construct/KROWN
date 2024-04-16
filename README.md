@@ -28,7 +28,7 @@ parameters and their values are stored to easily reproduce
 the generation in the future.
 
 KROWN's data generator is available inside
-the [data-generator](./data-generator) folder consisting of scenarios under [data-generator/configs](./data-generator/configs)
+the [data-generator](./data-generator) folder consisting of scenarios under [data-generator/config](./data-generator/config)
 and unittests to verify the output of the generator ([data-generator/tests](./data-generator/tests)].
 More information can be found in the [README](data-generator/README.md).
 
