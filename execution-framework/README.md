@@ -1,4 +1,4 @@
-# KROWN's execution framework
+# KROWN 👑's execution framework
 
 KROWN's execution framework is a simple framework to **execute benchmarks
 on systems which are running in Docker**, exposed a CLI interface `exectool`.
@@ -90,7 +90,7 @@ The steps are described as followed:
 }
 ```
 
-Real examples can be found under [bench_executor/data/test-scenarios/](bench_executor/data/test-scenarios/).
+Real examples can be found under [bench_executor/data/test-cases/](bench_executor/data/test-cases/).
 
 ### Listing all scenarios
 
