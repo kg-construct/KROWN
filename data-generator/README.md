@@ -11,7 +11,7 @@ and can be extended with more generators dynamically by adding a new one in
 the [bench_generator](./bench_generator). Each generator is configurable
 as **scenarios** with **scaling parameters**
 which are stored in a JSON **configuration file**
-([./config](config)). Multiple scenarios can be stored inside a configuration
+([config](config) folder). Multiple scenarios can be stored inside a configuration
 file. By storing the scenarios in a configuration file, we can share it
 for **reproducibility**.
 
