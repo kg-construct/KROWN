@@ -161,6 +161,37 @@ were consumed during this step, etc.
 exectool stats --root=/path/to/your/scenarios
 ```
 
+### Docker containers
+
+All supported systems have their own Docker container which is available
+in the [dockers](./dockers) folder. For each system a directory is provided
+with a `Dockerfile` and a script to build and push all images is available
+as well (`build-all.sh`).
+
+Currently, the following Dockers are officially supported:
+
+**Materialization systems**
+
+- Morph-KGC 2.2.0
+- OntopM (Ontop in materialization mode) 5.0.0
+- RMLMapper 6.0.0
+- RMLStreamer 2.5.0
+- SDM-RDFizer 4.6.6.5
+
+**Relational databases**
+
+- MySQL 8.0
+- PostgreSQL 14.5
+
+**Triplestores**
+
+- Fuseki 4.6.1
+- Virtuoso 7.2.7
+
+**Tools**
+
+- YARRRML parser/generator 1.3.6
+
 ### Knowledge Graph Construction Challenge
 
 The Knowledge Graph Construction Challenge can be immediately downloaded
