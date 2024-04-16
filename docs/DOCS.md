@@ -15,16 +15,16 @@ pip install pdoc
 
 Generate documentation and output to `docs` folder:
 
-**execution-framework**
-
-```
-cd execution-framework
-pdoc --docformat numpy bench_executor/*.py -o docs
-```
-
 **data-generator**
 
 ```
 cd data-generator
-pdoc --docformat numpy bench_generator/*.py -o docs
+pdoc --docformat numpy bench_generator/*.py -o ../docs/data-generator
+```
+
+**execution-framework**
+
+```
+cd execution-framework
+pdoc --docformat numpy bench_executor/*.py -o ../docs/execution-framework
 ```
