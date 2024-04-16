@@ -1,0 +1,19 @@
+{
+    "@id": "http://example.org/join-duplicates/3/75.0/",
+    "name": "join_duplicates_3_75.0",
+    "description": "Join Duplicate 3(75.0%)",
+    "steps": [
+        {
+            "@id": "http://example.org/join-duplicates/3/75.0/#step1",
+            "name": "Execute RML mapping",
+            "resource": "RMLStreamer",
+            "command": "execute_mapping",
+            "parameters": {
+                "mapping_file": "mapping.rml.ttl",
+                "output_file": "out.nt",
+                "serialization": "ntriples"
+            },
+            "expect_failure": false
+        }
+    ]
+}

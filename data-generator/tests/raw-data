@@ -1,0 +1,33 @@
+#!/usr/bin/env python3
+
+import os
+import shutil
+import filecmp
+import unittest
+import subprocess
+from glob import glob
+
+
+class JoinsTests(unittest.TestCase):
+    def test_generate(self):
+        EXPECTED = b"Generating scenario's instances:\n    \xe2\x9c\x85 1K members, 20 properties\n    \xe2\x9c\x85 10K members, 20 properties\n    \xe2\x9c\x85 25K members, 20 properties\n    \xe2\x9c\x85 10K members, 1 property\n    \xe2\x9c\x85 1K members, 10 properties\n    \xe2\x9c\x85 1K members, 30 properties\n    \xe2\x9c\x85 1K members, 20 properties, 10 value size\n    \xe2\x9c\x85 1K members, 20 properties, 100 value size\n    \xe2\x9c\x85 1K members, 20 properties, 200 value size\n"
+        shutil.rmtree('RMLStreamer', ignore_errors=True)
+        CMD = ['../exgentool', '--root', '.', '--scenario',
+               'data/tests-raw.json', 'generate']
+        output = subprocess.check_output(CMD)
+        self.assertEqual(output, EXPECTED)
+        for f in glob('RMLStreamer/csv/*/data.csv'):
+            result = filecmp.cmp(f, os.path.join('data', 'tests-raw', f))
+            self.assertTrue(result)
+#        shutil.rmtree('RMLStreamer', ignore_errors=True)
+
+    def test_list(self):
+        EXPECTED = b"Scenario's instances:\n     1. 1K members, 20 properties\n     2. 10K members, 20 properties\n     3. 25K members, 20 properties\n     4. 10K members, 1 property\n     5. 1K members, 10 properties\n     6. 1K members, 30 properties\n     7. 1K members, 20 properties, 10 value size\n     8. 1K members, 20 properties, 100 value size\n     9. 1K members, 20 properties, 200 value size\n"
+        CMD = ['../exgentool', '--root', '.', '--scenario',
+               'data/tests-raw.json', 'list']
+        output = subprocess.check_output(CMD)
+        self.assertEqual(output, EXPECTED)
+
+
+if __name__ == '__main__':
+    unittest.main()

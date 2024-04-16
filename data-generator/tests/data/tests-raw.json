@@ -1,0 +1,115 @@
+{
+    "@id": "http://example.com/new-rml-benchmark/raw",
+    "name": "Raw Data",
+    "description": "Scaling number of members, properties and value size",
+    "instances": [
+        {
+            "@id": "http://example.com/new-rml-benchmark/raw/number-of-members#1K",
+            "name": "1K members, 20 properties",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 1000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/raw/number-of-members#10K",
+            "name": "10K members, 20 properties",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 10000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/raw/number-of-members#25K",
+            "name": "25K members, 20 properties",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 25000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/raw/number-of-properties#1",
+            "name": "10K members, 1 property",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 1000,
+                "number_of_properties": 1,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/raw/number-of-properties#10",
+            "name": "1K members, 10 properties",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 1000,
+                "number_of_properties": 10,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/raw/number-of-properties#30",
+            "name": "1K members, 30 properties",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 1000,
+                "number_of_properties": 30,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/raw/value-size#10",
+            "name": "1K members, 20 properties, 10 value size",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 1000,
+                "number_of_properties": 20,
+                "value_size": 10,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/raw/value-size#100",
+            "name": "1K members, 20 properties, 100 value size",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 1000,
+                "number_of_properties": 20,
+                "value_size": 100,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/raw/value-size#200",
+            "name": "1K members, 20 properties, 200 value size",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 1000,
+                "number_of_properties": 20,
+                "value_size": 200,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        }
+    ]
+}

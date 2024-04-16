@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+
+import os
+import shutil
+import filecmp
+import unittest
+import subprocess
+from glob import glob
+
+
+class DuplicatesTests(unittest.TestCase):
+    def test_generate(self):
+        EXPECTED = b"Generating scenario's instances:\n    \xe2\x9c\x85 0% duplicates 1K members 10 properties\n    \xe2\x9c\x85 25% duplicates 1K members 10 properties\n    \xe2\x9c\x85 50% duplicates 1K members 10 properties\n    \xe2\x9c\x85 75% duplicates 1K members 10 properties\n    \xe2\x9c\x85 100% duplicates 1K members 10 properties\n"
+        shutil.rmtree('RMLStreamer', ignore_errors=True)
+        CMD = ['../exgentool', '--root', '.', '--scenario',
+               'data/tests-duplicates.json', 'generate']
+        output = subprocess.check_output(CMD)
+        self.assertEqual(output, EXPECTED)
+        for f in glob('RMLStreamer/csv/*/data.csv'):
+            result = filecmp.cmp(f,
+                                 os.path.join('data', 'tests-duplicates', f))
+            self.assertTrue(result)
+        shutil.rmtree('RMLStreamer', ignore_errors=True)
+
+    def test_list(self):
+        EXPECTED = b"Scenario's instances:\n     1. 0% duplicates 1K members 10 properties\n     2. 25% duplicates 1K members 10 properties\n     3. 50% duplicates 1K members 10 properties\n     4. 75% duplicates 1K members 10 properties\n     5. 100% duplicates 1K members 10 properties\n"
+        CMD = ['../exgentool', '--root', '.', '--scenario',
+               'data/tests-duplicates.json', 'list']
+        output = subprocess.check_output(CMD)
+        self.assertEqual(output, EXPECTED)
+
+
+if __name__ == '__main__':
+    unittest.main()

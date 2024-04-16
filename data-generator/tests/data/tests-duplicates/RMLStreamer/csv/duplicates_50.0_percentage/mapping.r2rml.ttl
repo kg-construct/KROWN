@@ -1,0 +1,58 @@
+@base <http://ex.com/> .
+@prefix ex: <http://example.com/> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+
+<#TriplesMap1> a rr:TriplesMap ;
+    rr:logicalTable [ rr:tableName "data" ] ;
+    rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p5" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p5 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p4" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p4 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p7" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p7 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p3" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p3 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p1" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p1 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p8" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p8 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p2" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p2 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p10" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p10 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p9" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p9 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p6" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p6 ] ] ;
+    rr:subjectMap [ rr:template "http://ex.com/table/{id}" ] .
+

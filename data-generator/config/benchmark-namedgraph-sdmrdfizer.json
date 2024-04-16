@@ -1,0 +1,517 @@
+{
+    "@id": "http://example.com/new-rml-benchmark/namedgraphs",
+    "name": "NamedGraph",
+    "description": "Scaling number of named graphs",
+    "instances": [
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#Subject1NGstatic",
+            "name": "Subject 1 NG static",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 0,
+                "number_of_ng_s": 1,
+                "static": true,
+                "number_of_tms": 1,
+                "number_of_poms": 20,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#Subject5NG static",
+            "name": "Subject 5 NG static",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 0,
+                "number_of_ng_s": 5,
+                "static": true,
+                "number_of_tms": 1,
+                "number_of_poms": 20,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#Subject10NG static",
+            "name": "Subject 10 NG static",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 0,
+                "number_of_ng_s": 10,
+                "static": true,
+                "number_of_tms": 1,
+                "number_of_poms": 20,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#Subject15NG static",
+            "name": "Subject 15 NG static",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 0,
+                "number_of_ng_s": 15,
+                "static": true,
+                "number_of_tms": 1,
+                "number_of_poms": 20,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#1POM1NG static",
+            "name": "1 POM 1 NG static",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 1,
+                "number_of_ng_s": 0,
+                "static": true,
+                "number_of_tms": 1,
+                "number_of_poms": 1,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#5POM1NG static",
+            "name": "5 POM 1 NG static",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 1,
+                "number_of_ng_s": 0,
+                "static": true,
+                "number_of_tms": 1,
+                "number_of_poms": 5,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#10POM1NG static",
+            "name": "10 POM 1 NG static",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 1,
+                "number_of_ng_s": 0,
+                "static": true,
+                "number_of_tms": 1,
+                "number_of_poms": 10,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#15POM1NG static",
+            "name": "15 POM 1 NG static",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 1,
+                "number_of_ng_s": 0,
+                "static": true,
+                "number_of_tms": 1,
+                "number_of_poms": 15,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#1POM5NG static",
+            "name": "1 POM 5 NG static",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 5,
+                "number_of_ng_s": 0,
+                "static": true,
+                "number_of_tms": 1,
+                "number_of_poms": 1,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#1POM10NG static",
+            "name": "1 POM 10 NG static",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 10,
+                "number_of_ng_s": 0,
+                "static": true,
+                "number_of_tms": 1,
+                "number_of_poms": 1,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#1POM15NG static",
+            "name": "1 POM 15 NG static",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 15,
+                "number_of_ng_s": 0,
+                "static": true,
+                "number_of_tms": 1,
+                "number_of_poms": 1,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#Subject1NGdynamic",
+            "name": "Subject 1 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 0,
+                "number_of_ng_s": 1,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 20,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#Subject5NGdynamic",
+            "name": "Subject 5 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 0,
+                "number_of_ng_s": 5,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 20,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#Subject10NGdynamic",
+            "name": "Subject 10 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 0,
+                "number_of_ng_s": 10,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 20,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#Subject15NGdynamic",
+            "name": "Subject 15 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 0,
+                "number_of_ng_s": 15,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 20,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#1POM1NGdynamic",
+            "name": "1 POM 1 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 1,
+                "number_of_ng_s": 0,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 1,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#5POM1NGdynamic",
+            "name": "5 POM 1 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 1,
+                "number_of_ng_s": 0,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 5,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#10POM1NGdynamic",
+            "name": "10 POM 1 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 1,
+                "number_of_ng_s": 0,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 10,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#15POM1NGdynamic",
+            "name": "15 POM 1 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 1,
+                "number_of_ng_s": 0,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 15,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#1POM5NGdynamic",
+            "name": "1 POM 5 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 5,
+                "number_of_ng_s": 0,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 1,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#1POM10NGdynamic",
+            "name": "1 POM 10 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 10,
+                "number_of_ng_s": 0,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 1,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#1POM15NGdynamic",
+            "name": "1 POM 15 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 15,
+                "number_of_ng_s": 0,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 1,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#Subject1NG10POM1NGstatic",
+            "name": "Subject 1 NG + 10 POM 1 NG static",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 1,
+                "number_of_ng_s": 1,
+                "static": true,
+                "number_of_tms": 1,
+                "number_of_poms": 10,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#Subject1NG10POM1NGdynamic",
+            "name": "Subject 1 NG + 10 POM 1 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 1,
+                "number_of_ng_s": 1,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 10,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#Subject5NG10POM5NGstatic",
+            "name": "Subject 5 NG + 10 POM 5 NG static",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 5,
+                "number_of_ng_s": 5,
+                "static": true,
+                "number_of_tms": 1,
+                "number_of_poms": 10,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#Subject5NG10POM5NGdynamic",
+            "name": "Subject 5 NG + 10 POM 5 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 5,
+                "number_of_ng_s": 5,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 10,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#Subject10NG10POM10NGstatic",
+            "name": "Subject 10 NG + 10 POM 10 NG static",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 10,
+                "number_of_ng_s": 10,
+                "static": true,
+                "number_of_tms": 1,
+                "number_of_poms": 10,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#Subject10NG10POM10NGdynamic",
+            "name": "Subject 10 NG + 10 POM 10 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 10,
+                "number_of_ng_s": 10,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 10,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#Subject15NG10POM15NGstatic",
+            "name": "Subject 15 NG + 10 POM 15 NG static",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 15,
+                "number_of_ng_s": 15,
+                "static": true,
+                "number_of_tms": 1,
+                "number_of_poms": 10,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#Subject15NG10POM15NGdynamic",
+            "name": "Subject 15 NG + 10 POM 15 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 15,
+                "number_of_ng_s": 15,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 10,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "postgresql",
+                "engine": "SDMRDFizer"
+            }
+        }
+    ]
+}

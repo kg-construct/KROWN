@@ -1,0 +1,57 @@
+{
+   "$schema": "http://json-schema.org/draft-04/schema#",
+   "title": "Metadata",
+   "description": "Metadata about a scenario",
+   "type": "object",
+   "properties": {
+      "@id": {
+         "description": "Unique IRI to identify the scenario",
+         "type": "string"
+      },
+      "name": {
+         "description": "Name of the scenario",
+         "type": "string"
+      },
+      "description": {
+         "description": "Short description of the scenario",
+         "type": "string"
+      },
+      "instances": {
+         "description": "Instances of the scenario",
+         "type": "array",
+         "items": {
+            "type": "object",
+            "properties": {
+                "@id": {
+                    "description": "Unique IRI to identify the instance",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name of the instance",
+                    "type": "string"
+                },
+                "generator": {
+                    "description": "Generator name",
+                    "type": "string"
+                },
+                "parameters": {
+                    "description": "Parameters to supply with the generator",
+                    "type": "object"
+                }
+            },
+            "required": [
+                "@id",
+                "name",
+                "generator",
+                "parameters"
+            ]
+         }
+      }
+   },
+   "required": [
+      "@id",
+      "name",
+      "description",
+      "instances"
+   ]
+}

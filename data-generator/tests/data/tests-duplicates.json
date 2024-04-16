@@ -1,0 +1,67 @@
+{
+    "@id": "http://example.com/new-rml-benchmark/duplicates-percentage",
+    "name": "Duplicates percentages",
+    "description": "Scaling the number of duplicates in percentage",
+    "instances": [
+        {
+            "@id": "http://example.com/new-rml-benchmark/duplicates-percentage#0",
+            "name": "0% duplicates 1K members 10 properties",
+            "generator": "Duplicates",
+            "parameters": {
+                "percentage": 0.0,
+                "number_of_members": 1000,
+                "number_of_properties": 10,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/duplicates-percentage#25",
+            "name": "25% duplicates 1K members 10 properties",
+            "generator": "Duplicates",
+            "parameters": {
+                "percentage": 25.0,
+                "number_of_members": 1000,
+                "number_of_properties": 10,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/duplicates-percentage#50",
+            "name": "50% duplicates 1K members 10 properties",
+            "generator": "Duplicates",
+            "parameters": {
+                "percentage": 50.0,
+                "number_of_members": 1000,
+                "number_of_properties": 10,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/duplicates-percentage#75",
+            "name": "75% duplicates 1K members 10 properties",
+            "generator": "Duplicates",
+            "parameters": {
+                "percentage": 75.0,
+                "number_of_members": 1000,
+                "number_of_properties": 10,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/duplicates-percentage#100",
+            "name": "100% duplicates 1K members 10 properties",
+            "generator": "Duplicates",
+            "parameters": {
+                "percentage": 100.0,
+                "number_of_members": 1000,
+                "number_of_properties": 10,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        }
+    ]
+}

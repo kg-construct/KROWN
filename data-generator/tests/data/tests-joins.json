@@ -1,0 +1,193 @@
+{
+    "@id": "http://example.com/new-rml-benchmark/joins",
+    "name": "JoinsPercentage",
+    "description": "Scaling the number of TMs and POMs in a [R2]RML mapping",
+    "instances": [
+        {
+            "@id": "http://example.com/new-rml-benchmark/joins-percentage/1-1#0",
+            "name": "Join Percentage 1-1 0%",
+            "generator": "JoinsPercentage",
+            "parameters": {
+                "percentage": 0,
+                "number_of_members": 10,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/joins-percentage/1-1#25",
+            "name": "Join Percentage 1-1 25%",
+            "generator": "JoinsPercentage",
+            "parameters": {
+                "percentage": 25.0,
+                "number_of_members": 10,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/joins-percentage/1-1#50",
+            "name": "Join Percentage 1-1 50%",
+            "generator": "JoinsPercentage",
+            "parameters": {
+                "percentage": 50.0,
+                "number_of_members": 10,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/joins-percentage/1-1#75",
+            "name": "Join Percentage 1-1 75%",
+            "generator": "JoinsPercentage",
+            "parameters": {
+                "percentage": 75.0,
+                "number_of_members": 10,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/joins-percentage/1-1#100",
+            "name": "Join Percentage 1-1 100%",
+            "generator": "JoinsPercentage",
+            "parameters": {
+                "percentage": 100.0,
+                "number_of_members": 10,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/joins-relations/10-5#50",
+            "name": "Join Relation 10-5 50%",
+            "generator": "JoinsRelation",
+            "parameters": {
+                "percentage": 50.0,
+                "n": 10,
+                "m": 5,
+                "number_of_members": 100,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/joins-relations/5-10#25",
+            "name": "Join Relation 5-10 25%",
+            "generator": "JoinsRelation",
+            "parameters": {
+                "percentage": 25.0,
+                "n": 5,
+                "m": 10,
+                "number_of_members": 100,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/joins-relations/3-3#75",
+            "name": "Join Relation 3-3 75%",
+            "generator": "JoinsRelation",
+            "parameters": {
+                "percentage": 75.0,
+                "n": 3,
+                "m": 3,
+                "number_of_members": 100,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/joins-relations/5-3#0",
+            "name": "Join Relation 5-3 0%",
+            "generator": "JoinsRelation",
+            "parameters": {
+                "percentage": 0.0,
+                "n": 5,
+                "m": 3,
+                "number_of_members": 100,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/joins-relations/3-5#100",
+            "name": "Join Relation 3-5 100%",
+            "generator": "JoinsRelation",
+            "parameters": {
+                "percentage": 100.0,
+                "n": 3,
+                "m": 5,
+                "number_of_members": 100,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/joins-multiple/5/1-1#50",
+            "name": "Multiple Join 5 1-1 50%",
+            "generator": "JoinsMultiple",
+            "parameters": {
+                "percentage": 50.0,
+                "n": 1,
+                "m": 1,
+                "jc": 5,
+                "number_of_members": 100,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/joins-multiple/3/3-5#50",
+            "name": "Multiple Join 3 3-5 50%",
+            "generator": "JoinsMultiple",
+            "parameters": {
+                "percentage": 50.0,
+                "n": 3,
+                "m": 5,
+                "jc": 3,
+                "number_of_members": 100,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/joins-duplicate/5-5#75",
+            "name": "Join Duplicates 1-1 75%",
+            "generator": "JoinsDuplicate",
+            "parameters": {
+                "percentage": 75.0,
+                "number_of_duplicates": 3,
+                "number_of_members": 100,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        }
+    ]
+}

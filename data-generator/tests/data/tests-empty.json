@@ -1,0 +1,67 @@
+{
+    "@id": "http://example.com/new-rml-benchmark/empty-percentage",
+    "name": "EmptyValues percentages",
+    "description": "Scaling the number of empty values in percentage",
+    "instances": [
+        {
+            "@id": "http://example.com/new-rml-benchmark/empty-percentage#0",
+            "name": "0% empty values 1K members 10 properties",
+            "generator": "EmptyValues",
+            "parameters": {
+                "percentage": 0.0,
+                "number_of_members": 1000,
+                "number_of_properties": 10,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/empty-percentage#25",
+            "name": "25% empty values 1K members 10 properties",
+            "generator": "EmptyValues",
+            "parameters": {
+                "percentage": 25.0,
+                "number_of_members": 1000,
+                "number_of_properties": 10,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/empty-percentage#50",
+            "name": "50% empty values 1K members 10 properties",
+            "generator": "EmptyValues",
+            "parameters": {
+                "percentage": 50.0,
+                "number_of_members": 1000,
+                "number_of_properties": 10,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/empty-percentage#75",
+            "name": "75% empty values 1K members 10 properties",
+            "generator": "EmptyValues",
+            "parameters": {
+                "percentage": 75.0,
+                "number_of_members": 1000,
+                "number_of_properties": 10,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/empty-percentage#100",
+            "name": "100% empty values 1K members 10 properties",
+            "generator": "EmptyValues",
+            "parameters": {
+                "percentage": 100.0,
+                "number_of_members": 1000,
+                "number_of_properties": 10,
+                "data_format": "csv",
+                "engine": "RMLStreamer"
+            }
+        }
+    ]
+}

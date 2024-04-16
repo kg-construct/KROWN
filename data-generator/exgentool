@@ -1,0 +1,97 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import argparse
+from datetime import datetime
+from bench_generator.generator import Generator
+
+VERSION = '1.0.0'
+EXIT_CODE_SUCCESS = 0
+EXIT_CODE_UNKNOWN_COMMAND = -1
+EXIT_CODE_MISSING_ARGUMENT = -2
+EXIT_CODE_FAILURE = -3
+
+
+def generate_instances(scenario: str):
+    """Generate all instances of a scenario
+
+    Generate each instance of a cenario specified in a scenario file.
+
+    Parameters
+    ----------
+    scenario : str
+        Path to scenario file
+    """
+    if not generator.generate(args.scenario):
+        sys.exit(EXIT_CODE_FAILURE)
+
+
+def list_instances(scenario: str):
+    """List available instances of a scenario in file.
+
+    Pretty print all scenario's instances specified in a scenario file.
+
+    Parameters
+    ----------
+    scenario : str
+        Path to scenario file
+    """
+    instances = generator.list(scenario)
+    if not instances:
+        print('❌ No scenario\'s instances discovered!', file=sys.stderr)
+        sys.exit(EXIT_CODE_FAILURE)
+
+    print('Scenario\'s instances:')
+    for i, s in enumerate(instances):
+        print(f'  {i+1: >4}. {s}')
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Copyright by (c) '
+                                                 'Dylan Van Assche '
+                                                 '(2022-2024), '
+                                                 'available under the MIT '
+                                                 'license',
+                                     epilog='Please cite our paper if you '
+                                            'make use of this tool')
+    parser.add_argument('--version', action='version',
+                        version=f'{parser.prog} {VERSION}')
+    parser.add_argument(dest='command',
+                        help='Command to execute, available commands: '
+                             '"list", "generate"', type=str)
+    parser.add_argument('--root', dest='main_directory', default='.',
+                        help='Root directory for generated scenarios',
+                        type=str)
+    parser.add_argument('--scenario', dest='scenario', default=None,
+                        help='Path to file with scenario\'s instances',
+                        type=str)
+    parser.add_argument('--verbose', dest='verbose',
+                        help='Turn on verbose output', action='store_true')
+    args = parser.parse_args()
+
+    # Resolve path
+    main_directory = os.path.expanduser(args.main_directory)
+    main_directory = os.path.expandvars(main_directory)
+
+    generator = Generator(main_directory, args.verbose)
+
+    if args.command == 'generate':
+        if args.scenario is None:
+            print('Path to file with scenarios to generate is missing',
+                  file=sys.stderr)
+            sys.exit(EXIT_CODE_MISSING_ARGUMENT)
+
+        generate_instances(args.scenario)
+        sys.exit(EXIT_CODE_SUCCESS)
+    elif args.command == 'list':
+        if args.scenario is None:
+            print('Path to file with scenarios to generate is missing',
+                  file=sys.stderr)
+            sys.exit(EXIT_CODE_MISSING_ARGUMENT)
+
+        list_instances(args.scenario)
+        sys.exit(EXIT_CODE_SUCCESS)
+    else:
+        print(f'Unknown command: {args.command}', file=sys.stderr)
+        sys.exit(EXIT_CODE_UNKNOWN_COMMAND)

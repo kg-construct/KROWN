@@ -1,0 +1,151 @@
+{
+    "@id": "http://example.com/new-rml-benchmark/number-of-members",
+    "name": "Number of members 10K-10M",
+    "description": "Scaling number of members from 10K to 10M members in CSV file",
+    "instances": [
+        {
+            "@id": "http://example.com/new-rml-benchmark/number-of-members#10K",
+            "name": "10K members, 20 properties",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 10000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "OntopMaterialize"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/number-of-members#100K",
+            "name": "100K members, 20 properties",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 100000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "OntopMaterialize"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/number-of-members#1M",
+            "name": "1M members, 20 properties",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "OntopMaterialize"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/number-of-members#10M",
+            "name": "10M members, 20 properties",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 10000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "OntopMaterialize"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/number-of-properties#1",
+            "name": "100K members, 1 property",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 100000,
+                "number_of_properties": 1,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "OntopMaterialize"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/number-of-properties#10",
+            "name": "100K members, 10 properties",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 100000,
+                "number_of_properties": 10,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "OntopMaterialize"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/number-of-properties#20",
+            "name": "100K members, 20 properties",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 100000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "OntopMaterialize"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/number-of-properties#30",
+            "name": "100K members, 30 properties",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 100000,
+                "number_of_properties": 30,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "OntopMaterialize"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/value-size#500",
+            "name": "100K members, 20 properties",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 100000,
+                "number_of_properties": 20,
+                "value_size": 500,
+                "data_format": "csv",
+                "engine": "OntopMaterialize"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/value-size#1K",
+            "name": "1K characters",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 100000,
+                "number_of_properties": 20,
+                "value_size": 1000,
+                "data_format": "csv",
+                "engine": "OntopMaterialize"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/value-size#5K",
+            "name": "5K characters",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 100000,
+                "number_of_properties": 20,
+                "value_size": 5000,
+                "data_format": "csv",
+                "engine": "OntopMaterialize"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/value-size#10K",
+            "name": "10K characters",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 100000,
+                "number_of_properties": 20,
+                "value_size": 10000,
+                "data_format": "csv",
+                "engine": "OntopMaterialize"
+            }
+        }
+    ]
+}
