@@ -190,18 +190,18 @@ into KROWN's execution framework.
 KROWN's execution framework has a lot of features and flexibility,
 but some limitations still occur. The main limitations are:
 
-1. Execution across multiple machines is unsupported (GitHub Issue #1).
+1. Execution across multiple machines is unsupported (GitHub [Issue #](https://github.com/kg-construct/KROWN/issues/1)1).
 You can only execute pipelines on one machine.
 This would allow RMLStreamer to be benchmarked among multiple machines 
 (`cluster` mode) instead of only on one machine (`standalone` mode).
 
 2. Automatically execution of unittests
-on each GitHub Pull Request (GitHub Issue #2).
+on each GitHub Pull Request (GitHub [Issue #2](https://github.com/kg-construct/KROWN/issues/2)).
 This is currently not implemented yet in a Github CI/CD setup for KROWN's
 execution framework because it requires running Docker containers
 inside Docker containers.
 
-3. Configuration files described as RDF (GitHub Issue #3) which would
+3. Configuration files described as RDF (GitHub Issue [#3](https://github.com/kg-construct/KROWN/issues/3)) which would
 allow querying the pipeline configurations using Semantic Web standards
 e.g. SPARQL. The configuration files are already written in such a way that
 they can be expanded with a JSON-LD context to overcome this limitation.
