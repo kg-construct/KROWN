@@ -185,6 +185,43 @@ of Challenge [here](https://github.com/kg-construct/challenge-tool).
 After ESWC 2024, support for downloading the new edition will be merged
 into KROWN's execution framework.
 
+## Current limitations
+
+KROWN's execution framework has a lot of features and flexibility,
+but some limitations still occur. The main limitations are:
+
+1. Execution across multiple machines is unsupported (GitHub Issue #1).
+You can only execute pipelines on one machine.
+This would allow RMLStreamer to be benchmarked among multiple machines 
+(`cluster` mode) instead of only on one machine (`standalone` mode).
+
+2. Automatically execution of unittests
+on each GitHub Pull Request (GitHub Issue #2).
+This is currently not implemented yet in a Github CI/CD setup for KROWN's
+execution framework because it requires running Docker containers
+inside Docker containers.
+
+3. Configuration files described as RDF (GitHub Issue #3) which would
+allow querying the pipeline configurations using Semantic Web standards
+e.g. SPARQL. The configuration files are already written in such a way that
+they can be expanded with a JSON-LD context to overcome this limitation.
+
+For a full list of missing features, limitations, etc.
+see [GitHub Issues](https://github.com/kg-construct/KROWN/issues).
+Issues related to the execution framework have a specific
+label 'execution-framework'.
+
+## Sustainability plan
+
+KROWN's execution framework has been used widely among multiple editions
+of the Knowledge Graph Construction Workshop Challenge 
+and for benchmarking incremental mappings (IncRML, under review).
+We plan to keep developing KROWN's execution framework in the future
+to add new features and solve the current limitations 
+of KROWN's execution framework. We are currently collecting more feedback
+from the Challenge participants of the 2024 edition to improve KROWN's
+execution framework further for the next edition of the Challenge.
+
 ## Installation
 
 **Ubuntu 22.04 LTS**

@@ -166,6 +166,37 @@ command instead:
 ./exgentool generate --scenario=/path/to/scenario
 ```
 
+## Limitations
+
+KROWN's data generator can be expanded dynamically and scale among multiple
+parameters, but some limitations are still applicable:
+
+1. Automatically execution of unittests
+on each GitHub Pull Request (GitHub Issue #2).
+This is currently not implemented yet as we want to tackle it together with
+enabling this feature for KROWN's execution framework as well.
+ 
+2. RML modules test cases are not incorporated yet (GitHub issues #4).
+The 2024 edition of the Knowledge Graph Construction Workshop Challenge includes
+the test cases for the new RML modules which are currently under development.
+
+For a full list of missing features, limitations, etc.
+see [GitHub Issues](https://github.com/kg-construct/KROWN/issues).
+Issues related to the execution framework have a specific
+label 'data-generator'.
+
+## Sustainability plan
+
+KROWN's data generator was created to support newer editions
+of the Knowledge Graph Construction Workshop Challenge because each edition
+we have to add more generators to expand each edition with new challenges.
+Currently, we are adding the test cases of the new RML modules to the
+data generator of the Challenge. After this edition (2024) ends,
+the generator for the test cases will be added to KROWN's data generator.
+We will keep developing KROWN's data generator to ease the introduction of
+new scenarios for newer editions of the Knowledge Graph Construction Workshop
+Challenge.
+
 ## Installation
 
 **Ubuntu 22.04 LTS**

@@ -64,6 +64,11 @@ at ESWC 2023 and 2024.
 It was also used in benchmarking incremental mappings with
 [IncRML (under review)](https://semantic-web-journal.net/content/incrml-incremental-knowledge-graph-construction-heterogeneous-data-sources).
 
+## Sustainability plan and limitations
+
+See the READMEs of [data-generator](./data-generator/README.md) and
+[execution-framework](execution-framework/README.md)
+
 ## Citation
 
 ```
