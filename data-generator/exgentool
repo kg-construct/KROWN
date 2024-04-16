@@ -3,7 +3,6 @@
 import os
 import sys
 import argparse
-from datetime import datetime
 from bench_generator.generator import Generator
 
 VERSION = '1.0.0'
