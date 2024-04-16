@@ -1,0 +1,3 @@
+nav > ul > li > a {
+    text-decoration-color: var(--pico-primary);
+}

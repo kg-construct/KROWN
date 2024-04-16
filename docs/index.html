@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark" />
+    <link rel="stylesheet" href="css/pico.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>KROWN 👑</title>
+  </head>
+  <body>
+    <header class="container">
+      <hgroup>
+        <h1>KROWN 👑</h1>
+        <p>A Benchmark for RDF Graph Materialization</p>
+      </hgroup>
+    </header>
+
+    <main class="container">
+      <p>
+        <b>KROWN 👑</b> is a <b>benchmark for materialization systems
+        to construct Knowledge Graphs</b>
+        from (semi-)heterogeneous data sources using declarative mappings
+        such as <a href="http://w3id.org/rml/portal" target="_blank">RML</a>.
+      </p>
+      <p>
+        Many benchmarks already exist for virtualization systems 
+        e.g. <a href="https://github.com/oeg-upm/gtfs-bench"
+                target="_blank">GTFS-Madrid-Bench</a>,
+        <a href="https://ontop-vkg.org/npd-benchmark/"
+           target="_blank">NPD</a>,
+        <a href="http://wbsg.informatik.uni-mannheim.de/bizer/berlinsparqlbenchmark/"
+           target="_blank">BSBM</a>
+        which focus on complex queries with a single declarative mapping.
+        However, materialization systems are unaffected by complex queries
+        since their input is the dataset and the mappings
+        to generate a Knowledge Graph.
+        Some specialized datasets exist to benchmark specific limitations
+        of materialization systems such as duplicated
+        or empty values in datasets
+        e.g. <a href="https://doi.org/10.57702/4c9ivpgs"
+                target="_blank">GENOMICS</a>,
+        but they do not cover all aspects of materialization systems.
+        Therefore, it is hard to compare materialization systems among
+        each other in general which is where KROWN 👑 comes in!
+      </p>
+
+      <h2>Used by</h2>
+      <p>
+        KROWN 👑 has been used in <b>publications and challenges</b>:
+        <ul>
+          <li><a href="http://w3id.org/kg-construct/workshop/2023/challenge.html"
+                 target="_blank">Knowledge Graph Construction Workshop Challenge 2023</a></li>
+          <li><a href="http://w3id.org/kg-construct/workshop/2024/challenge.html"
+                 target="_blank">Knowledge Graph Construction Workshop Challenge 2024</a></li>
+          <li><a href="https://semantic-web-journal.net/content/incrml-incremental-knowledge-graph-construction-heterogeneous-data-sources"
+                 target="_blank">Incremental mapping with IncRML</a></li>
+        </ul>
+      </p>
+
+      <h2>Source code and code documentation</h2>
+      <p>
+        KROWN 👑's <b>data generator</b> and <b>execution framework</b>
+        code is fully <b>documented</b> to ease their 
+        <b>extension and re-usability</b> for developers. You can find
+        the documentation inside the code or you can have a look at their HTML
+        versions:
+        <ul>
+          <li><a href="/data-generator">Data generator</a></li>
+          <li><a href="/execution-framework">Execution framework</a></li>
+        </ul>
+      </p>
+      <p>
+        KROWN 👑's source code is available on the W3C Community Group on
+        Knowledge Graph Construction GitHub:
+        <a href="https://github.com/kg-construct/KROWN"
+           target="_blank">https://github.com/kg-construct/KROWN</a>.
+      </p>
+
+      <h2>Results</h2>
+      <p>
+        KROWN 👑 has been used to benchmark materialization systems, the results
+        are available on Zenodo under DOI
+        <a href="https://doi.org/10.5281/zenodo.10973892"
+           target="_blank">10.5281/zenodo.10973892</a>.
+      </p>
+    </main>
+  </body>
+</html>
