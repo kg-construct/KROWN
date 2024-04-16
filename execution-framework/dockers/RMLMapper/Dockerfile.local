@@ -1,0 +1,20 @@
+################################################################################
+# RMLMapper from a local jar
+# https://github.com/RMLio/rmlmapper-java
+################################################################################
+FROM ubuntu:22.04
+# Install latest updates and dependencies
+RUN apt-get update
+RUN apt-get upgrade -y
+RUN apt-get update && apt-get install -y default-jre
+RUN java -version
+
+# Copy jar
+RUN mkdir rmlmapper
+COPY *.jar rmlmapper/rmlmapper.jar
+
+# Expose data folder
+RUN mkdir /data
+
+# Silent
+CMD ["tail", "-f", "/dev/null"]

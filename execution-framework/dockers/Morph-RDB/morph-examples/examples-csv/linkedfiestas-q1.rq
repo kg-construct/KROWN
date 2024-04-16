@@ -1,0 +1,9 @@
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX schema: <http://schema.org/>
+
+
+SELECT * WHERE {
+  ?s dbo:province 'Barcelona' .
+  ?s schema:name ?name .
+  ?s schema:location ?location .
+}

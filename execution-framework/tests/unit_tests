@@ -1,0 +1,351 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import unittest
+import filecmp
+import subprocess
+import requests
+import psycopg2
+import pymysql
+from time import sleep
+from csv import DictReader
+sys.path.append('../')
+from bench_executor.logger import Logger  # noqa: E402
+from bench_executor.container import Container  # noqa: E402
+from bench_executor.postgresql import PostgreSQL  # noqa: E402
+from bench_executor.mysql import MySQL  # noqa: E402
+from bench_executor.yarrrml import YARRRML  # noqa: E402
+from bench_executor.collector import Collector, METRICS_FILE_NAME  # noqa: E402
+from bench_executor.stats import Stats, METRICS_AGGREGATED_FILE_NAME, \
+        METRICS_SUMMARY_FILE_NAME  # noqa: E402
+
+LOG_DIR = os.path.join(os.path.dirname(__file__), '..', 'bench_executor',
+                       'log')
+DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'bench_executor',
+                        'data')
+CONFIG_DIR = os.path.join(os.path.dirname(__file__), '..', 'bench_executor',
+                          'config')
+CASE_INFO_FILE_NAME = 'case-info.txt'
+
+
+class UnitTests(unittest.TestCase):
+    def test_docker_run(self):
+        logger = Logger('test_docker_run', LOG_DIR, True)
+        c = Container('nginx:alpine', 'test_docker_run', logger,
+                      {'8080': '80'})
+        self.assertTrue(c.run())
+        sleep(5)
+        r = requests.get('http://localhost:8080')
+        self.assertEqual(r.status_code, 200)
+        r.raise_for_status()
+        c.stop()
+
+    def test_docker_run_and_wait_for_log(self):
+        logger = Logger('test_docker_run_and_wait_for_log', LOG_DIR, True)
+        c = Container('nginx:alpine', 'test_docker_run_and_wait_for_log',
+                      logger, {'8081': '80'})
+        self.assertTrue(c.run_and_wait_for_log('start worker process'))
+        r = requests.get('http://localhost:8081')
+        self.assertEqual(r.status_code, 200)
+        r.raise_for_status()
+        c.stop()
+
+    def test_docker_run_and_wait_for_exit(self):
+        logger = Logger('test_docker_run_and_wait_for_exit', LOG_DIR, True)
+        c = Container('alpine:edge', 'test_docker_run_and_wait_for_exit',
+                      logger, {'8082': '80'})
+        self.assertTrue(c.run_and_wait_for_exit('sleep 5'))
+        c.stop()
+
+    def test_postgresql(self):
+        postgresql = PostgreSQL(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        self.assertTrue(postgresql.initialization())
+        self.assertTrue(postgresql.wait_until_ready())
+        connection = psycopg2.connect(host='localhost', database='db',
+                                      user='root', password='root')
+        cursor = connection.cursor()
+
+        # Test valid query
+        cursor.execute('SELECT 1;')
+
+        # Test load CSV
+        self.assertTrue(postgresql.load('student.csv', 'student'))
+        cursor.execute('SELECT name, age FROM student;')
+        results = []
+        for record in cursor:
+            results.append([record[0], record[1]])
+        expected = [['Jefke', '21'],
+                    ['Maria', '22'],
+                    ['Jos', '23'],
+                    [None, None]]
+        self.assertListEqual(results, expected)
+
+        # Test invalid query
+        with self.assertRaises(psycopg2.errors.UndefinedTable):
+            cursor.execute('SELECT * FROM INVALID_TABLE;')
+        connection.rollback()
+
+        connection.close()
+        postgresql.stop()
+
+        # Check if the tables are really dropped
+        postgresql = PostgreSQL(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        self.assertTrue(postgresql.wait_until_ready())
+        connection = psycopg2.connect(host='localhost', user='root',
+                                      password='root', database='db')
+        cursor = connection.cursor()
+        with self.assertRaises(psycopg2.errors.UndefinedTable):
+            cursor.execute('SELECT name, age FROM student;')
+        connection.rollback()
+
+        # Check if we can now reload
+        self.assertTrue(postgresql.load('student.csv', 'student'))
+        cursor.execute('SELECT name, age FROM student;')
+        results = []
+        for record in cursor:
+            results.append([record[0], record[1]])
+        expected = [['Jefke', '21'],
+                    ['Maria', '22'],
+                    ['Jos', '23'],
+                    [None, None]]
+        self.assertListEqual(results, expected)
+
+        # Check SQL schema loading with 2 tables
+        CSV_FILES = [('student.csv', 'student1'), ('student.csv', 'student2')]
+        self.assertTrue(postgresql.load_sql_schema('schema_postgresql.sql',
+                                                   CSV_FILES))
+        # Verify table 1
+        cursor.execute('SELECT name, age FROM student1;')
+        results = []
+        for record in cursor:
+            results.append([record[0], record[1]])
+        expected = [['Jefke', '21'],
+                    ['Maria', '22'],
+                    ['Jos', '23'],
+                    [None, None]]
+        self.assertListEqual(results, expected)
+
+        # Verify table 2
+        cursor.execute('SELECT name, age FROM student2;')
+        results = []
+        for record in cursor:
+            results.append([record[0], record[1]])
+        expected = [['Jefke', '21'],
+                    ['Maria', '22'],
+                    ['Jos', '23'],
+                    [None, None]]
+        self.assertListEqual(results, expected)
+
+        connection.close()
+        postgresql.stop()
+
+    def test_mysql(self):
+        mysql = MySQL(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        self.assertTrue(mysql.initialization())
+        self.assertTrue(mysql.wait_until_ready())
+        connection = pymysql.connect(host='localhost', user='root',
+                                     password='root', db='db')
+        cursor = connection.cursor()
+
+        # Test valid query
+        cursor.execute('SELECT 1;')
+
+        # Test load CSV
+        self.assertTrue(mysql.load('student.csv', 'student'))
+        cursor.execute('SELECT name, age FROM student;')
+        results = []
+        for record in cursor:
+            results.append([record[0], record[1]])
+        expected = [['Jefke', '21'],
+                    ['Maria', '22'],
+                    ['Jos', '23'],
+                    [None, None]]
+        self.assertListEqual(results, expected)
+
+        # Test invalid query
+        with self.assertRaises(pymysql.err.ProgrammingError):
+            cursor.execute('SELECT * FROM INVALID_TABLE;')
+
+        # Close connection and stop container to drop all created tables
+        connection.close()
+        mysql.stop()
+
+        # Check if the tables are really dropped
+        mysql = MySQL(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        self.assertTrue(mysql.wait_until_ready())
+        connection = pymysql.connect(host='localhost', user='root',
+                                     password='root', db='db')
+        cursor = connection.cursor()
+        with self.assertRaises(pymysql.err.ProgrammingError):
+            cursor.execute('SELECT name, age FROM student;')
+
+        # Check if we can now reload
+        self.assertTrue(mysql.load('student.csv', 'student'))
+        cursor.execute('SELECT name, age FROM student;')
+        results = []
+        for record in cursor:
+            results.append([record[0], record[1]])
+        expected = [['Jefke', '21'],
+                    ['Maria', '22'],
+                    ['Jos', '23'],
+                    [None, None]]
+        self.assertListEqual(results, expected)
+
+        # Check SQL schema loading with 2 tables
+        CSV_FILES = [('student.csv', 'student1'), ('student.csv', 'student2')]
+        self.assertTrue(mysql.load_sql_schema('schema_mysql.sql', CSV_FILES))
+
+        # Recreate cursor because we dropped tables
+        connection.close()
+        connection = pymysql.connect(host='localhost', user='root',
+                                     password='root', db='db')
+        cursor = connection.cursor()
+
+        # Verify table 1
+        cursor.execute('SELECT name, age FROM student1;')
+        results = []
+        for record in cursor:
+            results.append([record[0], record[1]])
+        expected = [['Jefke', '21'],
+                    ['Maria', '22'],
+                    ['Jos', '23'],
+                    [None, None]]
+        self.assertListEqual(results, expected)
+
+        # Verify table 2
+        cursor.execute('SELECT name, age FROM student2;')
+        results = []
+        for record in cursor:
+            results.append([record[0], record[1]])
+        expected = [['Jefke', '21'],
+                    ['Maria', '22'],
+                    ['Jos', '23'],
+                    [None, None]]
+        self.assertListEqual(results, expected)
+
+        connection.close()
+        mysql.stop()
+
+    def test_yarrrml_rml(self):
+        yarrrml = YARRRML(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        yarrrml_file = 'mapping.yarrrml'
+
+        # YARRRML to RML
+        mapping_file = 'mapping_yarrrml.rml.ttl'
+        self.assertTrue(yarrrml.transform_mapping(yarrrml_file, mapping_file,
+                                                  False))
+        yarrrml.stop()
+
+    def test_yarrrml_r2rml(self):
+        yarrrml = YARRRML(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        yarrrml_file = 'mapping.yarrrml'
+
+        # YARRRML to R2RML
+        mapping_file = 'mapping_yarrrml.r2rml.ttl'
+        self.assertTrue(yarrrml.transform_mapping(yarrrml_file, mapping_file,
+                                                  True))
+        yarrrml.stop()
+
+    def test_collector_metrics(self):
+        NUMBER_OF_STEPS = 4
+        RUN = 1
+        SAMPLE_INTERVAL = 0.1
+        directory = os.path.join(DATA_DIR, 'collector')
+        results_run_path = os.path.join(directory, 'results', f'run_{RUN}')
+
+        try:
+            os.remove(os.path.join(results_run_path, CASE_INFO_FILE_NAME))
+        except FileNotFoundError:
+            pass
+
+        collector = Collector('my-case-name', results_run_path,
+                              SAMPLE_INTERVAL, NUMBER_OF_STEPS, RUN, LOG_DIR,
+                              False)
+        sleep(15)
+        collector.next_step()
+        sleep(20)
+        collector.stop()
+
+        self.assertTrue(os.path.exists(os.path.join(results_run_path,
+                                                    CASE_INFO_FILE_NAME)))
+
+        self.assertTrue(os.path.exists(os.path.join(results_run_path,
+                                                    METRICS_FILE_NAME)))
+        with open(os.path.join(results_run_path, METRICS_FILE_NAME), 'r') as f:
+            reader = DictReader(f)
+            step = 0
+            index = 0
+            timestamp = -1.0
+            for line in reader:
+                i = int(line['index'])
+                s = int(line['step'])
+                t = float(line['timestamp'])
+
+                if i > index:
+                    index = i
+                else:
+                    self.assertTrue(False, 'Index must always increment')
+
+                if s > step:
+                    step = s
+                self.assertTrue(s >= step, 'Steps must always increment')
+                self.assertTrue(s <= NUMBER_OF_STEPS,
+                                'Steps must be <= than number of steps')
+
+                if t > timestamp:
+                    timestamp = t
+                else:
+                    self.assertTrue(False, 'Timestamp must always increment')
+
+    def test_stats_generation(self):
+        metrics_aggregated_file = os.path.join(DATA_DIR, 'stats', 'results',
+                                               METRICS_AGGREGATED_FILE_NAME)
+        metrics_summary_file = os.path.join(DATA_DIR, 'stats', 'results',
+                                            METRICS_SUMMARY_FILE_NAME)
+        metrics_aggregated_expected_file = os.path.join(DATA_DIR,
+                                                        'stats',
+                                                        'expected',
+                                                        METRICS_AGGREGATED_FILE_NAME)  # noqa: E501
+        metrics_summary_expected_file = os.path.join(DATA_DIR,
+                                                     'stats',
+                                                     'expected',
+                                                     METRICS_SUMMARY_FILE_NAME)
+        try:
+            os.remove(metrics_aggregated_file)
+        except FileNotFoundError:
+            pass
+
+        try:
+            os.remove(metrics_summary_file)
+        except FileNotFoundError:
+            pass
+
+        stats = Stats(os.path.join(DATA_DIR, 'stats', 'results'), 4, LOG_DIR,
+                      False)
+        stats.aggregate()
+        self.assertTrue(os.path.exists(metrics_aggregated_file))
+
+        f1 = metrics_aggregated_file
+        f2 = metrics_aggregated_expected_file
+        self.assertTrue(filecmp.cmp(f1, f2, shallow=False))
+
+        f1 = metrics_summary_file
+        f2 = metrics_summary_expected_file
+        self.assertTrue(filecmp.cmp(f1, f2, shallow=False))
+
+
+if __name__ == '__main__':
+    # SELinux causes weird permission denied issues, warn users
+    try:
+        response = subprocess.check_output('getenforce')
+        if response.decode().strip() != 'Permissive':
+            print('SELinux must be set to "permissive" to allow containers '
+                  'accessing files in mounted directories', file=sys.stderr)
+            sys.exit(-1)
+    except subprocess.CalledProcessError:
+        pass
+    except FileNotFoundError:
+        pass
+
+    unittest.main()

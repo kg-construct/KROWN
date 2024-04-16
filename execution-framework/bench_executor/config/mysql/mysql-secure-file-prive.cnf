@@ -1,0 +1,6 @@
+[mysqld]
+secure-file-priv= ''
+local_infile=1
+
+[mysql]
+local_infile=1

@@ -1,0 +1,359 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import unittest
+import subprocess
+from rdflib import Graph
+sys.path.append('../')
+from bench_executor.postgresql import PostgreSQL  # noqa: E402
+from bench_executor.mysql import MySQL  # noqa: E402
+from bench_executor.rmlmapper_docker import RMLMapperDocker  # noqa: E402
+from bench_executor.ontop import OntopMaterialize, \
+        OntopVirtualize  # noqa: E402
+from bench_executor.sdmrdfizer import SDMRDFizer  # noqa: E402
+from bench_executor.morphrdb import MorphRDB  # noqa: E402
+from bench_executor.morphkgc import MorphKGC  # noqa: E402
+from bench_executor.rmlstreamer import RMLStreamer  # noqa: E402
+from bench_executor.query import Query  # noqa: E402
+
+LOG_DIR = os.path.join(os.path.dirname(__file__), '..', 'bench_executor',
+                       'log')
+DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'bench_executor',
+                        'data')
+CONFIG_DIR = os.path.join(os.path.dirname(__file__), '..', 'bench_executor',
+                          'config')
+
+
+class RDBTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls._mysql = MySQL(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        cls._mysql.wait_until_ready()
+        cls._mysql.load('student.csv', 'student')
+
+        cls._postgresql = PostgreSQL(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        cls._postgresql.wait_until_ready()
+        cls._postgresql.load('student.csv', 'student')
+
+    @classmethod
+    def tearDownClass(cls):
+        cls._mysql.stop()
+        cls._postgresql.stop()
+
+    def test_rmlmapper_mysql(self):
+        rmlmapper = RMLMapperDocker(DATA_DIR, CONFIG_DIR, LOG_DIR, True)
+        try:
+            os.remove(os.path.join(DATA_DIR, 'shared', 'rmlmapper_mysql.nt'))
+        except FileNotFoundError:
+            pass
+        self.assertTrue(rmlmapper.execute_mapping('mapping.r2rml.ttl',
+                                                  'rmlmapper_mysql.nt',
+                                                  'ntriples', 'root', 'root',
+                                                  'MySQL', '3306', 'db',
+                                                  'MySQL'))
+
+        self.assertTrue(os.path.exists(os.path.join(DATA_DIR, 'shared',
+                                                    'rmlmapper_mysql.nt')))
+        g = Graph()
+        g.parse(os.path.join(DATA_DIR, 'shared', 'rmlmapper_mysql.nt'),
+                format='ntriples')
+        self.assertEqual(len(g), 3)
+
+        rmlmapper.stop()
+
+    def test_rmlmapper_postgresql(self):
+        rmlmapper = RMLMapperDocker(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        try:
+            os.remove(os.path.join(DATA_DIR, 'shared',
+                                   'rmlmapper_postgresql.nt'))
+        except FileNotFoundError:
+            pass
+        self.assertTrue(rmlmapper.execute_mapping('mapping.r2rml.ttl',
+                                                  'rmlmapper_postgresql.nt',
+                                                  'ntriples', 'root', 'root',
+                                                  'PostgreSQL', '5432', 'db',
+                                                  'PostgreSQL'))
+
+        exists = os.path.exists(os.path.join(DATA_DIR, 'shared',
+                                             'rmlmapper_postgresql.nt'))
+        self.assertTrue(exists)
+        g = Graph()
+        g.parse(os.path.join(DATA_DIR, 'shared', 'rmlmapper_postgresql.nt'),
+                format='ntriples')
+        self.assertEqual(len(g), 3)
+
+        rmlmapper.stop()
+
+    def test_morphkgc_mysql(self):
+        morphkgc = MorphKGC(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        try:
+            os.remove(os.path.join(DATA_DIR, 'shared', 'morphkgc_mysql.nt'))
+        except FileNotFoundError:
+            pass
+        self.assertTrue(morphkgc.execute_mapping('mapping.r2rml.ttl',
+                                                 'morphkgc_mysql.nt',
+                                                 'ntriples', 'root', 'root',
+                                                 'MySQL', '3306', 'db',
+                                                 'MySQL'))
+
+        self.assertTrue(os.path.exists(os.path.join(DATA_DIR, 'shared',
+                                                    'morphkgc_mysql.nt')))
+        g = Graph()
+        g.parse(os.path.join(DATA_DIR, 'shared', 'morphkgc_mysql.nt'),
+                format='ntriples')
+        self.assertEqual(len(g), 3)
+
+        morphkgc.stop()
+
+    def test_morphkgc_postgresql(self):
+        morphkgc = MorphKGC(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        try:
+            os.remove(os.path.join(DATA_DIR, 'shared',
+                                   'morphkgc_postgresql.nt'))
+        except FileNotFoundError:
+            pass
+        self.assertTrue(morphkgc.execute_mapping('mapping.r2rml.ttl',
+                                                 'morphkgc_postgresql.nt',
+                                                 'ntriples', 'root', 'root',
+                                                 'PostgreSQL', '5432', 'db',
+                                                 'PostgreSQL'))
+
+        self.assertTrue(os.path.exists(os.path.join(DATA_DIR, 'shared',
+                                                    'morphkgc_postgresql.nt')))
+        g = Graph()
+        g.parse(os.path.join(DATA_DIR, 'shared', 'morphkgc_postgresql.nt'),
+                format='ntriples')
+        self.assertEqual(len(g), 3)
+
+        morphkgc.stop()
+
+    def test_sdmrdfizer_mysql(self):
+        sdmrdfizer = SDMRDFizer(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        try:
+            os.remove(os.path.join(DATA_DIR, 'shared', 'sdmrdfizer_mysql.nt'))
+        except FileNotFoundError:
+            pass
+        self.assertTrue(sdmrdfizer.execute_mapping('mapping.r2rml.ttl',
+                                                   'sdmrdfizer_mysql.nt',
+                                                   'ntriples', 'root', 'root',
+                                                   'MySQL', '3306', 'db',
+                                                   'MySQL'))
+
+        self.assertTrue(os.path.exists(os.path.join(DATA_DIR, 'shared',
+                                                    'sdmrdfizer_mysql.nt')))
+        g = Graph()
+        g.parse(os.path.join(DATA_DIR, 'shared', 'sdmrdfizer_mysql.nt'),
+                format='ntriples')
+        self.assertEqual(len(g), 3)
+
+        sdmrdfizer.stop()
+
+    def test_sdmrdfizer_postgresql(self):
+        sdmrdfizer = SDMRDFizer(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        try:
+            os.remove(os.path.join(DATA_DIR, 'shared',
+                                   'sdmrdfizer_postgresql.nt'))
+        except FileNotFoundError:
+            pass
+        self.assertTrue(sdmrdfizer.execute_mapping('mapping.r2rml.ttl',
+                                                   'sdmrdfizer_postgresql.nt',
+                                                   'ntriples', 'root', 'root',
+                                                   'PostgreSQL', '5432', 'db',
+                                                   'PostgreSQL'))
+
+        exist = os.path.exists(os.path.join(DATA_DIR, 'shared',
+                                            'sdmrdfizer_postgresql.nt'))
+        self.assertTrue(exist)
+        g = Graph()
+        g.parse(os.path.join(DATA_DIR, 'shared', 'sdmrdfizer_postgresql.nt'),
+                format='ntriples')
+        self.assertEqual(len(g), 3)
+
+        sdmrdfizer.stop()
+
+    def test_ontopmaterialize_mysql(self):
+        ontop = OntopMaterialize(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        try:
+            os.remove(os.path.join(DATA_DIR, 'shared',
+                                   'ontopmaterialize_mysql.nt'))
+        except FileNotFoundError:
+            pass
+        self.assertTrue(ontop.execute_mapping('mapping.r2rml.ttl',
+                                              'ontopmaterialize_mysql.nt',
+                                              'ntriples', 'root', 'root',
+                                              'MySQL', '3306', 'db', 'MySQL'))
+
+        exist = os.path.exists(os.path.join(DATA_DIR, 'shared',
+                                            'ontopmaterialize_mysql.nt'))
+        self.assertTrue(exist)
+        g = Graph()
+        g.parse(os.path.join(DATA_DIR, 'shared', 'ontopmaterialize_mysql.nt'),
+                format='ntriples')
+        self.assertEqual(len(g), 3)
+
+        ontop.stop()
+
+    def test_ontopmaterialize_postgresql(self):
+        ontop = OntopMaterialize(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        try:
+            os.remove(os.path.join(DATA_DIR, 'shared',
+                                   'ontopmaterialize_postgresql.nt'))
+        except FileNotFoundError:
+            pass
+        self.assertTrue(ontop.execute_mapping('mapping.r2rml.ttl',
+                                              'ontopmaterialize_postgresql.nt',
+                                              'ntriples', 'root', 'root',
+                                              'PostgreSQL', '5432', 'db',
+                                              'PostgreSQL'))
+
+        exist = os.path.exists(os.path.join(DATA_DIR, 'shared',
+                                            'ontopmaterialize_postgresql.nt'))
+        self.assertTrue(exist)
+        g = Graph()
+        g.parse(os.path.join(DATA_DIR, 'shared',
+                             'ontopmaterialize_postgresql.nt'),
+                format='ntriples')
+        self.assertEqual(len(g), 3)
+
+        ontop.stop()
+
+    def test_ontopendpoint_mysql(self):
+        QUERY = 'PREFIX foaf: <http://xmlns.com/foaf/0.1/> ' + \
+                'CONSTRUCT WHERE { ?s foaf:name ?o1 . }'
+        ontop = OntopVirtualize(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        self.assertTrue(ontop.execute_mapping('mapping.r2rml.ttl',
+                                              'ntriples', 'root', 'root',
+                                              'MySQL', '3306', 'db', 'MySQL'))
+        # Verify loaded data
+        q = Query(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        results = q._execute(QUERY, ontop.endpoint, False,
+                             ontop.headers['ntriples'])
+        results = list(filter(None, results.split('\n')))
+        self.assertEqual(len(results), 3, str(results))
+
+        ontop.stop()
+
+    def test_ontopendpoint_postgresql(self):
+        QUERY = 'PREFIX foaf: <http://xmlns.com/foaf/0.1/> ' + \
+                'CONSTRUCT WHERE { ?s foaf:name ?o1 . }'
+        ontop = OntopVirtualize(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        self.assertTrue(ontop.execute_mapping('mapping.r2rml.ttl',
+                                              'ntriples', 'root', 'root',
+                                              'PostgreSQL', '5432', 'db',
+                                              'PostgreSQL'))
+        # Verify loaded data
+        q = Query(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        results = q._execute(QUERY, ontop.endpoint, False,
+                             ontop.headers['ntriples'])
+        results = list(filter(None, results.split('\n')))
+        self.assertEqual(len(results), 3, str(results))
+
+        ontop.stop()
+
+    def test_morphrdb_mysql(self):
+        morphrdb = MorphRDB(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        try:
+            os.remove(os.path.join(DATA_DIR, 'shared', 'morphrdb_mysql.nt'))
+        except FileNotFoundError:
+            pass
+        self.assertTrue(morphrdb.execute_mapping('mapping.r2rml.ttl',
+                                                 'morphrdb_mysql.nt',
+                                                 'ntriples', 'root', 'root',
+                                                 'MySQL', '3306', 'db',
+                                                 'MySQL'))
+
+        self.assertTrue(os.path.exists(os.path.join(DATA_DIR, 'shared',
+                                                    'morphrdb_mysql.nt')))
+        g = Graph()
+        g.parse(os.path.join(DATA_DIR, 'shared', 'morphrdb_mysql.nt'),
+                format='ntriples')
+        self.assertEqual(len(g), 3, str(g))
+
+        morphrdb.stop()
+
+    def test_morphrdb_postgresql(self):
+        morphrdb = MorphRDB(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        try:
+            os.remove(os.path.join(DATA_DIR, 'shared',
+                                   'morphrdb_postgresql.nt'))
+        except FileNotFoundError:
+            pass
+        self.assertTrue(morphrdb.execute_mapping('mapping.r2rml.ttl',
+                                                 'morphrdb_postgresql.nt',
+                                                 'ntriples', 'root', 'root',
+                                                 'PostgreSQL', '5432', 'db',
+                                                 'PostgreSQL'))
+
+        self.assertTrue(os.path.exists(os.path.join(DATA_DIR, 'shared',
+                                                    'morphrdb_postgresql.nt')))
+        g = Graph()
+        g.parse(os.path.join(DATA_DIR, 'shared', 'morphrdb_postgresql.nt'),
+                format='ntriples')
+        self.assertEqual(len(g), 3)
+
+        morphrdb.stop()
+
+    @unittest.skip('RMLStreamer v2.5.0 has MySQL driver issues')
+    def test_rmlstreamer_mysql(self):
+        rmlstreamer = RMLStreamer(DATA_DIR, CONFIG_DIR, LOG_DIR, True)
+        try:
+            os.remove(os.path.join(DATA_DIR, 'shared',
+                                   'rmlstreamer_mysql.nt'))
+        except FileNotFoundError:
+            pass
+
+        self.assertTrue(rmlstreamer.execute_mapping('mapping.r2rml.ttl',
+                                                    'rmlstreamer_mysql.nt',
+                                                    'ntriples', 'root', 'root',
+                                                    'MySQL', '3306', 'db',
+                                                    'MySQL'))
+
+        self.assertTrue(os.path.exists(os.path.join(DATA_DIR, 'shared',
+                                                    'rmlstreamer_mysql.nt')))
+        g = Graph()
+        g.parse(os.path.join(DATA_DIR, 'shared', 'rmlstreamer_mysql.nt'),
+                format='ntriples')
+        self.assertEqual(len(g), 3)
+
+        rmlstreamer.stop()
+
+    def test_rmlstreamer_postgresql(self):
+        rmlstreamer = RMLStreamer(DATA_DIR, CONFIG_DIR, LOG_DIR, True)
+        try:
+            os.remove(os.path.join(DATA_DIR, 'shared',
+                                   'rmlstreamer_mysql.nt'))
+        except FileNotFoundError:
+            pass
+
+        self.assertTrue(rmlstreamer.execute_mapping('mapping.r2rml.ttl',
+                                                    'rmlstreamer_postgresql.nt',
+                                                    'ntriples', 'root', 'root',
+                                                    'PostgreSQL', '5432', 'db',
+                                                    'PostgreSQL'))
+
+        print(os.path.join(DATA_DIR, 'shared', 'rmlstreamer_postgresql.nt'))
+        self.assertTrue(os.path.exists(os.path.join(DATA_DIR, 'shared',
+                                                    'rmlstreamer_postgresql.nt')))
+        g = Graph()
+        g.parse(os.path.join(DATA_DIR, 'shared', 'rmlstreamer_postgresql.nt'),
+                format='ntriples')
+        self.assertEqual(len(g), 3)
+
+        rmlstreamer.stop()
+
+
+if __name__ == '__main__':
+    # SELinux causes weird permission denied issues, warn users
+    try:
+        response = subprocess.check_output('getenforce')
+        if response.decode().strip() != 'Permissive':
+            print('SELinux must be set to "permissive" to allow containers '
+                  'accessing files in mounted directories', file=sys.stderr)
+            sys.exit(-1)
+    except subprocess.CalledProcessError:
+        pass
+    except FileNotFoundError:
+        pass
+
+    unittest.main()

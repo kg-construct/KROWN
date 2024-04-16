@@ -1,0 +1,32 @@
+image: "docker:24.0.7-dind"
+services:
+  - docker:24.0.7-dind
+
+before_script:
+  - apk update
+  - apk add python3 py3-pip postgresql-dev gcc python3-dev musl-dev linux-headers
+  - docker info
+  - python --version
+  - pip install --break-system-packages psycopg2-binary pymysql jsonschema psutil requests rdflib timeout-decorator
+
+stages:
+  - Linting
+  - Unit
+  - Integration
+
+linting:
+  stage: Linting
+  script:
+  - pip install --break-system-packages mypy flake8 
+  - pip install --break-system-packages types-PyMySQL types-html5lib types-jsonschema types-psutil types-psycopg2 types-requests
+  - cd tests
+  - ./linting
+
+files:
+  stage: Unit
+  script:
+  - cd tests
+  - ./file_tests
+
+# Other tests cannot be executed in Gitlab CI as it requires Docker volumes
+# which are not supported in Gitlab CI.

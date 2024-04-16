@@ -1,0 +1,23 @@
+bin
+target/
+log/
+
+mappings/
+properties/
+results/
+queries/
+
+.idea
+.settings/
+.cache*
+.classpath
+.project
+*.iml
+morph.log
+*.*~
+morph-examples/examples/batch-result.nt
+.metadata
+morph-r2rml-rdb/src/main/resources
+
+# Ignore VS Code settings
+.vs/

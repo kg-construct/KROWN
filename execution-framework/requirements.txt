@@ -1,0 +1,7 @@
+psycopg2-binary
+pymysql
+jsonschema
+psutil
+requests
+rdflib
+timeout-decorator

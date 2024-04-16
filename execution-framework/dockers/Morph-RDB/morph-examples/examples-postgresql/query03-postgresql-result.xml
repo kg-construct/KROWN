@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sparql>
+    <head>
+        <variable name="a"/>
+        <variable name="n"/>
+        <variable name="e"/>
+        <variable name="w"/>
+    </head>
+    <results>
+        <result>
+            <binding name="n">
+                <literal>Paul</literal>
+            </binding>
+        </result>
+        <result>
+            <binding name="n">
+                <literal>John</literal>
+            </binding>
+            <binding name="e">
+                <literal>john@acd.edu</literal>
+            </binding>
+        </result>
+        <result>
+            <binding name="n">
+                <literal>George</literal>
+            </binding>
+        </result>
+        <result>
+            <binding name="n">
+                <literal>Ringo</literal>
+            </binding>
+            <binding name="e">
+                <literal>ringo@acd.edu</literal>
+            </binding>
+            <binding name="w">
+                <literal>www.starr.edu</literal>
+            </binding>
+        </result>
+    </results>
+</sparql>

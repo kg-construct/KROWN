@@ -1,0 +1,38 @@
+################################################################################
+# Ontop
+# https://github.com/ontop/ontop
+################################################################################
+FROM ubuntu:22.04
+# Configure the Ontop version to use
+ARG COMMIT="8d24757cfbc0980459a09c679c03dbd10c1cdfdd"
+ARG ONTOP_VERSION="4.2.1"
+
+# Install latest updates and dependencies
+RUN apt-get update
+RUN apt-get upgrade -y
+RUN apt-get install -y openjdk-8-jdk less vim wget unzip maven
+
+# Configure Java
+RUN readlink -f `which javac` | sed "s:/bin/javac::"
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+RUN echo "JAVA_HOME value: ${JAVA_HOME}"
+
+# Build Ontop from source
+COPY 8d24757cfbc0980459a09c679c03dbd10c1cdfdd.zip ontop.zip
+RUN unzip ontop.zip -d /ontop-src
+WORKDIR /ontop-src/ontop-$COMMIT
+RUN mvn -Prelease -DskipTests
+WORKDIR /
+RUN ls /ontop-src/ontop-$COMMIT/build/distribution/target/
+RUN unzip /ontop-src/ontop-$COMMIT/build/distribution/target/ontop-cli-$ONTOP_VERSION.zip -d /ontop
+COPY mysql-connector.jar /ontop/jdbc/
+COPY postgresql-connector.jar /ontop/jdbc/
+
+# Expose gtfs-bench folders
+RUN mkdir /data
+RUN mkdir /mappings
+RUN mkdir /results
+RUN mkdir /configs
+
+# Silent
+CMD ["tail", "-f", "/dev/null"]

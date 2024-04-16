@@ -1,0 +1,24 @@
+#!/bin/sh
+set -e
+
+cd ..
+
+# PEP8 compliance
+echo "*** MODULE PEP8 ***"
+flake8 bench_executor
+echo "OK!"
+
+echo "*** CLI PEP8 ***"
+flake8 exectool
+echo "OK!"
+
+echo "*** TESTS PEP8 ***"
+flake8 tests
+echo "OK!"
+
+# Static code analysis
+echo "*** MODULE STATIC CODE ANALYSIS ***"
+mypy bench_executor --check-untyped-defs
+
+echo "*** CLI STATIC CODE ANALYSIS ***"
+mypy exectool --check-untyped-defs

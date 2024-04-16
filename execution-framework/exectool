@@ -1,0 +1,444 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import errno
+import tarfile
+import argparse
+import subprocess
+import requests
+from glob import glob
+from datetime import datetime
+from signal import signal, SIGINT
+from zipfile import ZipFile
+from bench_executor.executor import Executor
+
+VERSION = '0.2.0'
+EXIT_CODE_SUCCESS = 0
+EXIT_CODE_UNKNOWN_COMMAND = -1
+EXIT_CODE_NO_CASES = -2
+EXIT_CODE_FAILED_CASE = -3
+EXIT_CODE_INTERRUPTED = -4
+EXIT_CODE_SELINUX = -5
+EXIT_CODE_EVEN_RUNS = -6
+EXIT_CODE_INTERRUPTED = -7
+EXIT_CODE_DOWNLOAD_FAILURE = -8
+KGC_CHALLENGE_URL = 'https://zenodo.org/record/7509997/files/geosapi-0.6-5.tar.gz?download=1'  # noqa: E501
+KGC_CHALLENGE_FILE_NAME = 'eswc-kgc-challenge-2023.tar.gz'
+DOWNLOAD_DIR = 'downloads'
+
+stop = False
+wait_for_user = False
+
+
+def _format_progress(index: int, number_of_cases: int,
+                     start_time: datetime) -> str:
+    """Pretty format the current progress.
+
+    Parameters
+    ----------
+    index : int
+        Current case index.
+    number_of_cases : int
+        Number of cases to execute.
+    state_time : datetime
+        Start time of execution.
+
+    Returns
+    -------
+    progress : str
+        Pretty formatted progress string
+    """
+    # Percentage completed cases
+    percentage = f'{int(100.0 * (index)/number_of_cases)}%'
+
+    # Time spent since started
+    delta = datetime.now() - start_time
+    hours = int(delta.total_seconds() / 3600)
+    minutes = int((delta.total_seconds() - hours * 3600) / 60)
+    seconds = int(delta.total_seconds() - hours * 3600 - minutes * 60)
+
+    if minutes == 0 and hours == 0:
+        timestamp = f'{seconds: >5}s'
+    elif hours == 0:
+        timestamp = f'{minutes: >2}m{seconds: >2}s'
+    else:
+        timestamp = f'{hours: >2}h{minutes: >2}m'
+
+    # Format progress
+    return f'[{percentage: >4} {timestamp: >6}]'
+
+
+def signal_handler_interrupt(signum, frame):
+    """Signal handler for gracefully stop all containers."""
+    global stop
+
+    if not stop:
+        print('Waiting for case to finish before exiting...')
+        stop = True
+        print('Pressing again CTRL+C will exit immediately!')
+    else:
+        sys.exit(EXIT_CODE_INTERRUPTED)
+
+
+def print_cases(executor: Executor):
+    """Print all cases.
+
+    Parameters
+    ----------
+    executor : Executor
+        An instance of the Executor class of which all cases should be printed.
+    """
+    cases = e.list()
+
+    if not cases:
+        print('No cases discovered!')
+        sys.exit(EXIT_CODE_NO_CASES)
+
+    print(f'Discovering {len(cases)} cases:')
+    for index, case in enumerate(cases):
+        name = case['data']['name']
+        number_of_steps = f'[ {len(case["data"]["steps"])} steps ]'
+        print(f'{index+1: >4}. {name: <85} {number_of_steps: >11}')
+
+
+def execute_cases(executor: Executor, interval: float, runs: int):
+    """Execute all cases.
+
+    Parameters
+    ----------
+    executor : Executor
+        An instance of the Executor class of which all cases should be printed.
+    interval : float
+        Sample interval for collecting metrics.
+    runs : int
+        Number of runs for each case.
+    """
+    global stop
+    failures = []
+
+    signal(SIGINT, signal_handler_interrupt)
+
+    cases = executor.list()
+    cases = sorted(cases, key=lambda c: c['directory'])
+    if not cases:
+        print('No cases discovered!')
+        sys.exit(EXIT_CODE_NO_CASES)
+
+    print(f'Executing {len(cases)} cases:')
+    start_time = datetime.now()
+    for index, case in enumerate(cases):
+        success = True
+        data = case['data']
+        directory = case['directory']
+        results_directory = os.path.join(directory, 'results')
+        checkpoint_file = os.path.join(directory, '.done')
+
+        progress = _format_progress(index, len(cases), start_time)
+        print(f'{index+1: >4}. {data["name"][0:62]: <83} {progress: <13}')
+
+        # Skip cases which are already done
+        all_runs_complete = True
+        start_run = 1
+        for i in range(1, runs+1):
+            run_checkpoint_file = os.path.join(results_directory,
+                                               f'run_{i}', '.done')
+            start_run = i
+            if not os.path.exists(run_checkpoint_file):
+                all_runs_complete = False
+                break
+
+        if os.path.exists(checkpoint_file) and all_runs_complete:
+            print('        ⏩ SKIPPED CASE')
+            continue
+
+        # Execute case with all runs
+        for i in range(start_run, runs+1):
+            run_checkpoint_file = os.path.join(results_directory,
+                                               f'run_{i}', '.done')
+
+            print(f'      ==> Run #{i} <==')
+
+            # Remove state file from temporary directory for RML-LDES
+            for state_file in glob('/tmp/*state*'):
+                try:
+                    os.remove(state_file)
+                except OSError as e:
+                    if e.errno != errno.ENOENT:
+                        raise
+
+            if os.path.exists(run_checkpoint_file):
+                print('        ⏩ SKIPPED RUN')
+                continue
+
+            try:
+                success = executor.run(case, interval, i, i == runs)
+            except Exception as exception:
+                print(f'Case failure due to exception: {exception}',
+                      file=sys.stderr)
+                sys.exit(EXIT_CODE_FAILED_CASE)
+
+            if stop:
+                sys.exit(EXIT_CODE_INTERRUPTED)
+
+            if not success:
+                if data['name'] not in failures:
+                    failures.append(data['name'])
+                break
+
+        if not success:
+            print('        ⏩ SKIPPED NEXT RUNS')
+            continue
+
+    # Exit with error code when we have a failed case
+    if failures:
+        msg = f'{len(failures)}/{len(cases)} cases failed to execute:\n'
+        for index, f in enumerate(failures):
+            msg += f'{index+1: >4}. {f: <76}\n'
+        print(msg)
+        msg += f'\nRoot: "{executor.main_directory}"'
+        sys.exit(EXIT_CODE_FAILED_CASE)
+    else:
+        text = f'{len(cases)} cases executed succesfully'
+        progress = _format_progress(len(cases), len(cases), start_time)
+        msg = f'{text: <89} {progress: <13}'
+        print(msg)
+        msg = f'{text: <89}\nRoot: "{executor.main_directory}"'
+
+
+def clean_cases(executor: Executor):
+    """Clean all cases.
+
+    Parameters
+    ----------
+    executor : Executor
+        An instance of the Executor class of which all cases should be printed.
+    """
+    cases = e.list()
+
+    for case in cases:
+        e.clean(case)
+    print(f'Cleaned {len(cases)} cases')
+
+
+def generate_statistics(executor: Executor):
+    """Generate statistics for all cases.
+
+    The cases must be executed already to succeed.
+
+    Parameters
+    ----------
+    executor : Executor
+        An instance of the Executor class of which all cases should be printed.
+    """
+    cases = e.list()
+    failures = []
+
+    print('Generating statistics for cases:')
+    for case in cases:
+        print(f"\t{case['data']['name']}")
+
+        # Skip already generated stats
+        if os.path.exists(os.path.join(case['directory'], 'results',
+                                       'aggregated.csv')):
+            continue
+
+        success = e.stats(case)
+        if not success:
+            name = case['data']['name']
+            if name not in failures:
+                failures.append(name)
+            print(f'Could not generate statistics for case "{name}"',
+                  file=sys.stderr)
+
+    if failures:
+        print(f'{len(failures)}/{len(cases)} cases failed to execute:',
+              file=sys.stderr)
+        for index, f in enumerate(failures):
+            print(f'{index+1: >4}. {f: <76}')
+        sys.exit(EXIT_CODE_FAILED_CASE)
+
+    print(f'Generated statistics for {len(cases)} cases')
+
+    archive_name = os.path.join(e.main_directory, 'results.zip')
+    with ZipFile(archive_name, 'w') as archive:
+        for case in cases:
+            directory = case['directory']
+            aggregated_file = os.path.join(directory, 'results',
+                                           'aggregated.csv')
+            summary_file = os.path.join(directory, 'results',
+                                        'summary.csv')
+            stats_file = os.path.join(directory, 'results',
+                                      'stats.csv')
+
+            if os.path.exists(aggregated_file):
+                archive.write(aggregated_file)
+
+            if os.path.exists(summary_file):
+                archive.write(summary_file)
+
+            if os.path.exists(stats_file):
+                archive.write(stats_file)
+
+    print(f'Generated statistics archive: {archive_name}')
+
+
+def download_challenge():
+    """Download KGC 2023 Challenge
+
+    Fetch the archive from Zenodo and unpack it.
+    """
+    archive_path: str = os.path.join(DOWNLOAD_DIR, KGC_CHALLENGE_FILE_NAME)
+    extraction_path: str = \
+        os.path.join(DOWNLOAD_DIR,
+                     KGC_CHALLENGE_FILE_NAME.replace('.tar.gz', ''))
+
+    # Skip download if already exist
+    os.makedirs(DOWNLOAD_DIR, exist_ok=True)
+
+    # Fetch archive if not downloaded yet
+    with requests.get(KGC_CHALLENGE_URL, stream=True) as r:
+        if r.ok:
+            if 'content-length' in r.headers:
+                total_length = int(r.headers['content-length'])
+                print(f'ℹ️  Downloading challenge from {KGC_CHALLENGE_URL} '
+                      f'({round(total_length / 10**6, 2)} MB), '
+                      'this can take some time...')
+            else:
+                print(f'ℹ️  Downloading challenge from {KGC_CHALLENGE_URL}, '
+                      'this can take some time...')
+
+            with open(archive_path, 'wb') as f:
+                for chunk in r.iter_content():
+                    f.write(chunk)
+        else:
+            print('❌ Download KGC 2023 challenge failed'
+                  f'(HTTP {r.status_code})', file=sys.stderr)
+            sys.exit(EXIT_CODE_DOWNLOAD_FAILURE)
+
+    print(f'✅ Challenge download complete: {archive_path}')
+
+    # Unpack archive
+    print(f'ℹ️  Unpacking challenge at {extraction_path}...')
+
+    try:
+        tar = tarfile.open(archive_path, 'r:gz')
+        tar.extractall(extraction_path)
+        tar.close()
+    except Exception as e:
+        print(f'❌ Unpacking failed! Please report this issue: {e}')
+        sys.exit(EXIT_CODE_DOWNLOAD_FAILURE)
+
+    print('✅ Challenge is ready to be executed!',
+          'Example command: \'exectool run --runs=5 '
+          f'--root={extraction_path}\'')
+
+
+def progress_cb(resource: str, name: str, success: bool):
+    """Progress callback
+
+    Pretty print the current progress.
+
+    Parameters
+    ----------
+    resource : str
+        Name of the resource
+    name : str
+        Name of the step
+    success : bool
+        Whether the execution was succesfull or not.
+    """
+    if success:
+        print(f'        ✅ {resource: <20}: {name: <50}')
+    else:
+        print(f'        ❌ {resource: <20}: {name: <50}')
+
+    if wait_for_user:
+        input('        ℹ️  Step completed, press any key to continue...')
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Copyright by (c) '
+                                                 'Dylan Van Assche '
+                                                 '(2022-2024), '
+                                                 'available under the MIT '
+                                                 'license',
+                                     epilog='Please cite our paper if you '
+                                            'make use of this tool')
+    parser.add_argument('--version', action='version',
+                        version=f'{parser.prog} {VERSION}')
+    parser.add_argument(dest='command',
+                        help='Command to execute, available commands: '
+                             '"list", "run"',
+                        type=str)
+    parser.add_argument('--root', dest='main_directory', default='.',
+                        help='Root directory of all cases to execute, '
+                             'defaults to the current working directory',
+                        type=str)
+    parser.add_argument('--runs', dest='number_of_runs', default=3,
+                        help='Number of runs to execute a case. '
+                             'The value must be uneven for generating stats. '
+                             'Default 3 runs',
+                        type=int)
+    parser.add_argument('--interval', dest='interval', default=0.1,
+                        help='Measurement sample interval for metrics, '
+                             'default 0.1s',
+                        type=float)
+    parser.add_argument('--verbose', dest='verbose',
+                        help='Turn on verbose output', action='store_true')
+    parser.add_argument('--wait-for-user', dest='wait_for_user',
+                        help='Show a prompt when a step is executed before '
+                             'going to the next one', action='store_true')
+    args = parser.parse_args()
+
+    # Resolve path
+    main_directory = os.path.expanduser(args.main_directory)
+    main_directory = os.path.expandvars(main_directory)
+
+    if 'download-challenge-2023' == args.command:
+        download_challenge()
+        sys.exit(EXIT_CODE_SUCCESS)
+
+    if args.verbose:
+        print(f'{parser.prog} {VERSION}')
+        print(f'Command: {args.command}')
+        print(f'Root directory: {main_directory}')
+        print(f'Verbose enabled: {args.verbose}')
+        print(f'Number of runs: {args.number_of_runs}')
+        print(f'Measurement sample interval: {args.interval}s')
+        print(f'Wait for user after case: {args.wait_for_user}')
+
+    if args.interval % 2 == 0:
+        print('Number of runs must be uneven for generating statistics',
+              file=sys.stderr)
+        sys.exit(EXIT_CODE_EVEN_RUNS)
+
+    wait_for_user = args.wait_for_user
+
+    # SELinux causes weird permission denied issues, warn users
+    if 'run' == args.command or 'clean' == args.command:
+        try:
+            response = subprocess.check_output('getenforce')
+            if response.decode().strip() != 'Permissive':
+                msg = 'SELinux must be set to "permissive" to allow ' + \
+                      'containers accessing files in mounted directories'
+                print(msg, file=sys.stderr)
+                sys.exit(EXIT_CODE_SELINUX)
+        except subprocess.CalledProcessError:
+            pass
+        except FileNotFoundError:
+            pass
+
+    e = Executor(main_directory, verbose=args.verbose, progress_cb=progress_cb)
+
+    if args.command == 'list':
+        print_cases(e)
+    elif args.command == 'run':
+        execute_cases(e, args.interval, args.number_of_runs)
+    elif args.command == 'clean':
+        clean_cases(e)
+    elif args.command == 'stats':
+        generate_statistics(e)
+    else:
+        print(f'Unknown command: {args.command}', file=sys.stderr)
+        sys.exit(EXIT_CODE_UNKNOWN_COMMAND)

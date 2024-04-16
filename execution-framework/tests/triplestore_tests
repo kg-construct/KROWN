@@ -1,0 +1,189 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import unittest
+import subprocess
+import requests
+sys.path.append('../')
+from bench_executor.container import ContainerManager  # noqa: E402
+from bench_executor.virtuoso import Virtuoso  # noqa: E402
+from bench_executor.fuseki import Fuseki  # noqa: E402
+from bench_executor.query import Query  # noqa: E402
+
+LOG_DIR = os.path.join(os.path.dirname(__file__), '..', 'bench_executor',
+                       'log')
+DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'bench_executor',
+                        'data')
+CONFIG_DIR = os.path.join(os.path.dirname(__file__), '..', 'bench_executor',
+                          'config')
+
+
+class TriplestoreTests(unittest.TestCase):
+    def test_virtuoso(self):
+        QUERY = 'PREFIX foaf: <http://xmlns.com/foaf/0.1/> ' + \
+                'CONSTRUCT WHERE { ?s foaf:name ?o1 . }'
+        virtuoso = Virtuoso(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        self.assertTrue(virtuoso.initialization())
+        self.assertTrue(virtuoso.wait_until_ready())
+
+        # Check if web interface is up
+        r = requests.get('http://localhost:8890')
+        self.assertEqual(r.status_code, 200, f'HTTP status {r.status_code}')
+        r.raise_for_status()
+
+        # Check if SPARQL endpoint works
+        r = requests.get('http://localhost:8890/sparql/'
+                         '?default-graph-uri=&query=CONSTRUCT+WHERE+'
+                         '%7B%0D%0A++%3Fs+%3Fp+%3Fo.%0D%0A%7D%0D%0ALIMIT+100'
+                         '&format=text%2Fplain')
+        self.assertEqual(r.status_code, 200)
+        r.raise_for_status()
+
+        # Check if iSQL is up, HTTP is unsupported on the iSQL port
+        # so the connection will be closed without a response
+        with self.assertRaises(requests.exceptions.ConnectionError) as e:
+            r = requests.get('http://localhost:1111')
+            r.raise_for_status()
+        self.assertTrue('Connection aborted' in str(e.exception))
+
+        # Test load RDF
+        self.assertTrue(virtuoso.load('student.nt'))
+
+        # Verify loaded data
+        q = Query(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        results = q._execute(QUERY, virtuoso.endpoint, False,
+                             virtuoso.headers['ntriples'])
+        results = list(filter(None, results.split('\n')))
+        self.assertEqual(len(results), 3, str(results))
+
+        # RDF is dropped when container is stopped
+        virtuoso.stop()
+
+        # Virtuoso is already initialized only wait for it to be ready
+        virtuoso = Virtuoso(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        self.assertTrue(virtuoso.wait_until_ready())
+
+        # Verify removed data
+        q = Query(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        results = q._execute(QUERY, virtuoso.endpoint, True,
+                             virtuoso.headers['ntriples'])
+        self.assertIsNone(results, str(results))
+
+        # Test if we can now reload our RDF
+        self.assertTrue(virtuoso.load_parallel('stude*.nt', 4))
+
+        # Verify loaded data
+        q = Query(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        results = q._execute(QUERY, virtuoso.endpoint, False,
+                             virtuoso.headers['ntriples'])
+        results = list(filter(None, results.split('\n')))
+        self.assertEqual(len(results), 3, str(results))
+
+        virtuoso.stop()
+
+    def test_fuseki(self):
+        QUERY = 'PREFIX foaf: <http://xmlns.com/foaf/0.1/> ' + \
+                'CONSTRUCT WHERE { ?s foaf:name ?o1 . }'
+        fuseki = Fuseki(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        self.assertTrue(fuseki.initialization())
+        self.assertTrue(fuseki.wait_until_ready())
+
+        # Load RDF
+        self.assertTrue(fuseki.load('student.nt'))
+
+        # Verify loaded data
+        q = Query(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        results = q._execute(QUERY, fuseki.endpoint, False,
+                             fuseki.headers['ntriples'])
+        results = list(filter(None, results.split('\n')))
+        self.assertEqual(len(results), 3, str(results))
+
+        fuseki.stop()
+
+        # Verify removed data
+        fuseki = Fuseki(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        self.assertTrue(fuseki.wait_until_ready())
+
+        q = Query(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        results = q._execute(QUERY, fuseki.endpoint, True,
+                             fuseki.headers['ntriples'])
+        self.assertIsNone(results, str(results))
+
+        # Test if we can now reload our RDF
+        self.assertTrue(fuseki.load('student.nt'))
+
+        # Verify loaded data
+        q = Query(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        results = q._execute(QUERY, fuseki.endpoint, False,
+                             fuseki.headers['ntriples'])
+        results = list(filter(None, results.split('\n')))
+        self.assertEqual(len(results), 3, str(results))
+
+        fuseki.stop()
+
+    def test_query_execute(self):
+        QUERY = 'CONSTRUCT WHERE { ?s ?p ?o. } LIMIT 100'
+        DBPEDIA_SPARQL = 'https://dbpedia.org/sparql'
+
+        q = Query(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        results = q._execute(QUERY, DBPEDIA_SPARQL, False,
+                             {'Accept': 'text/plain'})
+        results = list(filter(None, results.split('\n')))
+        self.assertEqual(len(results), 100)
+
+    def test_query_execute_and_save(self):
+        QUERY = 'CONSTRUCT WHERE { ?s ?p ?o. } LIMIT 100'
+        DBPEDIA_SPARQL = 'https://dbpedia.org/sparql'
+
+        q = Query(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        self.assertTrue(q.execute_and_save(QUERY, DBPEDIA_SPARQL, 'results.nt',
+                                           False, {'Accept': 'text/plain'}))
+        with open(os.path.join(DATA_DIR, 'shared', 'results.nt'), 'r') as f:
+            results = list(filter(None, f.read().split('\n')))
+            self.assertEqual(len(results), 100)
+
+    def test_query_execute_from_file(self):
+        QUERY_FILE = 'spo100.q'
+        DBPEDIA_SPARQL = 'https://dbpedia.org/sparql'
+
+        q = Query(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        results = q.execute_from_file(QUERY_FILE, DBPEDIA_SPARQL, False,
+                                      {'Accept': 'text/plain'})
+        results = list(filter(None, results.split('\n')))
+        self.assertEqual(len(results), 100, str(results))
+
+    def test_query_execute_from_file_and_save(self):
+        QUERY_FILE = 'spo100.q'
+        DBPEDIA_SPARQL = 'https://dbpedia.org/sparql'
+
+        try:
+            os.remove(os.path.join(DATA_DIR, 'shared',
+                                   'results.nt'))
+        except FileNotFoundError:
+            pass
+
+        q = Query(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        s = q.execute_from_file_and_save(QUERY_FILE, DBPEDIA_SPARQL,
+                                         'results.nt', False,
+                                         {'Accept': 'text/plain'})
+        self.assertTrue(s)
+        with open(os.path.join(DATA_DIR, 'shared', 'results.nt'), 'r') as f:
+            results = list(filter(None, f.read().split('\n')))
+            self.assertEqual(len(results), 100)
+
+
+if __name__ == '__main__':
+    # SELinux causes weird permission denied issues, warn users
+    try:
+        response = subprocess.check_output('getenforce')
+        if response.decode().strip() != 'Permissive':
+            print('SELinux must be set to "permissive" to allow containers '
+                  'accessing files in mounted directories', file=sys.stderr)
+            sys.exit(-1)
+    except subprocess.CalledProcessError:
+        pass
+    except FileNotFoundError:
+        pass
+
+    unittest.main()

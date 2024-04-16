@@ -1,0 +1,145 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import unittest
+import subprocess
+sys.path.append('../')
+from bench_executor.executor import Executor, \
+        CHECKPOINT_FILE_NAME  # noqa: E402
+from bench_executor.collector import METRICS_FILE_NAME  # noqa: E402
+from bench_executor.logger import LOG_FILE_NAME  # noqa: E402
+LOG_DIR = os.path.join(os.path.dirname(__file__), '..', 'bench_executor',
+                       'log')
+DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'bench_executor',
+                        'data')
+CONFIG_DIR = os.path.join(os.path.dirname(__file__), '..', 'bench_executor',
+                          'config')
+
+
+class IntegrationTests(unittest.TestCase):
+    def test_executor_list(self):
+        executor = Executor(os.path.join(DATA_DIR, 'test-cases'), False)
+        cases = executor.list()
+        iris = [x['data']['@id'] for x in cases]
+        BASE_URL = 'http://example.com/test-cases'
+        e = [f'{BASE_URL}/rmlmapper/fuseki/transform-csv-to-ntriples',
+             f'{BASE_URL}/rmlmapper/fuseki/transform-json-to-ntriples',
+             f'{BASE_URL}/rmlmapper/fuseki/transform-xml-to-ntriples',
+             f'{BASE_URL}/rmlmapper/fuseki/transform-mysql-to-ntriples',
+             f'{BASE_URL}/rmlmapper/fuseki/transform-postgresql-to-ntriples',
+             f'{BASE_URL}/rmlmapper/virtuoso/transform-csv-to-ntriples',
+             f'{BASE_URL}/rmlmapper/virtuoso/transform-xml-to-ntriples',
+             f'{BASE_URL}/rmlmapper/virtuoso/transform-json-to-ntriples',
+             f'{BASE_URL}/rmlmapper/virtuoso/transform-mysql-to-ntriples',
+             f'{BASE_URL}/rmlmapper/virtuoso/transform-postgresql-to-ntriples',
+             f'{BASE_URL}/sdmrdfizer/fuseki/transform-csv-to-ntriples',
+             f'{BASE_URL}/sdmrdfizer/fuseki/transform-xml-to-ntriples',
+             f'{BASE_URL}/sdmrdfizer/fuseki/transform-json-to-ntriples',
+             f'{BASE_URL}/sdmrdfizer/fuseki/transform-mysql-to-ntriples',
+             f'{BASE_URL}/sdmrdfizer/fuseki/transform-postgresql-to-ntriples',
+             f'{BASE_URL}/sdmrdfizer/virtuoso/transform-csv-to-ntriples',
+             f'{BASE_URL}/sdmrdfizer/virtuoso/transform-xml-to-ntriples',
+             f'{BASE_URL}/sdmrdfizer/virtuoso/transform-json-to-ntriples',
+             f'{BASE_URL}/sdmrdfizer/virtuoso/transform-mysql-to-ntriples',
+             f'{BASE_URL}/sdmrdfizer/virtuoso/transform-postgresql-to-ntriples',   # noqa: E501
+             f'{BASE_URL}/morphkgc/fuseki/transform-csv-to-ntriples',
+             f'{BASE_URL}/morphkgc/fuseki/transform-xml-to-ntriples',
+             f'{BASE_URL}/morphkgc/fuseki/transform-json-to-ntriples',
+             f'{BASE_URL}/morphkgc/fuseki/transform-mysql-to-ntriples',
+             f'{BASE_URL}/morphkgc/fuseki/transform-postgresql-to-ntriples',
+             f'{BASE_URL}/morphkgc/virtuoso/transform-csv-to-ntriples',
+             f'{BASE_URL}/morphkgc/virtuoso/transform-xml-to-ntriples',
+             f'{BASE_URL}/morphkgc/virtuoso/transform-json-to-ntriples',
+             f'{BASE_URL}/morphkgc/virtuoso/transform-mysql-to-ntriples',
+             f'{BASE_URL}/morphkgc/virtuoso/transform-postgresql-to-ntriples',
+             f'{BASE_URL}/morphrdb/fuseki/transform-mysql-to-ntriples',
+             f'{BASE_URL}/morphrdb/fuseki/transform-postgresql-to-ntriples',
+             f'{BASE_URL}/morphrdb/virtuoso/transform-mysql-to-ntriples',
+             f'{BASE_URL}/morphrdb/virtuoso/transform-postgresql-to-ntriples',
+             f'{BASE_URL}/ontopmaterialize/fuseki/transform-mysql-to-ntriples',
+             f'{BASE_URL}/ontopmaterialize/fuseki/'
+             'transform-postgresql-to-ntriples',
+             f'{BASE_URL}/ontopmaterialize/virtuoso/'
+             'transform-mysql-to-ntriples',
+             f'{BASE_URL}/ontopmaterialize/virtuoso/'
+             'transform-postgresql-to-ntriples',
+             f'{BASE_URL}/ontopendpoint/fuseki/transform-mysql-to-ntriples',
+             f'{BASE_URL}/ontopendpoint/fuseki/'
+             'transform-postgresql-to-ntriples']
+        self.assertEqual(len(iris), len(e), iris)
+        self.assertListEqual(sorted(e), sorted(iris))
+
+    def test_executor_run(self):
+        path = os.path.join(DATA_DIR, 'test-cases')
+        executor = Executor(path, True)
+
+        for case in executor.list():
+            # Clean case
+            executor.clean(case)
+
+            # Skip SDM-RDFizer XML
+            if 'sdmrdfizer' in case['directory'] \
+                    and 'xml' in case['directory']:
+                print('FIXME: SDM-RDFizer XML to N-Triples has no output')
+                continue
+
+            # Check if all files are removed
+            for step in case['data']['steps']:
+                directory = case['directory']
+                resource = step['resource'].lower().replace('_', '')
+                log_file = os.path.join(directory, 'results', 'run_1',
+                                        resource, LOG_FILE_NAME)
+                checkpoint_file = os.path.join(directory, CHECKPOINT_FILE_NAME)
+                metrics_file = os.path.join(directory, 'results', 'run_1',
+                                            resource, METRICS_FILE_NAME)
+
+                self.assertFalse(os.path.exists(log_file))
+                self.assertFalse(os.path.exists(metrics_file))
+                self.assertFalse(os.path.exists(checkpoint_file))
+
+            # Run case
+            print(f'*** {case["directory"]} ***')
+            self.assertTrue(executor.run(case, 0.1, 1, True))
+
+            # Check if all files are generated
+            for step in case['data']['steps']:
+                directory = case['directory']
+                resource = step['resource'].lower().replace('_', '')
+                log_file = os.path.join(directory, 'results', 'run_1',
+                                        LOG_FILE_NAME)
+                checkpoint_file = os.path.join(directory, CHECKPOINT_FILE_NAME)
+                metrics_file = os.path.join(directory, 'results', 'run_1',
+                                            METRICS_FILE_NAME)
+
+                # Verify if log, checkpoint, metrics files exists
+                # Log files are expected to contain at least 1 line,
+                # Metrics files must exist, the content is validated in
+                # unittests and checkpoint files contain a single line
+                # with the timestamp
+                self.assertTrue(os.path.exists(log_file),
+                                f'{log_file} does not exist')
+                with open(log_file) as f:
+                    self.assertTrue(len(f.readlines()) > 0)
+                self.assertTrue(os.path.exists(metrics_file),
+                                f'{metrics_file} does not exist')
+                self.assertTrue(os.path.exists(checkpoint_file),
+                                f'{checkpoint_file} does not exist')
+                with open(checkpoint_file) as f:
+                    self.assertEqual(len(f.readlines()), 1)
+
+
+if __name__ == '__main__':
+    # SELinux causes weird permission denied issues, warn users
+    try:
+        response = subprocess.check_output('getenforce')
+        if response.decode().strip() != 'Permissive':
+            print('SELinux must be set to "permissive" to allow containers '
+                  'accessing files in mounted directories', file=sys.stderr)
+            sys.exit(-1)
+    except subprocess.CalledProcessError:
+        pass
+    except FileNotFoundError:
+        pass
+
+    unittest.main()

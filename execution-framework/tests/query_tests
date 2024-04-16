@@ -1,0 +1,214 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import unittest
+import subprocess
+from io import StringIO
+from rdflib import Graph
+from rdflib.compare import to_isomorphic
+sys.path.append('../')
+from bench_executor.query import Query  # noqa: E402
+from bench_executor.virtuoso import Virtuoso  # noqa: E402
+from bench_executor.fuseki import Fuseki  # noqa: E402
+from bench_executor.ontop import OntopVirtualize  # noqa: E402
+from bench_executor.container import ContainerManager  # noqa: E402
+from bench_executor.mysql import MySQL  # noqa: E402
+
+LOG_DIR = os.path.join(os.path.dirname(__file__), '..', 'bench_executor',
+                       'log')
+DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'bench_executor',
+                        'data')
+CONFIG_DIR = os.path.join(os.path.dirname(__file__), '..', 'bench_executor',
+                          'config')
+
+
+class QueryTests(unittest.TestCase):
+
+    def test_query_formats_virtuoso(self):
+        QUERY = 'PREFIX foaf: <http://xmlns.com/foaf/0.1/> ' + \
+                'CONSTRUCT WHERE { ?s foaf:name ?o1 . }'
+        virtuoso = Virtuoso(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        self.assertTrue(virtuoso.initialization())
+        self.assertTrue(virtuoso.wait_until_ready())
+        self.assertTrue(virtuoso.load('student.nt'))
+
+        # N-Triples
+        q = Query(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        results = q._execute(QUERY, virtuoso.endpoint, False,
+                             virtuoso.headers['ntriples']).replace('\t', ' ')
+        g1 = Graph()
+        g1.parse(StringIO(results))
+        g2 = Graph()
+        g2.parse(os.path.join(DATA_DIR, 'shared', 'student.nt'))
+        self.assertEqual(to_isomorphic(g1), to_isomorphic(g2))
+        self.assertNotIn('@prefix', results)
+
+        # Turtle
+        q = Query(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        results = q._execute(QUERY, virtuoso.endpoint, False,
+                             virtuoso.headers['turtle'])
+        g1 = Graph()
+        g1.parse(StringIO(results), format='turtle')
+        g2 = Graph()
+        g2.parse(os.path.join(DATA_DIR, 'shared', 'student.nt'))
+        self.assertEqual(to_isomorphic(g1), to_isomorphic(g2))
+        self.assertIn('@prefix', results)
+        q = Query(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        results = q._execute(QUERY, virtuoso.endpoint, False,
+                             virtuoso.headers['rdfxml'])
+        g1 = Graph()
+        g1.parse(StringIO(results), format='xml')
+        g2 = Graph()
+        g2.parse(os.path.join(DATA_DIR, 'shared', 'student.nt'))
+        self.assertEqual(to_isomorphic(g1), to_isomorphic(g2))
+        self.assertIn('<rdf:RDF', results, results)
+        self.assertIn('</rdf:RDF>', results, results)
+
+        # JSON-LD
+        q = Query(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        results = q._execute(QUERY, virtuoso.endpoint, False,
+                             virtuoso.headers['jsonld'])
+        g1 = Graph()
+        g1.parse(StringIO(results), format='json-ld')
+        g2 = Graph()
+        g2.parse(os.path.join(DATA_DIR, 'shared', 'student.nt'))
+        self.assertEqual(to_isomorphic(g1), to_isomorphic(g2))
+        self.assertIn('@context', results, results)
+        self.assertIn('@graph', results, results)
+
+        virtuoso.stop()
+
+    def test_query_formats_ontopendpoint(self):
+        QUERY = 'PREFIX foaf: <http://xmlns.com/foaf/0.1/> ' + \
+                'CONSTRUCT WHERE { ?s foaf:name ?o1 . }'
+        mysql = MySQL(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        mysql.wait_until_ready()
+        mysql.load('student.csv', 'student')
+
+        ontop = OntopVirtualize(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        self.assertTrue(ontop.execute_mapping('mapping.r2rml.ttl',
+                                              'ntriples', 'root', 'root',
+                                              'MySQL', '3306', 'db', 'MySQL'))
+
+        # N-Triples
+        q = Query(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        results = q._execute(QUERY, ontop.endpoint, False,
+                             ontop.headers['ntriples'])
+        g1 = Graph()
+        g1.parse(StringIO(results))
+        g2 = Graph()
+        g2.parse(os.path.join(DATA_DIR, 'shared', 'student.nt'))
+        self.assertEqual(to_isomorphic(g1), to_isomorphic(g2))
+        self.assertNotIn('@prefix', results, results)
+
+        # Turtle
+        q = Query(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        results = q._execute(QUERY, ontop.endpoint, False,
+                             ontop.headers['turtle'])
+        g1 = Graph()
+        g1.parse(StringIO(results), format='turtle')
+        g2 = Graph()
+        g2.parse(os.path.join(DATA_DIR, 'shared', 'student.nt'))
+        self.assertEqual(to_isomorphic(g1), to_isomorphic(g2))
+        self.assertIn('@prefix', results, results)
+
+        # RDF/XML
+        q = Query(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        results = q._execute(QUERY, ontop.endpoint, False,
+                             ontop.headers['rdfxml'])
+        g1 = Graph()
+        g1.parse(StringIO(results), format='xml')
+        g2 = Graph()
+        g2.parse(os.path.join(DATA_DIR, 'shared', 'student.nt'))
+        self.assertEqual(to_isomorphic(g1), to_isomorphic(g2))
+        self.assertIn('<rdf:RDF', results, results)
+        self.assertIn('</rdf:RDF>', results, results)
+
+        # JSON-LD
+        q = Query(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        results = q._execute(QUERY, ontop.endpoint, False,
+                             ontop.headers['jsonld'])
+        g1 = Graph()
+        g1.parse(StringIO(results), format='json-ld')
+        g2 = Graph()
+        g2.parse(os.path.join(DATA_DIR, 'shared', 'student.nt'))
+        self.assertEqual(to_isomorphic(g1), to_isomorphic(g2))
+        self.assertIn('@id', results, results)
+        self.assertIn('@value', results, results)
+
+        ontop.stop()
+        mysql.stop()
+
+    def test_query_formats_fuseki(self):
+        QUERY = 'PREFIX foaf: <http://xmlns.com/foaf/0.1/> ' + \
+                'CONSTRUCT WHERE { ?s foaf:name ?o1 . }'
+        fuseki = Fuseki(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        self.assertTrue(fuseki.initialization())
+        self.assertTrue(fuseki.wait_until_ready())
+        self.assertTrue(fuseki.load('student.nt'))
+
+        # N-Triples
+        q = Query(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        results = q._execute(QUERY, fuseki.endpoint, False,
+                             fuseki.headers['ntriples'])
+        g1 = Graph()
+        g1.parse(StringIO(results))
+        g2 = Graph()
+        g2.parse(os.path.join(DATA_DIR, 'shared', 'student.nt'))
+        self.assertEqual(to_isomorphic(g1), to_isomorphic(g2))
+        self.assertNotIn('@prefix', results, results)
+
+        # Turtle
+        q = Query(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        results = q._execute(QUERY, fuseki.endpoint, False,
+                             fuseki.headers['turtle'])
+        g1 = Graph()
+        g1.parse(StringIO(results), format='turtle')
+        g2 = Graph()
+        g2.parse(os.path.join(DATA_DIR, 'shared', 'student.nt'))
+        self.assertEqual(to_isomorphic(g1), to_isomorphic(g2))
+        # Fuseki does not return prefixes if the original loaded file
+        # was N-Triples
+
+        # RDF/XML
+        q = Query(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        results = q._execute(QUERY, fuseki.endpoint, False,
+                             fuseki.headers['rdfxml'])
+        g1 = Graph()
+        g1.parse(StringIO(results), format='xml')
+        g2 = Graph()
+        g2.parse(os.path.join(DATA_DIR, 'shared', 'student.nt'))
+        self.assertEqual(to_isomorphic(g1), to_isomorphic(g2))
+        self.assertIn('<rdf:RDF', results, results)
+        self.assertIn('</rdf:RDF>', results, results)
+
+        # JSON-LD
+        q = Query(DATA_DIR, CONFIG_DIR, LOG_DIR, False)
+        results = q._execute(QUERY, fuseki.endpoint, False,
+                             fuseki.headers['jsonld'])
+        g1 = Graph()
+        g1.parse(StringIO(results), format='json-ld')
+        g2 = Graph()
+        g2.parse(os.path.join(DATA_DIR, 'shared', 'student.nt'))
+        self.assertEqual(to_isomorphic(g1), to_isomorphic(g2))
+        self.assertIn('@context', results, results)
+        self.assertIn('@graph', results, results)
+
+        fuseki.stop()
+
+
+if __name__ == '__main__':
+    # SELinux causes weird permission denied issues, warn users
+    try:
+        response = subprocess.check_output('getenforce')
+        if response.decode().strip() != 'Permissive':
+            print('SELinux must be set to "permissive" to allow containers '
+                  'accessing files in mounted directories', file=sys.stderr)
+            sys.exit(-1)
+    except subprocess.CalledProcessError:
+        pass
+    except FileNotFoundError:
+        pass
+
+    unittest.main()
