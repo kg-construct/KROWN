@@ -208,10 +208,11 @@ Do not forget to logout so the user groups are properly updated!
 
 3. Verify installation
 
+Execute one of the unit tests:
+
 ```
-# Run all tests
-cd bench_executor
-./tests/unit_tests
+cd tests
+./unit_tests
 ```
 
 ## Citation
