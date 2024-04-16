@@ -27,9 +27,15 @@ JSON configuration files. This way, any combination can be used of scaling
 parameters and their values are stored to easily reproduce 
 the generation in the future.
 
+KROWN's data generator is available inside
+the [data-generator](./data-generator) folder consisting of scenarios under [data-generator/configs](./data-generator/configs)
+and unittests to verify the output of the generator ([data-generator/tests](./data-generator/tests)].
+More information can be found in the [README](data-generator/README.md).
+
 **Example usage**
 
 ```
+cd data-generator
 ./exgentool generate --scenario=/path/to/config.json
 ```
 
@@ -39,9 +45,16 @@ KROWN provides also an execution framework to reproducible execute benchmark
 scenarios as a pipeline of Docker containers while measuring metrics e.g.
 execution time, CPU time, memory consumption, storage usage, etc.
 
+KROWN's execution framework is available inside
+the [execution-framework](./execution-framework) folder
+and unittests to verify the execution of Docker-based pipelines and collection
+of metrics by KROWN's execution framework ([execution-framework/tests](./execution-framework/tests)].
+More information can be found in the [README](./execution-framework/README.md).
+
 **Example usage**
 
 ```
+cd execution-framework
 ./exectool --runs=5 --root=/path/to/scenarios run
 ```
 
