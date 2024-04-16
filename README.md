@@ -1,9 +1,12 @@
 # KROWN 👑: A Benchmark for RDF Graph Materialization
 
-KROWN (Knowledge gRaph cOnstruction beNchmark) is a benchmark for 
-materialization systems to construct Knowledge Graphs from 
-(semi-)heterogeneous data sources using declarative mappings
-such as [RML](http://w3id.org/rml/portal).
+[![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
+[![DOI](https://zenodo.org/badge/786886812.svg)](https://zenodo.org/doi/10.5281/zenodo.10979321)
+[![Documentation](https://img.shields.io/badge/Documentation-red)](http://w3id.org/kg-construct/KROWN/)
+
+KROWN 👑 is a benchmark for materialization systems to construct
+Knowledge Graphs from (semi-)heterogeneous data sources using 
+declarative mappings such as [RML](http://w3id.org/rml/portal).
 
 Many benchmarks already exist for virtualization systems
 e.g. [GTFS-Madrid-Bench](https://github.com/oeg-upm/gtfs-bench),
@@ -17,17 +20,17 @@ specific limitations of materialization systems such as duplicated or empty
 values in datasets e.g. [GENOMICS](https://doi.org/10.57702/4c9ivpgs), 
 but they do not cover all aspects of materialization systems.
 Therefore, it is hard to compare materialization systems
-among each other in general which is where KROWN comes in!
+among each other in general which is where KROWN 👑 comes in!
 
 ## Data generator
 
-KROWN provides a data generator to scale the different benchmark scenarios
+KROWN 👑 provides a data generator to scale the different benchmark scenarios
 with multiple scaling parameters, configurable through a set of 
 JSON configuration files. This way, any combination can be used of scaling
 parameters and their values are stored to easily reproduce 
 the generation in the future.
 
-KROWN's data generator is available inside
+KROWN 👑's data generator is available inside
 the [data-generator](./data-generator) folder consisting of scenarios under [data-generator/config](./data-generator/config)
 and unittests to verify the output of the generator ([data-generator/tests](./data-generator/tests)].
 More information can be found in the [README](data-generator/README.md).
@@ -41,11 +44,11 @@ cd data-generator
 
 ## Execution framework
 
-KROWN provides also an execution framework to reproducible execute benchmark
+KROWN 👑 provides also an execution framework to reproducible execute benchmark
 scenarios as a pipeline of Docker containers while measuring metrics e.g.
 execution time, CPU time, memory consumption, storage usage, etc.
 
-KROWN's execution framework is available inside
+KROWN 👑's execution framework is available inside
 the [execution-framework](./execution-framework) folder
 and unittests to verify the execution of Docker-based pipelines and collection
 of metrics by KROWN's execution framework ([execution-framework/tests](./execution-framework/tests)].
@@ -58,7 +61,7 @@ cd execution-framework
 ./exectool --runs=5 --root=/path/to/scenarios run
 ```
 
-The execution framework of KROWN has been used in the
+The execution framework of KROWN 👑 has been used in the
 [Knowledge Graph Construction Workshop Challenges](https://w3id.org/kg-construct/workshop/2024/challenge.html)
 at ESWC 2023 and 2024.
 It was also used in benchmarking incremental mappings with
