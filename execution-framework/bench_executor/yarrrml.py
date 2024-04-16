@@ -38,7 +38,7 @@ class YARRRML(Container):
         self._logger = Logger(__name__, directory, verbose)
 
         os.makedirs(os.path.join(self._data_path, 'yarrrml'), exist_ok=True)
-        super().__init__(f'blindreviewing/yarrrml:v{VERSION}', 'YARRRML',
+        super().__init__(f'kgconstruct/yarrrml:v{VERSION}', 'YARRRML',
                          self._logger,
                          volumes=[f'{self._data_path}/yarrrml:/data',
                                   f'{self._data_path}/shared:/data/shared'])

@@ -77,7 +77,7 @@ class Virtuoso(Container):
                        'VIRT_Parameters_MaxVectorSize': MAX_VECTOR_SIZE,
                        'VIRT_Parameters_NumberOfBuffers': number_of_buffers,
                        'VIRT_Parameters_MaxDirtyBuffers': max_dirty_buffers}
-        super().__init__(f'blindreviewing/virtuoso:v{VERSION}',
+        super().__init__(f'kgconstruct/virtuoso:v{VERSION}',
                          'Virtuoso', self._logger,
                          ports={'8890': '8890', '1111': '1111'},
                          environment=environment,

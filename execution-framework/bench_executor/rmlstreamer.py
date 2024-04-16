@@ -24,7 +24,7 @@ D2RQ = Namespace('http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#')
 
 VERSION = '2.5.0'  # standalone mode with RDB support
 TIMEOUT = 6 * 3600  # 6 hours
-IMAGE = f'blindreviewing/rmlstreamer:v{VERSION}'
+IMAGE = f'kgconstruct/rmlstreamer:v{VERSION}'
 
 
 class RMLStreamer(Container):

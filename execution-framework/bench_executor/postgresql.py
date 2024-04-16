@@ -55,7 +55,7 @@ class PostgreSQL(Container):
         os.makedirs(os.path.join(self._data_path, 'postgresql'), exist_ok=True)
         self._tables: List[str] = []
 
-        super().__init__(f'blindreviewing/postgresql:v{VERSION}', 'PostgreSQL',
+        super().__init__(f'kgconstruct/postgresql:v{VERSION}', 'PostgreSQL',
                          self._logger,
                          ports={PORT: PORT},
                          environment={'POSTGRES_PASSWORD': PASSWORD,

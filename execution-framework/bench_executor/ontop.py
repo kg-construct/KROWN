@@ -64,7 +64,7 @@ class Ontop(Container):
 
         environment = {'ONTOP_JAVA_ARGS': f'-Xmx{max_heap} -Xms{max_heap}',
                        'ONTOP_LOG_LEVEL': log_level}
-        super().__init__(f'blindreviewing/ontop:v{VERSION}', name,
+        super().__init__(f'kgconstruct/ontop:v{VERSION}', name,
                          self._logger,
                          ports={'8888': '8888'},
                          environment=environment,

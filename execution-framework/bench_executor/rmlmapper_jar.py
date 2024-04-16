@@ -10,16 +10,16 @@ from multiple originally (semi-)structured data sources.
 
 import os
 import psutil
+import subprocess
 from typing import Optional
 from timeout_decorator import timeout, TimeoutError  # type: ignore
-from bench_executor.container import Container
 from bench_executor.logger import Logger
 
-VERSION = '6.0.0'
+VERSION = '6.2.1'
 TIMEOUT = 6 * 3600  # 6 hours
 
 
-class RMLMapperDocker(Container):
+class RMLMapperJar():
     """RMLMapper container for executing R2RML and RML mappings."""
 
     def __init__(self, data_path: str, config_path: str, directory: str,
@@ -43,10 +43,6 @@ class RMLMapperDocker(Container):
         self._verbose = verbose
 
         os.makedirs(os.path.join(self._data_path, 'rmlmapper'), exist_ok=True)
-        super().__init__(f'blindreviewing/rmlmapper:v{VERSION}', 'RMLMapper',
-                         self._logger,
-                         volumes=[f'{self._data_path}/rmlmapper:/data',
-                                  f'{self._data_path}/shared:/data/shared'])
 
     @property
     def root_mount_directory(self) -> str:
@@ -69,12 +65,12 @@ class RMLMapperDocker(Container):
         success : bool
             Whether the execution was successfull or not.
         """
-        # Set Java heap to 1/2 of available memory instead of the default 1/4
-        max_heap = int(psutil.virtual_memory().total * (1/2))
+        # Set Java heap to 90% of available memory instead of the default 1/4
+        max_heap = int(psutil.virtual_memory().total * 0.9)
 
         # Execute command
         cmd = f'java -Xmx{max_heap} -Xms{max_heap}' + \
-              ' -jar /rmlmapper/rmlmapper.jar'
+              ' -jar rmlmapper.jar'
         if self._verbose:
             cmd += ' -vvvvvvvvvvvvv'
         cmd += f' {" ".join(arguments)}'
@@ -82,7 +78,9 @@ class RMLMapperDocker(Container):
         self._logger.debug(f'Executing RMLMapper with arguments '
                            f'{" ".join(arguments)}')
 
-        return self.run_and_wait_for_exit(cmd)
+        exitcode, output = subprocess.getstatusoutput(cmd)
+        self._logger.debug(output)
+        return exitcode == 0
 
     def execute(self, arguments: list) -> bool:
         """Execute RMLMapper with given arguments.

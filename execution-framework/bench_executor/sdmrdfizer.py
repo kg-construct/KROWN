@@ -20,7 +20,7 @@ TIMEOUT = 6 * 3600  # 6 hours
 R2RML = Namespace('http://www.w3.org/ns/r2rml#')
 RML = Namespace('http://semweb.mmlab.be/ns/rml#')
 D2RQ = Namespace('http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#')
-IMAGE = f'blindreviewing/sdm-rdfizer:v{VERSION}'
+IMAGE = f'kgconstruct/sdm-rdfizer:v{VERSION}'
 
 
 class SDMRDFizer(Container):

@@ -42,7 +42,7 @@ class MorphKGC(Container):
         self._logger = Logger(__name__, directory, verbose)
         os.umask(0)
         os.makedirs(os.path.join(self._data_path, 'morphkgc'), exist_ok=True)
-        super().__init__(f'blindreviewing/morph-kgc:v{VERSION}', 'Morph-KGC',
+        super().__init__(f'kgconstruct/morph-kgc:v{VERSION}', 'Morph-KGC',
                          self._logger,
                          volumes=[f'{self._data_path}/morphkgc:/data',
                                   f'{self._data_path}/shared:/data/shared'])

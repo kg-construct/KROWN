@@ -45,7 +45,7 @@ class Fuseki(Container):
         # Set Java heap to 1/2 of available memory instead of the default 1/4
         max_heap = int(psutil.virtual_memory().total * (1/2))
 
-        super().__init__(f'blindreviewing/fuseki:v{VERSION}', 'Fuseki',
+        super().__init__(f'kgconstruct/fuseki:v{VERSION}', 'Fuseki',
                          self._logger,
                          ports={'3030': '3030'},
                          environment={
