@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 [![DOI](https://zenodo.org/badge/786886812.svg)](https://zenodo.org/doi/10.5281/zenodo.10979321)
-[![Website](https://img.shields.io/badge/Documentation-red)](http://w3id.org/kg-construct/KROWN/)
+[![Website](https://img.shields.io/badge/website-KROWN-yellow)](http://w3id.org/kg-construct/KROWN/)
 [![Data generator docs](https://img.shields.io/badge/docs-Data_generator-red)](https://github.com/kg-construct/KROWN/blob/main/data-generator/README.md)
 [![Execution framework docs](https://img.shields.io/badge/docs-Execution_framework-red)](https://github.com/kg-construct/KROWN/blob/main/execution-framework/README.md)
 
