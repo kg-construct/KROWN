@@ -1,4 +1,4 @@
-# KROWN 👑's data-generator
+# KROWN 👑's data generator
 
 KROWN's data generator is a tool to generate synthetic benchmarks
 for evaluating the impact of various parameters
