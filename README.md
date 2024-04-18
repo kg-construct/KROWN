@@ -83,7 +83,7 @@ See the READMEs of [data-generator](./data-generator/README.md) and
 ```
 @software{Van_Assche_KROWN_A_Benchmark_2024,
   author = {Van Assche, Dylan and Chaves-Fraga, David and Dimou, Anastasia},
-  doi = {TODO},
+  doi = {10.5281/zenodo.1097932},
   license = {MIT},
   month = apr,
   title = {{KROWN: A Benchmark for RDF Graph Materialization}},
