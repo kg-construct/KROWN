@@ -1,7 +1,7 @@
 {
-    "@id": "http://example.com/new-rml-benchmark/number-of-members",
-    "name": "Number of members 10K-10M",
-    "description": "Scaling number of members from 10K to 10M members in CSV file",
+    "@id": "http://example.com/new-rml-benchmark/duplicates-empty",
+    "name": "Number of duplicates and empty values",
+    "description": "Scaling number of duplicates and empty values in CSV file",
     "instances": [
         {
             "@id": "http://example.com/new-rml-benchmark/duplicates#0",

@@ -1,7 +1,7 @@
 {
-    "@id": "http://example.com/new-rml-benchmark/joins",
+    "@id": "http://example.com/new-rml-benchmark/joins/percentage/",
     "name": "JoinsPercentage",
-    "description": "Scaling the number of TMs and POMs in a [R2]RML mapping",
+    "description": "Scaling the number of rows resulting in joins",
     "instances": [
         {
             "@id": "http://example.com/new-rml-benchmark/joins/percentage/1-1#0",
