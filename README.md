@@ -37,6 +37,19 @@ the [data-generator](./data-generator) folder consisting of scenarios under [dat
 and unittests to verify the output of the generator ([data-generator/tests](./data-generator/tests)].
 More information can be found in the [README](data-generator/README.md).
 
+**Installation**
+
+KROWN 👑's data generator requires Numpy and Pandas which are listed
+in the `requirements.txt` file of the `data-generator` directory:
+
+```
+cd data-generator
+pip3 install --user -r requirements.txt
+```
+
+- `pandas`: data manipulation functions for generating synthetic data
+- `numpy`: needed by Pandas
+
 **Example usage**
 
 ```
@@ -55,6 +68,24 @@ the [execution-framework](./execution-framework) folder
 and unittests to verify the execution of Docker-based pipelines and collection
 of metrics by KROWN's execution framework ([execution-framework/tests](./execution-framework/tests)].
 More information can be found in the [README](./execution-framework/README.md).
+
+**Installation**
+
+KROWN 👑's execution framework requires several dependencies which are listed
+in the `requirements.txt` file of the `execution-framework` directory:
+
+```
+cd execution-framework
+pip3 install --user -r requirements.txt
+```
+
+- `psycopg2-binary`: PostgreSQL database access
+- `pymysql`: MySQL database access
+- `jsonschema`: validation of pipeline description in `metadata.json`
+- `psutil`: measurement of CPU and RAM usage
+- `requests`: checking if a resource is online or posting a SPARQL query to a triplestore
+- `rdflib`: performing operations on RDF files
+- `timeout-decorator`: enforcing the timeout on each resource
 
 **Example usage**
 
