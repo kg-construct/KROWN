@@ -14,7 +14,7 @@
                 "number_of_properties": 20,
                 "value_size": 0,
                 "data_format": "csv",
-                "engine": "RMLStreamer"
+                "engine": "SDMRDFizer"
             }
         },
         {
@@ -28,7 +28,7 @@
                 "number_of_properties": 20,
                 "value_size": 0,
                 "data_format": "csv",
-                "engine": "RMLStreamer"
+                "engine": "SDMRDFizer"
             }
         },
         {
@@ -42,7 +42,7 @@
                 "number_of_properties": 20,
                 "value_size": 0,
                 "data_format": "csv",
-                "engine": "RMLStreamer"
+                "engine": "SDMRDFizer"
             }
         },
         {
@@ -56,7 +56,7 @@
                 "number_of_properties": 20,
                 "value_size": 0,
                 "data_format": "csv",
-                "engine": "RMLStreamer"
+                "engine": "SDMRDFizer"
             }
         },
         {
@@ -70,7 +70,7 @@
                 "number_of_properties": 20,
                 "value_size": 0,
                 "data_format": "csv",
-                "engine": "RMLStreamer"
+                "engine": "SDMRDFizer"
             }
         },
         {
@@ -84,7 +84,7 @@
                 "number_of_properties": 20,
                 "value_size": 0,
                 "data_format": "csv",
-                "engine": "RMLStreamer"
+                "engine": "SDMRDFizer"
             }
         },
         {
@@ -98,7 +98,7 @@
                 "number_of_properties": 20,
                 "value_size": 0,
                 "data_format": "csv",
-                "engine": "RMLStreamer"
+                "engine": "SDMRDFizer"
             }
         },
         {
@@ -112,7 +112,7 @@
                 "number_of_properties": 20,
                 "value_size": 0,
                 "data_format": "csv",
-                "engine": "RMLStreamer"
+                "engine": "SDMRDFizer"
             }
         }
     ]

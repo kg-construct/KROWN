@@ -1,7 +1,7 @@
 {
-    "@id": "http://example.com/new-rml-benchmark/joins",
+    "@id": "http://example.com/new-rml-benchmark/joins/duplicate",
     "name": "JoinsDuplicate",
-    "description": "Scaling the number of TMs and POMs in a [R2]RML mapping",
+    "description": "Scaling the number of duplicates generated from joins",
     "instances": [
         {
             "@id": "http://example.com/new-rml-benchmark/joins/duplicate/1-1#0",

@@ -12,7 +12,7 @@
                 "number_of_properties": 20,
                 "percentage": 0.0,
                 "data_format": "csv",
-                "engine": "RMLStreamer"
+                "engine": "SDMRDFizer"
             }
         },
         {
@@ -24,7 +24,7 @@
                 "number_of_properties": 20,
                 "percentage": 25.0,
                 "data_format": "csv",
-                "engine": "RMLStreamer"
+                "engine": "SDMRDFizer"
             }
         },
         {
@@ -36,7 +36,7 @@
                 "number_of_properties": 20,
                 "percentage": 50.0,
                 "data_format": "csv",
-                "engine": "RMLStreamer"
+                "engine": "SDMRDFizer"
             }
         },
         {
@@ -48,7 +48,7 @@
                 "number_of_properties": 20,
                 "percentage": 75.0,
                 "data_format": "csv",
-                "engine": "RMLStreamer"
+                "engine": "SDMRDFizer"
             }
         },
         {
@@ -60,7 +60,7 @@
                 "number_of_properties": 20,
                 "percentage": 100.0,
                 "data_format": "csv",
-                "engine": "RMLStreamer"
+                "engine": "SDMRDFizer"
             }
         },
         {
@@ -72,7 +72,7 @@
                 "number_of_properties": 20,
                 "percentage": 0.0,
                 "data_format": "csv",
-                "engine": "RMLStreamer"
+                "engine": "SDMRDFizer"
             }
         },
         {
@@ -84,7 +84,7 @@
                 "number_of_properties": 20,
                 "percentage": 25.0,
                 "data_format": "csv",
-                "engine": "RMLStreamer"
+                "engine": "SDMRDFizer"
             }
         },
         {
@@ -96,7 +96,7 @@
                 "number_of_properties": 20,
                 "percentage": 50.0,
                 "data_format": "csv",
-                "engine": "RMLStreamer"
+                "engine": "SDMRDFizer"
             }
         },
         {
@@ -108,7 +108,7 @@
                 "number_of_properties": 20,
                 "percentage": 75.0,
                 "data_format": "csv",
-                "engine": "RMLStreamer"
+                "engine": "SDMRDFizer"
             }
         },
         {
@@ -120,7 +120,7 @@
                 "number_of_properties": 20,
                 "percentage": 100.0,
                 "data_format": "csv",
-                "engine": "RMLStreamer"
+                "engine": "SDMRDFizer"
             }
         }
     ]

@@ -1,0 +1,105 @@
+{
+    "@id": "http://example.com/new-rml-benchmark/mappings",
+    "name": "Mappings",
+    "description": "Scaling number of TMs and POMs",
+    "instances": [
+        {
+            "@id": "http://example.com/new-rml-benchmark/mappings#1TM5POM",
+            "name": "1TM + 5POM",
+            "generator": "Mappings",
+            "parameters": {
+                "number_of_tms": 1,
+                "number_of_poms": 5,
+                "number_of_members": 100000,
+                "number_of_properties": 30,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "MorphKGC"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/mappings#10TM5POM",
+            "name": "10TM + 5POM",
+            "generator": "Mappings",
+            "parameters": {
+                "number_of_tms": 10,
+                "number_of_poms": 5,
+                "number_of_members": 100000,
+                "number_of_properties": 30,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "MorphKGC"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/mappings#20TM5POM",
+            "name": "20TM + 5POM",
+            "generator": "Mappings",
+            "parameters": {
+                "number_of_tms": 20,
+                "number_of_poms": 5,
+                "number_of_members": 100000,
+                "number_of_properties": 30,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "MorphKGC"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/mappings#30TM5POM",
+            "name": "30TM + 5POM",
+            "generator": "Mappings",
+            "parameters": {
+                "number_of_tms": 30,
+                "number_of_poms": 5,
+                "number_of_members": 100000,
+                "number_of_properties": 30,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "MorphKGC"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/mappings#20TM1POM",
+            "name": "20TM + 1POM",
+            "generator": "Mappings",
+            "parameters": {
+                "number_of_tms": 20,
+                "number_of_poms": 1,
+                "number_of_members": 100000,
+                "number_of_properties": 30,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "MorphKGC"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/mappings#20TM3POM",
+            "name": "20TM + 3POM",
+            "generator": "Mappings",
+            "parameters": {
+                "number_of_tms": 20,
+                "number_of_poms": 3,
+                "number_of_members": 100000,
+                "number_of_properties": 30,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "MorphKGC"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/mappings#20TM10POM",
+            "name": "20TM + 10POM",
+            "generator": "Mappings",
+            "parameters": {
+                "number_of_tms": 20,
+                "number_of_poms": 10,
+                "number_of_members": 100000,
+                "number_of_properties": 30,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "MorphKGC"
+            }
+        }
+    ]
+}
