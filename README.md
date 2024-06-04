@@ -59,6 +59,12 @@ cd data-generator
 ./exgentool generate --scenario=/path/to/config.json
 ```
 
+**Samples**
+
+We provide samples of the generated scenarios by KROWN's data generator
+which use a small data size to visualise the impact of changing the parameter
+in each scenario, you can find them in the [samples](./samples) folder.
+
 ## Execution framework
 
 KROWN 👑 provides also an execution framework to reproducible execute benchmark
