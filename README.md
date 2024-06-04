@@ -137,7 +137,26 @@ we explain in detail how these experiments can be reproduced.
 
 ### Figures
 
-TODO
+In our paper, we used 2 figures which we include here as well with their
+corresponding description. First figure shows the results of scaling the number
+of named graphs via Graph Maps. Second figure how the systems are affected by
+the different join scenarios.
+
+![Figure 1: named graphs](https://kg-construct.github.io/KROWN/figures/graphs-ng.svg "Figure 1: named graphs")
+
+_Results for the Graph Maps subscenarios: scaling the number of POMs with
+1NG (left) and scaling the number of NGs statically and dynamically
+in a Subject Map (right). RMLMapper always times out, RMLStreamer does not 
+support multiple GMs. SDM-RDFizer fails the multiple GMs with an error. 
+All systems fail or time out the 15NG dynamic case._
+
+![Figure 2: joins](https://kg-construct.github.io/KROWN/figures/graphs-joins.svg "Figure 2: joins")
+
+_Results for join scenarios: number of join duplicates (left), number of join
+conditions (middle), and join relations N-M (right). RMLStreamer-CSV is 
+excluded from number of join conditions because it does not support 
+multiple join conditions. RMLMapper times out (TO) for 5,10, 15 join 
+conditions._
 
 ### Reproducing results of ISWC 2023 Resource Track
 
