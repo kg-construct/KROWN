@@ -145,8 +145,9 @@ the different join scenarios.
 ![Figure 1: named graphs](https://kg-construct.github.io/KROWN/figures/graphs-ng.svg "Figure 1: named graphs")
 
 _Results for the Graph Maps subscenarios: scaling the number of POMs with
-1NG (left) and scaling the number of NGs statically and dynamically
-in a Subject Map (right). RMLMapper always times out, RMLStreamer does not 
+1 Named Graph (NG) (top) and scaling the number of NGs 
+from 5 to 15 Statically (S) and Dynamically (D) in a Subject Map (bottom).
+RMLMapper always times out, RMLStreamer does not 
 support multiple GMs. SDM-RDFizer fails the multiple GMs with an error. 
 All systems fail or time out the 15NG dynamic case._
 
