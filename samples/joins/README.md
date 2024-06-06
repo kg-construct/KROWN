@@ -5,7 +5,7 @@ with RMLMapper as materialisation system.
 
 ## Samples
 
-![Parameters joins](https://kg-construct.github.io/KROWN/figures/parameters-duplicates-empty.svg "Parameters joins")
+![Parameters joins](https://kg-construct.github.io/KROWN/figures/parameters-joins.svg "Parameters joins")
 
 The higher the percentage, the more rows in the data results into a join.
 More join conditions requires more conditions to be checked by the system
