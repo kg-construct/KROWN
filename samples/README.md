@@ -26,3 +26,27 @@ cd raw
 
 Generates all the scenarios for scaling the raw data among number of rows,
 columns and cell size with RMLMapper as engine.
+Each sample directory is structured as followed:
+
+```
+RMLMapper/csv/raw_10_2_0
+├── data
+│   ├── rmlmapper
+│   │   └── shared
+│   └── shared
+│       ├── data.csv
+│       └── mapping.rml.ttl
+├── metadata.json
+└── results
+    └── run_1
+        ├── case-info.txt
+        ├── log.txt
+        ├── metrics.csv
+        └── rmlmapper
+            └── out.nt
+```
+
+- The RML mapping is stored at `$SAMPLE/data/shared/mapping.rml.ttl`
+- The input data is available at `$SAMPLE/data/shared/data.csv`
+- The output of the RMLMapper at `$SAMPLE/results/run_1/rmlmapper/out.nt`
+
