@@ -1,0 +1,19 @@
+{
+    "@id": "http://example.org/raw/10/2/100",
+    "name": "raw_10_2_100",
+    "description": "Raw Data Values 10 members, 2 properties, and 100 value size",
+    "steps": [
+        {
+            "@id": "http://example.org/raw/10/2/100#step1",
+            "name": "Execute RML mapping",
+            "resource": "RMLMapper",
+            "command": "execute_mapping",
+            "parameters": {
+                "mapping_file": "mapping.rml.ttl",
+                "output_file": "out.nt",
+                "serialization": "ntriples"
+            },
+            "expect_failure": false
+        }
+    ]
+}

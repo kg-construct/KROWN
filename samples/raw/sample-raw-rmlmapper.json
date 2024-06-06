@@ -1,0 +1,151 @@
+{
+    "@id": "http://example.com/new-rml-benchmark/number-of-members",
+    "name": "Number of members 10-1000",
+    "description": "Scaling number of members from 10 to 1000 members in CSV file",
+    "instances": [
+        {
+            "@id": "http://example.com/new-rml-benchmark/number-of-members#10",
+            "name": "10 members, 2 properties",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 10,
+                "number_of_properties": 2,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLMapper"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/number-of-members#100",
+            "name": "100 members, 2 properties",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 100,
+                "number_of_properties": 2,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLMapper"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/number-of-members#1000",
+            "name": "1000 members, 2 properties",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 1000,
+                "number_of_properties": 2,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLMapper"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/number-of-members#10000",
+            "name": "10000 members, 20 properties",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 10000,
+                "number_of_properties": 2,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLMapper"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/number-of-properties#1",
+            "name": "10 members, 1 property",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 10,
+                "number_of_properties": 1,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLMapper"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/number-of-properties#3",
+            "name": "10 members, 3 properties",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 10,
+                "number_of_properties": 3,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLMapper"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/number-of-properties#5",
+            "name": "10 members, 5 properties",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 10,
+                "number_of_properties": 5,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLMapper"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/number-of-properties#7",
+            "name": "10 members, 7 properties",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 10,
+                "number_of_properties": 7,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLMapper"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/value-size#10",
+            "name": "10 characters",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 10,
+                "number_of_properties": 2,
+                "value_size": 10,
+                "data_format": "csv",
+                "engine": "RMLMapper"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/value-size#50",
+            "name": "50 characters",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 10,
+                "number_of_properties": 2,
+                "value_size": 50,
+                "data_format": "csv",
+                "engine": "RMLMapper"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/value-size#100",
+            "name": "100 characters",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 10,
+                "number_of_properties": 2,
+                "value_size": 100,
+                "data_format": "csv",
+                "engine": "RMLMapper"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/value-size#500",
+            "name": "500 characters",
+            "generator": "RawData",
+            "parameters": {
+                "number_of_members": 10,
+                "number_of_properties": 2,
+                "value_size": 500,
+                "data_format": "csv",
+                "engine": "RMLMapper"
+            }
+        }
+    ]
+}

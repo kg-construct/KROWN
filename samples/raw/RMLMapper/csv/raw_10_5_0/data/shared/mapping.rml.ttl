@@ -1,0 +1,37 @@
+@base <http://ex.com/> .
+@prefix ex: <http://example.com/> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+
+<#TriplesMap1> a rr:TriplesMap ;
+    rml:logicalSource [ a rml:LogicalSource ;
+            rml:referenceFormulation ql:CSV ;
+            rml:source "/data/shared/data.csv" ] ;
+    rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rml:reference "p5" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p5 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rml:reference "p1" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p1 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rml:reference "p3" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p3 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rml:reference "p2" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p2 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rml:reference "p4" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p4 ] ] ;
+    rr:subjectMap [ rr:template "http://ex.com/table/{id}" ] .
+
