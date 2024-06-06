@@ -1,6 +1,6 @@
 ===> CASE <===
 Name: join_relation_5_10_100.0
-Timestamp: 2024-06-06T17:06:02.620700+00:00
+Timestamp: 2024-06-06T19:01:44.225792+00:00
 Directory: /home/dylan/Projects/KROWN/samples/joins/RMLMapper/postgresql/joins_relations_5-10_100.0
 Run: 1
 Number of steps: 2

@@ -1,0 +1,44 @@
+{
+    "@id": "http://example.org/join-percentage/50.0/",
+    "name": "join_multiple_1-1_10_50.0",
+    "description": "Join Multiple 1-1 10JC 50.0% ",
+    "steps": [
+        {
+            "@id": "http://example.org/join-percentage/50.0/#step1",
+            "name": "Load RDB",
+            "resource": "PostgreSQL",
+            "command": "load_multiple",
+            "parameters": {
+                "csv_files": [
+                    {
+                        "file": "data1.csv",
+                        "table": "data1"
+                    },
+                    {
+                        "file": "data2.csv",
+                        "table": "data2"
+                    }
+                ]
+            },
+            "expect_failure": false
+        },
+        {
+            "@id": "http://example.org/join-percentage/50.0/#step2",
+            "name": "Execute RML mapping",
+            "resource": "RMLMapper",
+            "command": "execute_mapping",
+            "parameters": {
+                "mapping_file": "mapping.r2rml.ttl",
+                "output_file": "out.nt",
+                "serialization": "ntriples",
+                "rdb_host": "PostgreSQL",
+                "rdb_port": 5432,
+                "rdb_username": "root",
+                "rdb_password": "root",
+                "rdb_type": "PostgreSQL",
+                "rdb_name": "db"
+            },
+            "expect_failure": false
+        }
+    ]
+}
