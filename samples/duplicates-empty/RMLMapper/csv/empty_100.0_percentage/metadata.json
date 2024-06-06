@@ -1,0 +1,19 @@
+{
+    "@id": "http://example.org/empty/100.0/",
+    "name": "empty_100.0",
+    "description": "Empty Values 100.0",
+    "steps": [
+        {
+            "@id": "http://example.org/empty/100.0/#step1",
+            "name": "Execute RML mapping",
+            "resource": "RMLMapper",
+            "command": "execute_mapping",
+            "parameters": {
+                "mapping_file": "mapping.rml.ttl",
+                "output_file": "out.nt",
+                "serialization": "ntriples"
+            },
+            "expect_failure": false
+        }
+    ]
+}

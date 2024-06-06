@@ -1,0 +1,19 @@
+{
+    "@id": "http://example.org/duplicates/25.0/",
+    "name": "duplicates_25.0",
+    "description": "Duplicates 25.0",
+    "steps": [
+        {
+            "@id": "http://example.org/duplicates/25.0/#step1",
+            "name": "Execute RML mapping",
+            "resource": "RMLMapper",
+            "command": "execute_mapping",
+            "parameters": {
+                "mapping_file": "mapping.rml.ttl",
+                "output_file": "out.nt",
+                "serialization": "ntriples"
+            },
+            "expect_failure": false
+        }
+    ]
+}

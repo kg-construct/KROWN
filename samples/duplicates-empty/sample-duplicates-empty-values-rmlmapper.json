@@ -1,0 +1,127 @@
+{
+    "@id": "http://example.com/new-rml-benchmark/duplicates-empty",
+    "name": "Number of duplicates and empty values",
+    "description": "Scaling number of duplicates and empty values in CSV file",
+    "instances": [
+        {
+            "@id": "http://example.com/new-rml-benchmark/duplicates#0",
+            "name": "Duplicates 0%",
+            "generator": "Duplicates",
+            "parameters": {
+                "number_of_members": 10,
+                "number_of_properties": 2,
+                "percentage": 0.0,
+                "data_format": "csv",
+                "engine": "RMLMapper"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/duplicates#25",
+            "name": "Duplicates 25%",
+            "generator": "Duplicates",
+            "parameters": {
+                "number_of_members": 10,
+                "number_of_properties": 2,
+                "percentage": 25.0,
+                "data_format": "csv",
+                "engine": "RMLMapper"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/duplicates#50",
+            "name": "Duplicates 50%",
+            "generator": "Duplicates",
+            "parameters": {
+                "number_of_members": 10,
+                "number_of_properties": 2,
+                "percentage": 50.0,
+                "data_format": "csv",
+                "engine": "RMLMapper"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/duplicates#75",
+            "name": "Duplicates 75%",
+            "generator": "Duplicates",
+            "parameters": {
+                "number_of_members": 10,
+                "number_of_properties": 2,
+                "percentage": 75.0,
+                "data_format": "csv",
+                "engine": "RMLMapper"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/duplicates#100",
+            "name": "Duplicates 100%",
+            "generator": "Duplicates",
+            "parameters": {
+                "number_of_members": 10,
+                "number_of_properties": 2,
+                "percentage": 100.0,
+                "data_format": "csv",
+                "engine": "RMLMapper"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/empty#0",
+            "name": "Empty Values 0%",
+            "generator": "EmptyValues",
+            "parameters": {
+                "number_of_members": 10,
+                "number_of_properties": 2,
+                "percentage": 0.0,
+                "data_format": "csv",
+                "engine": "RMLMapper"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/empty#25",
+            "name": "Empty Values 25%",
+            "generator": "EmptyValues",
+            "parameters": {
+                "number_of_members": 10,
+                "number_of_properties": 2,
+                "percentage": 25.0,
+                "data_format": "csv",
+                "engine": "RMLMapper"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/empty#50",
+            "name": "Empty Values 50%",
+            "generator": "EmptyValues",
+            "parameters": {
+                "number_of_members": 10,
+                "number_of_properties": 2,
+                "percentage": 50.0,
+                "data_format": "csv",
+                "engine": "RMLMapper"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/empty#75",
+            "name": "Empty Values 75%",
+            "generator": "EmptyValues",
+            "parameters": {
+                "number_of_members": 10,
+                "number_of_properties": 2,
+                "percentage": 75.0,
+                "data_format": "csv",
+                "engine": "RMLMapper"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/empty#100",
+            "name": "Empty Values 100%",
+            "generator": "EmptyValues",
+            "parameters": {
+                "number_of_members": 10,
+                "number_of_properties": 2,
+                "percentage": 100.0,
+                "data_format": "csv",
+                "engine": "RMLMapper"
+            }
+        }
+    ]
+}
