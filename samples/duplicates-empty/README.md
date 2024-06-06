@@ -9,16 +9,16 @@ with RMLMapper as materialisation system.
 The higher the percentage, the more data in the dataset contains duplicates
 or empty values.
 
-- [Duplicates 0%](./RMLMapper/csv/duplicates_0.0_percentage/data/shared)
-- [Duplicates 25%](./RMLMapper/csv/duplicates_25.0_percentage/data/shared)
-- [Duplicates 50%](./RMLMapper/csv/duplicates_50.0_percentage/data/shared)
-- [Duplicates 75%](./RMLMapper/csv/duplicates_75.0_percentage/data/shared)
-- [Duplicates 100%](./RMLMapper/csv/duplicates_100.0_percentage/data/shared)
-- [Empty values 0%](./RMLMapper/csv/empty_0.0_percentage/data/shared)
-- [Empty values 25%](./RMLMapper/csv/empty_25.0_percentage/data/shared)
-- [Empty values 50%](./RMLMapper/csv/empty_50.0_percentage/data/shared)
-- [Empty values 75%](./RMLMapper/csv/empty_75.0_percentage/data/shared)
-- [Empty values 100%](./RMLMapper/csv/empty_100.0_percentage/data/shared)
+- [Duplicates 0%](./RMLMapper/csv/duplicates_0.0_percentage)
+- [Duplicates 25%](./RMLMapper/csv/duplicates_25.0_percentage)
+- [Duplicates 50%](./RMLMapper/csv/duplicates_50.0_percentage)
+- [Duplicates 75%](./RMLMapper/csv/duplicates_75.0_percentage)
+- [Duplicates 100%](./RMLMapper/csv/duplicates_100.0_percentage)
+- [Empty values 0%](./RMLMapper/csv/empty_0.0_percentage)
+- [Empty values 25%](./RMLMapper/csv/empty_25.0_percentage)
+- [Empty values 50%](./RMLMapper/csv/empty_50.0_percentage)
+- [Empty values 75%](./RMLMapper/csv/empty_75.0_percentage)
+- [Empty values 100%](./RMLMapper/csv/empty_100.0_percentage)
 
 ## Examples
 
@@ -59,7 +59,7 @@ id,p1,p2
 <#TriplesMap1> a rr:TriplesMap ;
     ns1:logicalSource [ a ns1:LogicalSource ;
             ns1:referenceFormulation ql:CSV ;
-            ns1:source "/data/shared/data.csv" ] ;
+            ns1:source "/data.csv" ] ;
     rr:predicateObjectMap [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
                     ns1:reference "p1" ] ;
@@ -125,7 +125,7 @@ id,p1,p2
 <#TriplesMap1> a rr:TriplesMap ;
     ns1:logicalSource [ a ns1:LogicalSource ;
             ns1:referenceFormulation ql:CSV ;
-            ns1:source "/data/shared/data.csv" ] ;
+            ns1:source "/data.csv" ] ;
     rr:predicateObjectMap [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
                     ns1:reference "p1" ] ;

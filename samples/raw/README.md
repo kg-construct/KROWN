@@ -11,18 +11,18 @@ Increasing the number of rows results in more RDF subjects,
 more columns results in more RDF predicates and objects per RDF subject.
 Increasing the cell value size results in larger RDF Literals for the RDF object.
 
-- [Number of rows: 10](./RMLMapper/csv/raw_10_2_0/data/shared)
-- [Number of rows: 100](./RMLMapper/csv/raw_100_2_0/data/shared)
-- [Number of rows: 1000](./RMLMapper/csv/raw_1000_2_0/data/shared)
-- [Number of rows: 10000](./RMLMapper/csv/raw_10000_2_0/data/shared)
-- [Number of columns: 1](./RMLMapper/csv/raw_10_1_0/data/shared)
-- [Number of columns: 3](./RMLMapper/csv/raw_10_3_0/data/shared)
-- [Number of columns: 5](./RMLMapper/csv/raw_10_5_0/data/shared)
-- [Number of columns: 7](./RMLMapper/csv/raw_10_7_0/data/shared)
-- [Cell value size: 10](./RMLMapper/csv/raw_10_2_10/data/shared)
-- [Cell value size: 50](./RMLMapper/csv/raw_10_2_50/data/shared)
-- [Cell value size: 100](./RMLMapper/csv/raw_10_2_100/data/shared)
-- [Cell value size: 500](./RMLMapper/csv/raw_10_2_500/data/shared)
+- [Number of rows: 10](./RMLMapper/csv/raw_10_2_0)
+- [Number of rows: 100](./RMLMapper/csv/raw_100_2_0)
+- [Number of rows: 1000](./RMLMapper/csv/raw_1000_2_0)
+- [Number of rows: 10000](./RMLMapper/csv/raw_10000_2_0)
+- [Number of columns: 1](./RMLMapper/csv/raw_10_1_0)
+- [Number of columns: 3](./RMLMapper/csv/raw_10_3_0)
+- [Number of columns: 5](./RMLMapper/csv/raw_10_5_0)
+- [Number of columns: 7](./RMLMapper/csv/raw_10_7_0)
+- [Cell value size: 10](./RMLMapper/csv/raw_10_2_10)
+- [Cell value size: 50](./RMLMapper/csv/raw_10_2_50)
+- [Cell value size: 100](./RMLMapper/csv/raw_10_2_100)
+- [Cell value size: 500](./RMLMapper/csv/raw_10_2_500)
 
 ## Examples
 
@@ -59,7 +59,7 @@ id,p1,p2
 <#TriplesMap1> a rr:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
             rml:referenceFormulation ql:CSV ;
-            rml:source "/data/shared/data.csv" ] ;
+            rml:source "/data.csv" ] ;
     rr:predicateObjectMap [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
                     rml:reference "p1" ] ;
@@ -131,7 +131,7 @@ id,p1,p2,p3,p4,p5
 <#TriplesMap1> a rr:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
             rml:referenceFormulation ql:CSV ;
-            rml:source "/data/shared/data.csv" ] ;
+            rml:source "/data.csv" ] ;
     rr:predicateObjectMap [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
                     rml:reference "p5" ] ;
@@ -249,7 +249,7 @@ id,p1,p2
 <#TriplesMap1> a rr:TriplesMap ;
     rml:logicalSource [ a rml:LogicalSource ;
             rml:referenceFormulation ql:CSV ;
-            rml:source "/data/shared/data.csv" ] ;
+            rml:source "/data.csv" ] ;
     rr:predicateObjectMap [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
                     rml:reference "p1" ] ;
