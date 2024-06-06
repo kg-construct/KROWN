@@ -5,7 +5,7 @@ with RMLMapper as materialisation system.
 
 ## Samples
 
-![Parameters duplicates and empty values](https://kg-construct.github.io/KROWN/figures/parameters-duplicates-emmpty.svg "Parameters duplicates and empty values")
+![Parameters duplicates and empty values](https://kg-construct.github.io/KROWN/figures/parameters-duplicates-empty.svg "Parameters duplicates and empty values")
 The higher the percentage, the more data in the dataset contains duplicates
 or empty values.
 
