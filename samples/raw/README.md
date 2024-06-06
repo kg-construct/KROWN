@@ -5,7 +5,7 @@ with RMLMapper as materialisation system.
 
 ## Samples
 
-![Parameters raw(https://kg-construct.github.io/KROWN/figures/parameters-raw.svg "Parameters raw")
+![Parameters raw](https://kg-construct.github.io/KROWN/figures/parameters-raw.svg "Parameters raw")
 
 Increasing the number of rows results in more RDF subjects,
 more columns results in more RDF predicates and objects per RDF subject.
