@@ -310,10 +310,10 @@ class JoinsRelation(Scenario):
 
         if self._data_format == 'postgresql':
             return self._generate_metadata(iri, name, description,
-                                           RDB_MAPPING_FILE)
+                                           RDB_MAPPING_FILE, joins=True)
         elif self._data_format == 'csv':
             return self._generate_metadata(iri, name, description,
-                                           CSV_MAPPING_FILE)
+                                           CSV_MAPPING_FILE, joins=True)
         else:
             raise NotImplementedError(f'{self._data_format} not implemented')
 

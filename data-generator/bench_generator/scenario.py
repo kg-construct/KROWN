@@ -93,7 +93,8 @@ class Scenario(ABC):
         }
 
     def _generate_metadata(self, iri: str, name: str, description: str,
-                           mapping_file: str, serialization: str = 'ntriples'):
+                           mapping_file: str, serialization: str = 'ntriples',
+                           joins: bool = False):
         """Generate the metadata for this scenario.
 
         Configures the execution pipeline automatically.
@@ -110,6 +111,8 @@ class Scenario(ABC):
             Name of the mapping file to use.
         serialization : str
             Serialization format to use. Default 'ntriples'.
+        joins : bool
+            If metadata is needed for joins. Default 'False'.
 
         Returns
         -------
@@ -122,15 +125,28 @@ class Scenario(ABC):
             metadata = self._build_metadata(iri, name, description)
 
             # RDB setup
-            parameters = {
-                'csv_file': 'data.csv',
-                'table': 'data'
-            }
-            metadata['steps'].append(self._build_step(f'{iri}#step1',
-                                                      'Load RDB',
-                                                      'PostgreSQL',
-                                                      'load',
-                                                      parameters))
+            if joins:
+                parameters = {
+                    'csv_files': [
+                        {'file': 'data1.csv', 'table': 'data1'},
+                        {'file': 'data2.csv', 'table': 'data2'}
+                    ]
+                }
+                metadata['steps'].append(self._build_step(f'{iri}#step1',
+                                                          'Load RDB',
+                                                          'PostgreSQL',
+                                                          'load_multiple',
+                                                          parameters))
+            else:
+                parameters = {
+                    'csv_file': 'data.csv',
+                    'table': 'data'
+                }
+                metadata['steps'].append(self._build_step(f'{iri}#step1',
+                                                          'Load RDB',
+                                                          'PostgreSQL',
+                                                          'load',
+                                                          parameters))
 
             # Engine execution
             parameters = {

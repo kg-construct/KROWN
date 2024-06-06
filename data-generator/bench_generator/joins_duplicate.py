@@ -306,9 +306,14 @@ class JoinsDuplicate(Scenario):
         """
         os.makedirs(os.path.join(self.path(), 'data', 'shared'), exist_ok=True)
         data1_path = os.path.join(self.path(), 'data', 'shared', DATA_FILE1)
-        self._generate_dataframe().to_csv(data1_path, index=False)
+        dataframe1 = self._generate_dataframe()
         data2_path = os.path.join(self.path(), 'data', 'shared', DATA_FILE2)
-        self._generate_dataframe().to_csv(data2_path, index=False)
+        dataframe2 = self._generate_dataframe(self._number_of_members + 1,
+                                              self._number_of_properties + 1)
+        dataframe1, dataframe2 = self._update_duplicates(dataframe1,
+                                                         dataframe2)
+        dataframe1.to_csv(data1_path, index=False)
+        dataframe2.to_csv(data2_path, index=False)
 
         mapping_path = os.path.join(self.path(), 'data', 'shared', RDB_MAPPING_FILE)
         mapping: Graph = self._generate_mapping()
@@ -336,10 +341,10 @@ class JoinsDuplicate(Scenario):
 
         if self._data_format == 'postgresql':
             return self._generate_metadata(iri, name, description,
-                                           RDB_MAPPING_FILE)
+                                           RDB_MAPPING_FILE, joins=True)
         elif self._data_format == 'csv':
             return self._generate_metadata(iri, name, description,
-                                           CSV_MAPPING_FILE)
+                                           CSV_MAPPING_FILE, joins=True)
         else:
             raise NotImplementedError(f'{self._data_format} not implemented')
 
