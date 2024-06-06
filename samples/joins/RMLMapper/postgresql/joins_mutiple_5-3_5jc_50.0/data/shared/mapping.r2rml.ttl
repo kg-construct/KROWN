@@ -11,9 +11,6 @@
                             rr:child "p1" ;
                             rr:parent "p1" ],
                         [ a rr:JoinCondition ;
-                            rr:child "p2" ;
-                            rr:parent "p2" ],
-                        [ a rr:JoinCondition ;
                             rr:child "p5" ;
                             rr:parent "p5" ],
                         [ a rr:JoinCondition ;
@@ -21,7 +18,10 @@
                             rr:parent "p4" ],
                         [ a rr:JoinCondition ;
                             rr:child "p3" ;
-                            rr:parent "p3" ] ;
+                            rr:parent "p3" ],
+                        [ a rr:JoinCondition ;
+                            rr:child "p2" ;
+                            rr:parent "p2" ] ;
                     rr:parentTriplesMap <#TriplesMap2> ] ;
             rr:predicateMap [ a rr:PredicateMap ;
                     rr:constant ex:j1 ] ] ;

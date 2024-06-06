@@ -1,0 +1,2 @@
+[2024-06-06 18:30:50,062] ERROR    
+[2024-06-06 18:30:50,063] ERROR    Command failed while waiting for exit with status code: -2

@@ -7,10 +7,18 @@
             "@id": "http://example.org/join-duplicates/10/50.0/#step1",
             "name": "Load RDB",
             "resource": "PostgreSQL",
-            "command": "load",
+            "command": "load_multiple",
             "parameters": {
-                "csv_file": "data.csv",
-                "table": "data"
+                "csv_files": [
+                    {
+                        "file": "data1.csv",
+                        "table": "data1"
+                    },
+                    {
+                        "file": "data2.csv",
+                        "table": "data2"
+                    }
+                ]
             },
             "expect_failure": false
         },
