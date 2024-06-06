@@ -20,12 +20,23 @@ configuration file.
 For example:
 
 ```
-cd raw
-./exgentool --scenario=sample-raw-rmlmapper.json generate
+cd ../data-generator
+./exgentool --root=../samples/raw --scenario=sample-raw-rmlmapper.json generate
 ```
 
 Generates all the scenarios for scaling the raw data among number of rows,
 columns and cell size with RMLMapper as engine.
+
+Executing can be done with the execution framework:
+
+```
+cd ../execution-framework
+./exectool --root=../samples/raw --runs=1 run
+```
+
+This will invoke the RMLMapper as a Docker container to execute all sample 
+scenarios for the raw data parameters.
+
 Each sample directory is structured as followed:
 
 ```
