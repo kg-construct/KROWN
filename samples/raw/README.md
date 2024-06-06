@@ -11,7 +11,18 @@ Increasing the number of rows results in more RDF subjects,
 more columns results in more RDF predicates and objects per RDF subject.
 Increasing the cell value size results in larger RDF Literals for the RDF object.
 
-- [Empty values 100%](./RMLMapper/csv/empty_100.0_percentage/data/shared)
+- [Number of rows: 10](./RMLMapper/csv/raw_10_2_0/data/shared)
+- [Number of rows: 100](./RMLMapper/csv/raw_100_2_0/data/shared)
+- [Number of rows: 1000](./RMLMapper/csv/raw_1000_2_0/data/shared)
+- [Number of rows: 10000](./RMLMapper/csv/raw_10000_2_0/data/shared)
+- [Number of columns: 1](./RMLMapper/csv/raw_10_1_0/data/shared)
+- [Number of columns: 3](./RMLMapper/csv/raw_10_3_0/data/shared)
+- [Number of columns: 5](./RMLMapper/csv/raw_10_5_0/data/shared)
+- [Number of columns: 7](./RMLMapper/csv/raw_10_7_0/data/shared)
+- [Cell value size: 10](./RMLMapper/csv/raw_10_2_10/data/shared)
+- [Cell value size: 50](./RMLMapper/csv/raw_10_2_50/data/shared)
+- [Cell value size: 100](./RMLMapper/csv/raw_10_2_100/data/shared)
+- [Cell value size: 500](./RMLMapper/csv/raw_10_2_500/data/shared)
 
 ## Examples
 
