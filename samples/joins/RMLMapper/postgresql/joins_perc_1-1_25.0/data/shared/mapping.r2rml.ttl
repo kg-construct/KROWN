@@ -1,0 +1,22 @@
+@base <http://ex.com/> .
+@prefix ex: <http://example.com/> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+
+<#TriplesMap1> a rr:TriplesMap ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data1" ] ;
+    rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ReferenceObjectMap ;
+                    rr:joinCondition [ a rr:JoinCondition ;
+                            rr:child "id" ;
+                            rr:parent "id" ] ;
+                    rr:parentTriplesMap <#TriplesMap2> ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:j1 ] ] ;
+    rr:subjectMap [ rr:template "http://ex.com/table1/{id}" ] .
+
+<#TriplesMap2> a rr:TriplesMap ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data2" ] ;
+    rr:subjectMap [ rr:template "http://ex.com/table2/{id}" ] .
+

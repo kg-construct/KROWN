@@ -1,0 +1,36 @@
+{
+    "@id": "http://example.org/raw/10/7/0",
+    "name": "raw_10_7_0",
+    "description": "Raw Data Values 10 members, 7 properties, and 0 value size",
+    "steps": [
+        {
+            "@id": "http://example.org/raw/10/7/0#step1",
+            "name": "Load RDB",
+            "resource": "PostgreSQL",
+            "command": "load",
+            "parameters": {
+                "csv_file": "data.csv",
+                "table": "data"
+            },
+            "expect_failure": false
+        },
+        {
+            "@id": "http://example.org/raw/10/7/0#step2",
+            "name": "Execute RML mapping",
+            "resource": "RMLMapper",
+            "command": "execute_mapping",
+            "parameters": {
+                "mapping_file": "mapping.r2rml.ttl",
+                "output_file": "out.nt",
+                "serialization": "ntriples",
+                "rdb_host": "PostgreSQL",
+                "rdb_port": 5432,
+                "rdb_username": "root",
+                "rdb_password": "root",
+                "rdb_type": "PostgreSQL",
+                "rdb_name": "db"
+            },
+            "expect_failure": false
+        }
+    ]
+}

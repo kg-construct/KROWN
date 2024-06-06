@@ -1,0 +1,224 @@
+@base <http://ex.com/> .
+@prefix ex: <http://example.com/> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+
+<#TriplesMap1> a rr:TriplesMap ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data" ] ;
+    rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:graph <http://example.org/pom/graph1>,
+                <http://example.org/pom/graph10>,
+                <http://example.org/pom/graph11>,
+                <http://example.org/pom/graph12>,
+                <http://example.org/pom/graph13>,
+                <http://example.org/pom/graph14>,
+                <http://example.org/pom/graph15>,
+                <http://example.org/pom/graph2>,
+                <http://example.org/pom/graph3>,
+                <http://example.org/pom/graph4>,
+                <http://example.org/pom/graph5>,
+                <http://example.org/pom/graph6>,
+                <http://example.org/pom/graph7>,
+                <http://example.org/pom/graph8>,
+                <http://example.org/pom/graph9> ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p3" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p3 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:graph <http://example.org/pom/graph1>,
+                <http://example.org/pom/graph10>,
+                <http://example.org/pom/graph11>,
+                <http://example.org/pom/graph12>,
+                <http://example.org/pom/graph13>,
+                <http://example.org/pom/graph14>,
+                <http://example.org/pom/graph15>,
+                <http://example.org/pom/graph2>,
+                <http://example.org/pom/graph3>,
+                <http://example.org/pom/graph4>,
+                <http://example.org/pom/graph5>,
+                <http://example.org/pom/graph6>,
+                <http://example.org/pom/graph7>,
+                <http://example.org/pom/graph8>,
+                <http://example.org/pom/graph9> ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p2" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p2 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:graph <http://example.org/pom/graph1>,
+                <http://example.org/pom/graph10>,
+                <http://example.org/pom/graph11>,
+                <http://example.org/pom/graph12>,
+                <http://example.org/pom/graph13>,
+                <http://example.org/pom/graph14>,
+                <http://example.org/pom/graph15>,
+                <http://example.org/pom/graph2>,
+                <http://example.org/pom/graph3>,
+                <http://example.org/pom/graph4>,
+                <http://example.org/pom/graph5>,
+                <http://example.org/pom/graph6>,
+                <http://example.org/pom/graph7>,
+                <http://example.org/pom/graph8>,
+                <http://example.org/pom/graph9> ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p8" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p8 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:graph <http://example.org/pom/graph1>,
+                <http://example.org/pom/graph10>,
+                <http://example.org/pom/graph11>,
+                <http://example.org/pom/graph12>,
+                <http://example.org/pom/graph13>,
+                <http://example.org/pom/graph14>,
+                <http://example.org/pom/graph15>,
+                <http://example.org/pom/graph2>,
+                <http://example.org/pom/graph3>,
+                <http://example.org/pom/graph4>,
+                <http://example.org/pom/graph5>,
+                <http://example.org/pom/graph6>,
+                <http://example.org/pom/graph7>,
+                <http://example.org/pom/graph8>,
+                <http://example.org/pom/graph9> ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p9" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p9 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:graph <http://example.org/pom/graph1>,
+                <http://example.org/pom/graph10>,
+                <http://example.org/pom/graph11>,
+                <http://example.org/pom/graph12>,
+                <http://example.org/pom/graph13>,
+                <http://example.org/pom/graph14>,
+                <http://example.org/pom/graph15>,
+                <http://example.org/pom/graph2>,
+                <http://example.org/pom/graph3>,
+                <http://example.org/pom/graph4>,
+                <http://example.org/pom/graph5>,
+                <http://example.org/pom/graph6>,
+                <http://example.org/pom/graph7>,
+                <http://example.org/pom/graph8>,
+                <http://example.org/pom/graph9> ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p5" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p5 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:graph <http://example.org/pom/graph1>,
+                <http://example.org/pom/graph10>,
+                <http://example.org/pom/graph11>,
+                <http://example.org/pom/graph12>,
+                <http://example.org/pom/graph13>,
+                <http://example.org/pom/graph14>,
+                <http://example.org/pom/graph15>,
+                <http://example.org/pom/graph2>,
+                <http://example.org/pom/graph3>,
+                <http://example.org/pom/graph4>,
+                <http://example.org/pom/graph5>,
+                <http://example.org/pom/graph6>,
+                <http://example.org/pom/graph7>,
+                <http://example.org/pom/graph8>,
+                <http://example.org/pom/graph9> ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p7" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p7 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:graph <http://example.org/pom/graph1>,
+                <http://example.org/pom/graph10>,
+                <http://example.org/pom/graph11>,
+                <http://example.org/pom/graph12>,
+                <http://example.org/pom/graph13>,
+                <http://example.org/pom/graph14>,
+                <http://example.org/pom/graph15>,
+                <http://example.org/pom/graph2>,
+                <http://example.org/pom/graph3>,
+                <http://example.org/pom/graph4>,
+                <http://example.org/pom/graph5>,
+                <http://example.org/pom/graph6>,
+                <http://example.org/pom/graph7>,
+                <http://example.org/pom/graph8>,
+                <http://example.org/pom/graph9> ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p6" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p6 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:graph <http://example.org/pom/graph1>,
+                <http://example.org/pom/graph10>,
+                <http://example.org/pom/graph11>,
+                <http://example.org/pom/graph12>,
+                <http://example.org/pom/graph13>,
+                <http://example.org/pom/graph14>,
+                <http://example.org/pom/graph15>,
+                <http://example.org/pom/graph2>,
+                <http://example.org/pom/graph3>,
+                <http://example.org/pom/graph4>,
+                <http://example.org/pom/graph5>,
+                <http://example.org/pom/graph6>,
+                <http://example.org/pom/graph7>,
+                <http://example.org/pom/graph8>,
+                <http://example.org/pom/graph9> ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p10" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p10 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:graph <http://example.org/pom/graph1>,
+                <http://example.org/pom/graph10>,
+                <http://example.org/pom/graph11>,
+                <http://example.org/pom/graph12>,
+                <http://example.org/pom/graph13>,
+                <http://example.org/pom/graph14>,
+                <http://example.org/pom/graph15>,
+                <http://example.org/pom/graph2>,
+                <http://example.org/pom/graph3>,
+                <http://example.org/pom/graph4>,
+                <http://example.org/pom/graph5>,
+                <http://example.org/pom/graph6>,
+                <http://example.org/pom/graph7>,
+                <http://example.org/pom/graph8>,
+                <http://example.org/pom/graph9> ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p1" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p1 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:graph <http://example.org/pom/graph1>,
+                <http://example.org/pom/graph10>,
+                <http://example.org/pom/graph11>,
+                <http://example.org/pom/graph12>,
+                <http://example.org/pom/graph13>,
+                <http://example.org/pom/graph14>,
+                <http://example.org/pom/graph15>,
+                <http://example.org/pom/graph2>,
+                <http://example.org/pom/graph3>,
+                <http://example.org/pom/graph4>,
+                <http://example.org/pom/graph5>,
+                <http://example.org/pom/graph6>,
+                <http://example.org/pom/graph7>,
+                <http://example.org/pom/graph8>,
+                <http://example.org/pom/graph9> ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p4" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p4 ] ] ;
+    rr:subjectMap [ rr:graph <http://example.org/graph1>,
+                <http://example.org/graph10>,
+                <http://example.org/graph11>,
+                <http://example.org/graph12>,
+                <http://example.org/graph13>,
+                <http://example.org/graph14>,
+                <http://example.org/graph15>,
+                <http://example.org/graph2>,
+                <http://example.org/graph3>,
+                <http://example.org/graph4>,
+                <http://example.org/graph5>,
+                <http://example.org/graph6>,
+                <http://example.org/graph7>,
+                <http://example.org/graph8>,
+                <http://example.org/graph9> ;
+            rr:template "http://ex.com/table/{p1}" ] .
+

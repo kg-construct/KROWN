@@ -11,18 +11,18 @@ Increasing the number of rows results in more RDF subjects,
 more columns results in more RDF predicates and objects per RDF subject.
 Increasing the cell value size results in larger RDF Literals for the RDF object.
 
-- [Number of rows: 10](./RMLMapper/csv/raw_10_2_0)
-- [Number of rows: 100](./RMLMapper/csv/raw_100_2_0)
-- [Number of rows: 1000](./RMLMapper/csv/raw_1000_2_0)
-- [Number of rows: 10000](./RMLMapper/csv/raw_10000_2_0)
-- [Number of columns: 1](./RMLMapper/csv/raw_10_1_0)
-- [Number of columns: 3](./RMLMapper/csv/raw_10_3_0)
-- [Number of columns: 5](./RMLMapper/csv/raw_10_5_0)
-- [Number of columns: 7](./RMLMapper/csv/raw_10_7_0)
-- [Cell value size: 10](./RMLMapper/csv/raw_10_2_10)
-- [Cell value size: 50](./RMLMapper/csv/raw_10_2_50)
-- [Cell value size: 100](./RMLMapper/csv/raw_10_2_100)
-- [Cell value size: 500](./RMLMapper/csv/raw_10_2_500)
+- [Number of rows: 10](./RMLMapper/postgresql/raw_10_2_0)
+- [Number of rows: 100](./RMLMapper/postgresql/raw_100_2_0)
+- [Number of rows: 1000](./RMLMapper/postgresql/raw_1000_2_0)
+- [Number of rows: 10000](./RMLMapper/postgresql/raw_10000_2_0)
+- [Number of columns: 1](./RMLMapper/postgresql/raw_10_1_0)
+- [Number of columns: 3](./RMLMapper/postgresql/raw_10_3_0)
+- [Number of columns: 5](./RMLMapper/postgresql/raw_10_5_0)
+- [Number of columns: 7](./RMLMapper/postgresql/raw_10_7_0)
+- [Cell value size: 10](./RMLMapper/postgresql/raw_10_2_10)
+- [Cell value size: 50](./RMLMapper/postgresql/raw_10_2_50)
+- [Cell value size: 100](./RMLMapper/postgresql/raw_10_2_100)
+- [Cell value size: 500](./RMLMapper/postgresql/raw_10_2_500)
 
 ## Examples
 
@@ -52,24 +52,21 @@ id,p1,p2
 ```
 @base <http://ex.com/> .
 @prefix ex: <http://example.com/> .
-@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
-@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 
 <#TriplesMap1> a rr:TriplesMap ;
-    rml:logicalSource [ a rml:LogicalSource ;
-            rml:referenceFormulation ql:CSV ;
-            rml:source "/data.csv" ] ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data" ] ;
     rr:predicateObjectMap [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
-                    rml:reference "p1" ] ;
+                    rr:column "p2" ] ;
             rr:predicateMap [ a rr:PredicateMap ;
-                    rr:constant ex:p1 ] ],
+                    rr:constant ex:p2 ] ],
         [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
-                    rml:reference "p2" ] ;
+                    rr:column "p1" ] ;
             rr:predicateMap [ a rr:PredicateMap ;
-                    rr:constant ex:p2 ] ] ;
+                    rr:constant ex:p1 ] ] ;
     rr:subjectMap [ rr:template "http://ex.com/table/{id}" ] .
 ```
 
@@ -124,39 +121,36 @@ id,p1,p2,p3,p4,p5
 ```
 @base <http://ex.com/> .
 @prefix ex: <http://example.com/> .
-@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
-@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 
 <#TriplesMap1> a rr:TriplesMap ;
-    rml:logicalSource [ a rml:LogicalSource ;
-            rml:referenceFormulation ql:CSV ;
-            rml:source "/data.csv" ] ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data" ] ;
     rr:predicateObjectMap [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
-                    rml:reference "p5" ] ;
+                    rr:column "p4" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p4 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p5" ] ;
             rr:predicateMap [ a rr:PredicateMap ;
                     rr:constant ex:p5 ] ],
         [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
-                    rml:reference "p1" ] ;
+                    rr:column "p1" ] ;
             rr:predicateMap [ a rr:PredicateMap ;
                     rr:constant ex:p1 ] ],
         [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
-                    rml:reference "p3" ] ;
-            rr:predicateMap [ a rr:PredicateMap ;
-                    rr:constant ex:p3 ] ],
-        [ a rr:PredicateObjectMap ;
-            rr:objectMap [ a rr:ObjectMap ;
-                    rml:reference "p2" ] ;
+                    rr:column "p2" ] ;
             rr:predicateMap [ a rr:PredicateMap ;
                     rr:constant ex:p2 ] ],
         [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
-                    rml:reference "p4" ] ;
+                    rr:column "p3" ] ;
             rr:predicateMap [ a rr:PredicateMap ;
-                    rr:constant ex:p4 ] ] ;
+                    rr:constant ex:p3 ] ] ;
     rr:subjectMap [ rr:template "http://ex.com/table/{id}" ] .
 ```
 
@@ -242,24 +236,21 @@ id,p1,p2
 ```
 @base <http://ex.com/> .
 @prefix ex: <http://example.com/> .
-@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
-@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 
 <#TriplesMap1> a rr:TriplesMap ;
-    rml:logicalSource [ a rml:LogicalSource ;
-            rml:referenceFormulation ql:CSV ;
-            rml:source "/data.csv" ] ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data" ] ;
     rr:predicateObjectMap [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
-                    rml:reference "p1" ] ;
+                    rr:column "p2" ] ;
             rr:predicateMap [ a rr:PredicateMap ;
-                    rr:constant ex:p1 ] ],
+                    rr:constant ex:p2 ] ],
         [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
-                    rml:reference "p2" ] ;
+                    rr:column "p1" ] ;
             rr:predicateMap [ a rr:PredicateMap ;
-                    rr:constant ex:p2 ] ] ;
+                    rr:constant ex:p1 ] ] ;
     rr:subjectMap [ rr:template "http://ex.com/table/{id}" ] .
 ```
 

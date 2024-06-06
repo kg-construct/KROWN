@@ -9,16 +9,16 @@ with RMLMapper as materialisation system.
 The higher the percentage, the more data in the dataset contains duplicates
 or empty values.
 
-- [Duplicates 0%](./RMLMapper/csv/duplicates_0.0_percentage)
-- [Duplicates 25%](./RMLMapper/csv/duplicates_25.0_percentage)
-- [Duplicates 50%](./RMLMapper/csv/duplicates_50.0_percentage)
-- [Duplicates 75%](./RMLMapper/csv/duplicates_75.0_percentage)
-- [Duplicates 100%](./RMLMapper/csv/duplicates_100.0_percentage)
-- [Empty values 0%](./RMLMapper/csv/empty_0.0_percentage)
-- [Empty values 25%](./RMLMapper/csv/empty_25.0_percentage)
-- [Empty values 50%](./RMLMapper/csv/empty_50.0_percentage)
-- [Empty values 75%](./RMLMapper/csv/empty_75.0_percentage)
-- [Empty values 100%](./RMLMapper/csv/empty_100.0_percentage)
+- [Duplicates 0%](./RMLMapper/postgresql/duplicates_0.0_percentage)
+- [Duplicates 25%](./RMLMapper/postgresql/duplicates_25.0_percentage)
+- [Duplicates 50%](./RMLMapper/postgresql/duplicates_50.0_percentage)
+- [Duplicates 75%](./RMLMapper/postgresql/duplicates_75.0_percentage)
+- [Duplicates 100%](./RMLMapper/postgresql/duplicates_100.0_percentage)
+- [Empty values 0%](./RMLMapper/postgresql/empty_0.0_percentage)
+- [Empty values 25%](./RMLMapper/postgresql/empty_25.0_percentage)
+- [Empty values 50%](./RMLMapper/postgresql/empty_50.0_percentage)
+- [Empty values 75%](./RMLMapper/postgresql/empty_75.0_percentage)
+- [Empty values 100%](./RMLMapper/postgresql/empty_100.0_percentage)
 
 ## Examples
 
@@ -52,24 +52,21 @@ id,p1,p2
 ```
 @base <http://ex.com/> .
 @prefix ex: <http://example.com/> .
-@prefix ns1: <http://semweb.mmlab.be/ns/rml#> .
-@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 
 <#TriplesMap1> a rr:TriplesMap ;
-    ns1:logicalSource [ a ns1:LogicalSource ;
-            ns1:referenceFormulation ql:CSV ;
-            ns1:source "/data.csv" ] ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data" ] ;
     rr:predicateObjectMap [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
-                    ns1:reference "p1" ] ;
+                    rr:column "p2" ] ;
             rr:predicateMap [ a rr:PredicateMap ;
-                    rr:constant ex:p1 ] ],
+                    rr:constant ex:p2 ] ],
         [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
-                    ns1:reference "p2" ] ;
+                    rr:column "p1" ] ;
             rr:predicateMap [ a rr:PredicateMap ;
-                    rr:constant ex:p2 ] ] ;
+                    rr:constant ex:p1 ] ] ;
     rr:subjectMap [ rr:template "http://ex.com/table/{id}" ] .
 ```
 
@@ -94,9 +91,6 @@ id,p1,p2
 
 Only the rows that have no empty values are mapped.
 
-**Note**: in RDBMS, the `NULL` value is converted to an actual `NULL` value
-in the RDBMS, the CSV file contains the string `NULL` for it.
-
 #### Input data
 
 ```
@@ -118,24 +112,21 @@ id,p1,p2
 ```
 @base <http://ex.com/> .
 @prefix ex: <http://example.com/> .
-@prefix ns1: <http://semweb.mmlab.be/ns/rml#> .
-@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 
 <#TriplesMap1> a rr:TriplesMap ;
-    ns1:logicalSource [ a ns1:LogicalSource ;
-            ns1:referenceFormulation ql:CSV ;
-            ns1:source "/data.csv" ] ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data" ] ;
     rr:predicateObjectMap [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
-                    ns1:reference "p1" ] ;
+                    rr:column "p2" ] ;
             rr:predicateMap [ a rr:PredicateMap ;
-                    rr:constant ex:p1 ] ],
+                    rr:constant ex:p2 ] ],
         [ a rr:PredicateObjectMap ;
             rr:objectMap [ a rr:ObjectMap ;
-                    ns1:reference "p2" ] ;
+                    rr:column "p1" ] ;
             rr:predicateMap [ a rr:PredicateMap ;
-                    rr:constant ex:p2 ] ] ;
+                    rr:constant ex:p1 ] ] ;
     rr:subjectMap [ rr:template "http://ex.com/table/{id}" ] .
 ```
 

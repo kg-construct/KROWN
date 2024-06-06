@@ -1,0 +1,604 @@
+@base <http://ex.com/> .
+@prefix ex: <http://example.com/> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+
+<#TriplesMap1> a rr:TriplesMap ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data" ] ;
+    rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p4" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p4 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p3" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p3 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p5" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p5 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p1" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p1 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p2" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p2 ] ] ;
+    rr:subjectMap [ rr:template "http://ex.com/table/{p1}" ] .
+
+<#TriplesMap10> a rr:TriplesMap ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data" ] ;
+    rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p5" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p5 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p3" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p3 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p4" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p4 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p2" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p2 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p1" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p1 ] ] ;
+    rr:subjectMap [ rr:template "http://ex.com/table/{p10}" ] .
+
+<#TriplesMap11> a rr:TriplesMap ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data" ] ;
+    rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p1" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p1 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p4" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p4 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p5" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p5 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p3" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p3 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p2" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p2 ] ] ;
+    rr:subjectMap [ rr:template "http://ex.com/table/{p11}" ] .
+
+<#TriplesMap12> a rr:TriplesMap ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data" ] ;
+    rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p5" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p5 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p1" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p1 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p4" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p4 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p2" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p2 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p3" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p3 ] ] ;
+    rr:subjectMap [ rr:template "http://ex.com/table/{p12}" ] .
+
+<#TriplesMap13> a rr:TriplesMap ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data" ] ;
+    rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p3" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p3 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p2" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p2 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p5" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p5 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p1" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p1 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p4" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p4 ] ] ;
+    rr:subjectMap [ rr:template "http://ex.com/table/{p13}" ] .
+
+<#TriplesMap14> a rr:TriplesMap ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data" ] ;
+    rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p1" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p1 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p2" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p2 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p3" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p3 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p5" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p5 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p4" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p4 ] ] ;
+    rr:subjectMap [ rr:template "http://ex.com/table/{p14}" ] .
+
+<#TriplesMap15> a rr:TriplesMap ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data" ] ;
+    rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p3" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p3 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p2" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p2 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p4" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p4 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p5" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p5 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p1" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p1 ] ] ;
+    rr:subjectMap [ rr:template "http://ex.com/table/{p15}" ] .
+
+<#TriplesMap16> a rr:TriplesMap ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data" ] ;
+    rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p5" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p5 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p2" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p2 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p3" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p3 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p4" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p4 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p1" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p1 ] ] ;
+    rr:subjectMap [ rr:template "http://ex.com/table/{p16}" ] .
+
+<#TriplesMap17> a rr:TriplesMap ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data" ] ;
+    rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p2" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p2 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p3" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p3 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p5" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p5 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p1" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p1 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p4" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p4 ] ] ;
+    rr:subjectMap [ rr:template "http://ex.com/table/{p17}" ] .
+
+<#TriplesMap18> a rr:TriplesMap ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data" ] ;
+    rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p1" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p1 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p3" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p3 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p4" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p4 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p5" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p5 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p2" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p2 ] ] ;
+    rr:subjectMap [ rr:template "http://ex.com/table/{p18}" ] .
+
+<#TriplesMap19> a rr:TriplesMap ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data" ] ;
+    rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p2" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p2 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p4" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p4 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p3" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p3 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p1" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p1 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p5" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p5 ] ] ;
+    rr:subjectMap [ rr:template "http://ex.com/table/{p19}" ] .
+
+<#TriplesMap2> a rr:TriplesMap ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data" ] ;
+    rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p2" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p2 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p3" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p3 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p1" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p1 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p4" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p4 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p5" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p5 ] ] ;
+    rr:subjectMap [ rr:template "http://ex.com/table/{p2}" ] .
+
+<#TriplesMap20> a rr:TriplesMap ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data" ] ;
+    rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p5" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p5 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p3" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p3 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p1" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p1 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p2" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p2 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p4" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p4 ] ] ;
+    rr:subjectMap [ rr:template "http://ex.com/table/{p20}" ] .
+
+<#TriplesMap3> a rr:TriplesMap ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data" ] ;
+    rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p4" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p4 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p5" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p5 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p3" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p3 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p1" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p1 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p2" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p2 ] ] ;
+    rr:subjectMap [ rr:template "http://ex.com/table/{p3}" ] .
+
+<#TriplesMap4> a rr:TriplesMap ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data" ] ;
+    rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p1" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p1 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p2" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p2 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p5" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p5 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p3" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p3 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p4" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p4 ] ] ;
+    rr:subjectMap [ rr:template "http://ex.com/table/{p4}" ] .
+
+<#TriplesMap5> a rr:TriplesMap ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data" ] ;
+    rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p3" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p3 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p2" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p2 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p4" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p4 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p5" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p5 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p1" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p1 ] ] ;
+    rr:subjectMap [ rr:template "http://ex.com/table/{p5}" ] .
+
+<#TriplesMap6> a rr:TriplesMap ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data" ] ;
+    rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p2" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p2 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p4" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p4 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p3" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p3 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p1" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p1 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p5" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p5 ] ] ;
+    rr:subjectMap [ rr:template "http://ex.com/table/{p6}" ] .
+
+<#TriplesMap7> a rr:TriplesMap ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data" ] ;
+    rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p4" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p4 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p3" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p3 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p2" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p2 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p1" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p1 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p5" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p5 ] ] ;
+    rr:subjectMap [ rr:template "http://ex.com/table/{p7}" ] .
+
+<#TriplesMap8> a rr:TriplesMap ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data" ] ;
+    rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p3" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p3 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p1" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p1 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p2" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p2 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p5" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p5 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p4" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p4 ] ] ;
+    rr:subjectMap [ rr:template "http://ex.com/table/{p8}" ] .
+
+<#TriplesMap9> a rr:TriplesMap ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data" ] ;
+    rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p1" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p1 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p5" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p5 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p4" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p4 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p3" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p3 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p2" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p2 ] ] ;
+    rr:subjectMap [ rr:template "http://ex.com/table/{p9}" ] .
+

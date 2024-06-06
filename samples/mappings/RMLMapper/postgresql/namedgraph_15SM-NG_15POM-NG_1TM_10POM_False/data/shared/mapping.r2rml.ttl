@@ -1,0 +1,224 @@
+@base <http://ex.com/> .
+@prefix ex: <http://example.com/> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+
+<#TriplesMap1> a rr:TriplesMap ;
+    rr:logicalTable [ a rr:LogicalTable ;
+            rr:tableName "data" ] ;
+    rr:predicateObjectMap [ a rr:PredicateObjectMap ;
+            rr:graphMap [ rr:template "http://example.org/pom/graph{p2}" ],
+                [ rr:template "http://example.org/pom/graph{p15}" ],
+                [ rr:template "http://example.org/pom/graph{p8}" ],
+                [ rr:template "http://example.org/pom/graph{p12}" ],
+                [ rr:template "http://example.org/pom/graph{p9}" ],
+                [ rr:template "http://example.org/pom/graph{p10}" ],
+                [ rr:template "http://example.org/pom/graph{p14}" ],
+                [ rr:template "http://example.org/pom/graph{p13}" ],
+                [ rr:template "http://example.org/pom/graph{p1}" ],
+                [ rr:template "http://example.org/pom/graph{p11}" ],
+                [ rr:template "http://example.org/pom/graph{p7}" ],
+                [ rr:template "http://example.org/pom/graph{p6}" ],
+                [ rr:template "http://example.org/pom/graph{p3}" ],
+                [ rr:template "http://example.org/pom/graph{p4}" ],
+                [ rr:template "http://example.org/pom/graph{p5}" ] ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p2" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p2 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:graphMap [ rr:template "http://example.org/pom/graph{p9}" ],
+                [ rr:template "http://example.org/pom/graph{p4}" ],
+                [ rr:template "http://example.org/pom/graph{p6}" ],
+                [ rr:template "http://example.org/pom/graph{p13}" ],
+                [ rr:template "http://example.org/pom/graph{p3}" ],
+                [ rr:template "http://example.org/pom/graph{p14}" ],
+                [ rr:template "http://example.org/pom/graph{p10}" ],
+                [ rr:template "http://example.org/pom/graph{p5}" ],
+                [ rr:template "http://example.org/pom/graph{p1}" ],
+                [ rr:template "http://example.org/pom/graph{p7}" ],
+                [ rr:template "http://example.org/pom/graph{p12}" ],
+                [ rr:template "http://example.org/pom/graph{p15}" ],
+                [ rr:template "http://example.org/pom/graph{p8}" ],
+                [ rr:template "http://example.org/pom/graph{p2}" ],
+                [ rr:template "http://example.org/pom/graph{p11}" ] ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p4" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p4 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:graphMap [ rr:template "http://example.org/pom/graph{p15}" ],
+                [ rr:template "http://example.org/pom/graph{p7}" ],
+                [ rr:template "http://example.org/pom/graph{p9}" ],
+                [ rr:template "http://example.org/pom/graph{p14}" ],
+                [ rr:template "http://example.org/pom/graph{p12}" ],
+                [ rr:template "http://example.org/pom/graph{p5}" ],
+                [ rr:template "http://example.org/pom/graph{p10}" ],
+                [ rr:template "http://example.org/pom/graph{p11}" ],
+                [ rr:template "http://example.org/pom/graph{p8}" ],
+                [ rr:template "http://example.org/pom/graph{p2}" ],
+                [ rr:template "http://example.org/pom/graph{p13}" ],
+                [ rr:template "http://example.org/pom/graph{p3}" ],
+                [ rr:template "http://example.org/pom/graph{p1}" ],
+                [ rr:template "http://example.org/pom/graph{p6}" ],
+                [ rr:template "http://example.org/pom/graph{p4}" ] ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p5" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p5 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:graphMap [ rr:template "http://example.org/pom/graph{p15}" ],
+                [ rr:template "http://example.org/pom/graph{p1}" ],
+                [ rr:template "http://example.org/pom/graph{p12}" ],
+                [ rr:template "http://example.org/pom/graph{p13}" ],
+                [ rr:template "http://example.org/pom/graph{p14}" ],
+                [ rr:template "http://example.org/pom/graph{p5}" ],
+                [ rr:template "http://example.org/pom/graph{p3}" ],
+                [ rr:template "http://example.org/pom/graph{p11}" ],
+                [ rr:template "http://example.org/pom/graph{p8}" ],
+                [ rr:template "http://example.org/pom/graph{p10}" ],
+                [ rr:template "http://example.org/pom/graph{p9}" ],
+                [ rr:template "http://example.org/pom/graph{p7}" ],
+                [ rr:template "http://example.org/pom/graph{p2}" ],
+                [ rr:template "http://example.org/pom/graph{p4}" ],
+                [ rr:template "http://example.org/pom/graph{p6}" ] ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p1" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p1 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:graphMap [ rr:template "http://example.org/pom/graph{p10}" ],
+                [ rr:template "http://example.org/pom/graph{p2}" ],
+                [ rr:template "http://example.org/pom/graph{p5}" ],
+                [ rr:template "http://example.org/pom/graph{p14}" ],
+                [ rr:template "http://example.org/pom/graph{p4}" ],
+                [ rr:template "http://example.org/pom/graph{p6}" ],
+                [ rr:template "http://example.org/pom/graph{p12}" ],
+                [ rr:template "http://example.org/pom/graph{p15}" ],
+                [ rr:template "http://example.org/pom/graph{p1}" ],
+                [ rr:template "http://example.org/pom/graph{p7}" ],
+                [ rr:template "http://example.org/pom/graph{p9}" ],
+                [ rr:template "http://example.org/pom/graph{p3}" ],
+                [ rr:template "http://example.org/pom/graph{p11}" ],
+                [ rr:template "http://example.org/pom/graph{p8}" ],
+                [ rr:template "http://example.org/pom/graph{p13}" ] ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p3" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p3 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:graphMap [ rr:template "http://example.org/pom/graph{p4}" ],
+                [ rr:template "http://example.org/pom/graph{p2}" ],
+                [ rr:template "http://example.org/pom/graph{p11}" ],
+                [ rr:template "http://example.org/pom/graph{p7}" ],
+                [ rr:template "http://example.org/pom/graph{p13}" ],
+                [ rr:template "http://example.org/pom/graph{p15}" ],
+                [ rr:template "http://example.org/pom/graph{p12}" ],
+                [ rr:template "http://example.org/pom/graph{p3}" ],
+                [ rr:template "http://example.org/pom/graph{p14}" ],
+                [ rr:template "http://example.org/pom/graph{p1}" ],
+                [ rr:template "http://example.org/pom/graph{p9}" ],
+                [ rr:template "http://example.org/pom/graph{p5}" ],
+                [ rr:template "http://example.org/pom/graph{p10}" ],
+                [ rr:template "http://example.org/pom/graph{p8}" ],
+                [ rr:template "http://example.org/pom/graph{p6}" ] ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p7" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p7 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:graphMap [ rr:template "http://example.org/pom/graph{p6}" ],
+                [ rr:template "http://example.org/pom/graph{p13}" ],
+                [ rr:template "http://example.org/pom/graph{p10}" ],
+                [ rr:template "http://example.org/pom/graph{p15}" ],
+                [ rr:template "http://example.org/pom/graph{p14}" ],
+                [ rr:template "http://example.org/pom/graph{p2}" ],
+                [ rr:template "http://example.org/pom/graph{p12}" ],
+                [ rr:template "http://example.org/pom/graph{p11}" ],
+                [ rr:template "http://example.org/pom/graph{p3}" ],
+                [ rr:template "http://example.org/pom/graph{p8}" ],
+                [ rr:template "http://example.org/pom/graph{p9}" ],
+                [ rr:template "http://example.org/pom/graph{p5}" ],
+                [ rr:template "http://example.org/pom/graph{p4}" ],
+                [ rr:template "http://example.org/pom/graph{p1}" ],
+                [ rr:template "http://example.org/pom/graph{p7}" ] ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p9" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p9 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:graphMap [ rr:template "http://example.org/pom/graph{p8}" ],
+                [ rr:template "http://example.org/pom/graph{p2}" ],
+                [ rr:template "http://example.org/pom/graph{p4}" ],
+                [ rr:template "http://example.org/pom/graph{p11}" ],
+                [ rr:template "http://example.org/pom/graph{p9}" ],
+                [ rr:template "http://example.org/pom/graph{p7}" ],
+                [ rr:template "http://example.org/pom/graph{p13}" ],
+                [ rr:template "http://example.org/pom/graph{p1}" ],
+                [ rr:template "http://example.org/pom/graph{p10}" ],
+                [ rr:template "http://example.org/pom/graph{p3}" ],
+                [ rr:template "http://example.org/pom/graph{p5}" ],
+                [ rr:template "http://example.org/pom/graph{p6}" ],
+                [ rr:template "http://example.org/pom/graph{p12}" ],
+                [ rr:template "http://example.org/pom/graph{p15}" ],
+                [ rr:template "http://example.org/pom/graph{p14}" ] ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p8" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p8 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:graphMap [ rr:template "http://example.org/pom/graph{p10}" ],
+                [ rr:template "http://example.org/pom/graph{p9}" ],
+                [ rr:template "http://example.org/pom/graph{p8}" ],
+                [ rr:template "http://example.org/pom/graph{p11}" ],
+                [ rr:template "http://example.org/pom/graph{p12}" ],
+                [ rr:template "http://example.org/pom/graph{p1}" ],
+                [ rr:template "http://example.org/pom/graph{p4}" ],
+                [ rr:template "http://example.org/pom/graph{p7}" ],
+                [ rr:template "http://example.org/pom/graph{p5}" ],
+                [ rr:template "http://example.org/pom/graph{p15}" ],
+                [ rr:template "http://example.org/pom/graph{p13}" ],
+                [ rr:template "http://example.org/pom/graph{p6}" ],
+                [ rr:template "http://example.org/pom/graph{p2}" ],
+                [ rr:template "http://example.org/pom/graph{p14}" ],
+                [ rr:template "http://example.org/pom/graph{p3}" ] ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p6" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p6 ] ],
+        [ a rr:PredicateObjectMap ;
+            rr:graphMap [ rr:template "http://example.org/pom/graph{p13}" ],
+                [ rr:template "http://example.org/pom/graph{p5}" ],
+                [ rr:template "http://example.org/pom/graph{p1}" ],
+                [ rr:template "http://example.org/pom/graph{p12}" ],
+                [ rr:template "http://example.org/pom/graph{p14}" ],
+                [ rr:template "http://example.org/pom/graph{p2}" ],
+                [ rr:template "http://example.org/pom/graph{p9}" ],
+                [ rr:template "http://example.org/pom/graph{p11}" ],
+                [ rr:template "http://example.org/pom/graph{p6}" ],
+                [ rr:template "http://example.org/pom/graph{p7}" ],
+                [ rr:template "http://example.org/pom/graph{p4}" ],
+                [ rr:template "http://example.org/pom/graph{p3}" ],
+                [ rr:template "http://example.org/pom/graph{p15}" ],
+                [ rr:template "http://example.org/pom/graph{p8}" ],
+                [ rr:template "http://example.org/pom/graph{p10}" ] ;
+            rr:objectMap [ a rr:ObjectMap ;
+                    rr:column "p10" ] ;
+            rr:predicateMap [ a rr:PredicateMap ;
+                    rr:constant ex:p10 ] ] ;
+    rr:subjectMap [ rr:graphMap [ rr:template "http://example.org/graph{p15}" ],
+                [ rr:template "http://example.org/graph{p13}" ],
+                [ rr:template "http://example.org/graph{p5}" ],
+                [ rr:template "http://example.org/graph{p3}" ],
+                [ rr:template "http://example.org/graph{p14}" ],
+                [ rr:template "http://example.org/graph{p11}" ],
+                [ rr:template "http://example.org/graph{p9}" ],
+                [ rr:template "http://example.org/graph{p1}" ],
+                [ rr:template "http://example.org/graph{p6}" ],
+                [ rr:template "http://example.org/graph{p4}" ],
+                [ rr:template "http://example.org/graph{p2}" ],
+                [ rr:template "http://example.org/graph{p10}" ],
+                [ rr:template "http://example.org/graph{p8}" ],
+                [ rr:template "http://example.org/graph{p7}" ],
+                [ rr:template "http://example.org/graph{p12}" ] ;
+            rr:template "http://ex.com/table/{p1}" ] .
+

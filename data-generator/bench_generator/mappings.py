@@ -58,7 +58,7 @@ class Mappings(Scenario):
         self._value_size: int = value_size
 
         super().__init__(data_format, engine, main_directory, verbose)
-        if self._data_format != 'csv':
+        if self._data_format != 'csv' and self._data_format != 'postgresql':
             raise NotImplementedError(f'Data format {self._data_format} '
                                       f'is not implemented by {__name__}')
 

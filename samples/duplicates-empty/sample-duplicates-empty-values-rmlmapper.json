@@ -11,7 +11,7 @@
                 "number_of_members": 10,
                 "number_of_properties": 2,
                 "percentage": 0.0,
-                "data_format": "csv",
+                "data_format": "postgresql",
                 "engine": "RMLMapper"
             }
         },
@@ -23,7 +23,7 @@
                 "number_of_members": 10,
                 "number_of_properties": 2,
                 "percentage": 25.0,
-                "data_format": "csv",
+                "data_format": "postgresql",
                 "engine": "RMLMapper"
             }
         },
@@ -35,7 +35,7 @@
                 "number_of_members": 10,
                 "number_of_properties": 2,
                 "percentage": 50.0,
-                "data_format": "csv",
+                "data_format": "postgresql",
                 "engine": "RMLMapper"
             }
         },
@@ -47,7 +47,7 @@
                 "number_of_members": 10,
                 "number_of_properties": 2,
                 "percentage": 75.0,
-                "data_format": "csv",
+                "data_format": "postgresql",
                 "engine": "RMLMapper"
             }
         },
@@ -59,7 +59,7 @@
                 "number_of_members": 10,
                 "number_of_properties": 2,
                 "percentage": 100.0,
-                "data_format": "csv",
+                "data_format": "postgresql",
                 "engine": "RMLMapper"
             }
         },
@@ -71,7 +71,7 @@
                 "number_of_members": 10,
                 "number_of_properties": 2,
                 "percentage": 0.0,
-                "data_format": "csv",
+                "data_format": "postgresql",
                 "engine": "RMLMapper"
             }
         },
@@ -83,7 +83,7 @@
                 "number_of_members": 10,
                 "number_of_properties": 2,
                 "percentage": 25.0,
-                "data_format": "csv",
+                "data_format": "postgresql",
                 "engine": "RMLMapper"
             }
         },
@@ -95,7 +95,7 @@
                 "number_of_members": 10,
                 "number_of_properties": 2,
                 "percentage": 50.0,
-                "data_format": "csv",
+                "data_format": "postgresql",
                 "engine": "RMLMapper"
             }
         },
@@ -107,7 +107,7 @@
                 "number_of_members": 10,
                 "number_of_properties": 2,
                 "percentage": 75.0,
-                "data_format": "csv",
+                "data_format": "postgresql",
                 "engine": "RMLMapper"
             }
         },
@@ -119,7 +119,7 @@
                 "number_of_members": 10,
                 "number_of_properties": 2,
                 "percentage": 100.0,
-                "data_format": "csv",
+                "data_format": "postgresql",
                 "engine": "RMLMapper"
             }
         }

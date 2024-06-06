@@ -75,7 +75,7 @@ class JoinsRelation(Scenario):
 
         super().__init__(data_format, engine, main_directory, verbose)
 
-        if self._data_format != 'csv':
+        if self._data_format != 'csv' and self._data_format != 'postgresql':
             raise NotImplementedError(f'Data format {self._data_format} '
                                       f'is not implemented by {__name__}')
 
@@ -215,12 +215,14 @@ class JoinsRelation(Scenario):
         subject1_template = Literal('http://ex.com/table1/{id}')
         subject2_template = Literal('http://ex.com/table2/{id}')
         if self._data_format == 'postgresql':
-            triples_map1_iri = self._add_triples_map(mapping,
-                                                     subject1_template,
-                                                     Literal('data'), number=1)
-            triples_map2_iri = self._add_triples_map(mapping,
-                                                     subject2_template,
-                                                     Literal('data'), number=2)
+            triples_map1_iri = self._add_triples_map_table(mapping,
+                                                           subject1_template,
+                                                           Literal('data1'),
+                                                           number=1)
+            triples_map2_iri = self._add_triples_map_table(mapping,
+                                                           subject2_template,
+                                                           Literal('data2'),
+                                                           number=2)
         elif self._data_format == 'csv':
             triples_map1_iri = \
                 self._add_triples_map_source(mapping, subject1_template,

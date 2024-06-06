@@ -1,0 +1,36 @@
+{
+    "@id": "http://example.org/join-duplicates/10/75.0/",
+    "name": "join_duplicates_10_75.0",
+    "description": "Join Duplicate 10(75.0%)",
+    "steps": [
+        {
+            "@id": "http://example.org/join-duplicates/10/75.0/#step1",
+            "name": "Load RDB",
+            "resource": "PostgreSQL",
+            "command": "load",
+            "parameters": {
+                "csv_file": "data.csv",
+                "table": "data"
+            },
+            "expect_failure": false
+        },
+        {
+            "@id": "http://example.org/join-duplicates/10/75.0/#step2",
+            "name": "Execute RML mapping",
+            "resource": "RMLMapper",
+            "command": "execute_mapping",
+            "parameters": {
+                "mapping_file": "mapping.r2rml.ttl",
+                "output_file": "out.nt",
+                "serialization": "ntriples",
+                "rdb_host": "PostgreSQL",
+                "rdb_port": 5432,
+                "rdb_username": "root",
+                "rdb_password": "root",
+                "rdb_type": "PostgreSQL",
+                "rdb_name": "db"
+            },
+            "expect_failure": false
+        }
+    ]
+}
