@@ -159,7 +159,7 @@ excluded from number of join conditions because it does not support
 multiple join conditions. RMLMapper times out (TO) for 5,10, 15 join 
 conditions._
 
-### Reproducing results of ISWC 2023 Resource Track
+### Reproducing results of ISWC 2024 Resource Track
 
 In this section we discuss our evaluation setup,
 the materialization systems we evaluated,
