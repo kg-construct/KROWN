@@ -1,0 +1,62 @@
+{
+   "$schema": "http://json-schema.org/draft-04/schema#",
+   "title": "Metadata",
+   "description": "Metadata about a case",
+   "type": "object",
+   "properties": {
+      "@id": {
+         "description": "Unique IRI to identify the case",
+         "type": "string"
+      },
+      "name": {
+         "description": "Name of the case",
+         "type": "string"
+      },
+      "description": {
+         "description": "Short description of the case",
+         "type": "string"
+      },
+      "steps": {
+         "description": "Short description of the case",
+         "type": "array",
+         "items": {
+            "type": "object",
+            "properties": {
+                "@id": {
+                    "description": "Unique IRI to identify the step",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name of the step",
+                    "type": "string"
+                },
+                "resource": {
+                    "description": "Resource name",
+                    "type": "string"
+                },
+                "command": {
+                    "description": "Command to execute on the resource",
+                    "type": "string"
+                },
+                "parameters": {
+                    "description": "Parameters to supply with the command",
+                    "type": "object"
+                }
+            },
+            "required": [
+                "@id",
+                "name",
+                "resource",
+                "command"
+            ]
+         }
+      }
+   },
+   "required": [
+      "@id",
+      "name",
+      "description",
+      "steps"
+   ]
+}
+
