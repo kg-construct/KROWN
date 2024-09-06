@@ -325,8 +325,8 @@ class Collector():
         try:
             system_os_name = platform.freedesktop_os_release()['NAME']
             system_os_version = platform.freedesktop_os_release()['VERSION']
-        except (OSError, KeyError):
-            self._logger.warning('Cannot extract Freedesktop OS release data')
+        except (OSError, KeyError, AttributeError) as e:
+            self._logger.warning(f'Cannot extract Freedesktop OS release data: {e}')
         system_hostname = platform.node()
         system_kernel = platform.platform()
         system_architecture = platform.uname().machine
