@@ -259,6 +259,13 @@ class Docker():
         if status_code != 0:
             return False, {}
 
-        info = json.loads(output)
+        try:
+            info = json.loads(output)
+        except json.decoder.JSONDecodeError as e:
+            self._logger.error('Unable to extract Docker daemon system information.'
+                               'Do you have access to Docker?')
+            self._logger.debug(f'Docker daemon JSON response:\n{output}')
+            raise e
+
         self._logger.debug('Docker daemon system information successfully')
         return True, info
