@@ -6,6 +6,7 @@ import errno
 import tarfile
 import argparse
 import subprocess
+import traceback
 import requests
 from glob import glob
 from datetime import datetime
@@ -176,6 +177,8 @@ def execute_cases(executor: Executor, interval: float, runs: int):
             except Exception as exception:
                 print(f'Case failure due to exception: {exception}',
                       file=sys.stderr)
+                if executor.verbose:
+                    print(f'Stacktrace:\n {traceback.format_exc()}')
                 sys.exit(EXIT_CODE_FAILED_CASE)
 
             if stop:
@@ -327,6 +330,9 @@ def download_challenge():
         tar.close()
     except Exception as e:
         print(f'❌ Unpacking failed! Please report this issue: {e}')
+        if executor.verbose:
+            print(f'Stacktrace:\n {traceback.format_exc()}')
+
         sys.exit(EXIT_CODE_DOWNLOAD_FAILURE)
 
     print('✅ Challenge is ready to be executed!',
