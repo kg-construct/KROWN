@@ -68,6 +68,11 @@ class Executor:
             self._schema = json.load(f)
 
     @property
+    def verbose(self) -> bool:
+        """Verbose logs enabled."""
+        return self._verbose
+
+    @property
     def main_directory(self) -> str:
         """The main directory of all the cases.
 
