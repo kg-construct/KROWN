@@ -154,20 +154,21 @@ class RMLCCData(Scenario):
 
         metadata = self._build_metadata(iri, name, description)
         for mapping_folder in self._mapping_folder_dict[self._data_type]:
-            print(mapping_folder)
+            count = 1 
             parameters = {
                 "mapping_file": f'{mapping_folder}_mapping.ttl',
                 "output_file": f'{mapping_folder}_out.nt',
             }
             metadata["steps"].append(
                 self._build_step(
-                    f'{iri}/step1',
+                    f'{iri}/step_{count}',
                     f'Execute mapping for RML-CC case {mapping_folder} with scenario type {self._data_type}',
                     self._engine,
                     "execute_mapping",
                     parameters,
                 )
             )
+            count = count + 1
 
         self._write_metadata(self.path(), metadata)
         return True
