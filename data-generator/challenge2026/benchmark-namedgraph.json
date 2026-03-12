@@ -1,0 +1,321 @@
+{
+    "@id": "http://example.com/new-rml-benchmark/namedgraphs",
+    "name": "NamedGraph",
+    "description": "Scaling number of named graphs",
+    "instances": [
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#1POM1NGdynamic",
+            "name": "1 POM 1 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 1,
+                "number_of_ng_s": 0,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 1,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "TODO ADD ENGINE NAME"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#5POM1NGdynamic",
+            "name": "5 POM 1 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 1,
+                "number_of_ng_s": 0,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 5,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "TODO ADD ENGINE NAME"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#10POM1NGdynamic",
+            "name": "10 POM 1 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 1,
+                "number_of_ng_s": 0,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 10,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "TODO ADD ENGINE NAME"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#15POM1NGdynamic",
+            "name": "15 POM 1 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 1,
+                "number_of_ng_s": 0,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 15,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "TODO ADD ENGINE NAME"
+            }
+        },
+                {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#15POM1NGdynamic",
+            "name": "15 POM 1 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 1,
+                "number_of_ng_s": 0,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 16,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "TODO ADD ENGINE NAME"
+            }
+        },
+                {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#15POM1NGdynamic",
+            "name": "15 POM 1 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 1,
+                "number_of_ng_s": 0,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 18,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "TODO ADD ENGINE NAME"
+            }
+        },
+                {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#15POM1NGdynamic",
+            "name": "15 POM 1 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 1,
+                "number_of_ng_s": 0,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 20,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "TODO ADD ENGINE NAME"
+            }
+        },
+                {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#15POM1NGdynamic",
+            "name": "15 POM 1 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 1,
+                "number_of_ng_s": 0,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 25,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "TODO ADD ENGINE NAME"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#1POM5NGdynamic",
+            "name": "1 POM 5 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 5,
+                "number_of_ng_s": 0,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 1,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "TODO ADD ENGINE NAME"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#1POM10NGdynamic",
+            "name": "1 POM 10 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 5,
+                "number_of_ng_s": 0,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 5,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "TODO ADD ENGINE NAME"
+            }
+        },
+               {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#1POM10NGdynamic",
+            "name": "1 POM 10 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 5,
+                "number_of_ng_s": 0,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 10,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "TODO ADD ENGINE NAME"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#1POM10NGdynamic",
+            "name": "1 POM 10 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 10,
+                "number_of_ng_s": 0,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 1,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "TODO ADD ENGINE NAME"
+            }
+  
+        },
+
+                       {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#1POM10NGdynamic",
+            "name": "1 POM 15 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 15,
+                "number_of_ng_s": 0,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 1,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "TODO ADD ENGINE NAME"
+            }
+  
+        },
+                       {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#1POM10NGdynamic",
+            "name": "1 POM 16 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 16,
+                "number_of_ng_s": 0,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 1,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "TODO ADD ENGINE NAME"
+            }
+  
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#1POM10NGdynamic",
+            "name": "1 POM 17 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 17,
+                "number_of_ng_s": 0,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 1,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "TODO ADD ENGINE NAME"
+            }
+  
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#1POM10NGdynamic",
+            "name": "1 POM 20 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 20,
+                "number_of_ng_s": 0,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 1,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "TODO ADD ENGINE NAME"
+            }
+  
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#1POM10NGdynamic",
+            "name": "1 POM 25 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 25,
+                "number_of_ng_s": 0,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 1,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "TODO ADD ENGINE NAME"
+            }
+  
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/namedgraphs#1POM10NGdynamic",
+            "name": "1 POM 30 NG dynamic",
+            "generator": "NamedGraph",
+            "parameters": {
+                "number_of_ng_pom": 30,
+                "number_of_ng_s": 0,
+                "static": false,
+                "number_of_tms": 1,
+                "number_of_poms": 1,
+                "number_of_members": 1000000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "TODO ADD ENGINE NAME"
+            }
+  
+        }
+    ]
+}

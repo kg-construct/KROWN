@@ -1,0 +1,43 @@
+{
+    "@id": "http://example.com/new-rml-benchmark/rml-cc-multivalues",
+    "name": "RML Collection and Containers benchmark (Multi-values)",
+    "description": "Scaling number of values in a collection with/without uniqueness",
+    "instances": [
+        {
+            "@id": "http://example.com/new-rml-benchmark/number-of-members#10KUnique",
+            "name": "10K multi-values, unique",
+            "generator": "RMLCCData",
+            "parameters": {
+                "data_type": "multivalues",
+                "unique": true, 
+                "add_values": 10000, 
+                "data_format": "json",
+                "engine": "TODO ADD ENGINE NAME"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/number-of-members#100KUnique",
+            "name": "100K multi-values, unique",
+            "generator": "RMLCCData",
+            "parameters": {
+                "data_type": "multivalues",
+                "unique": true, 
+                "add_values": 100000, 
+                "data_format": "json",
+                "engine": "TODO ADD ENGINE NAME"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/number-of-members#1MUnique",
+            "name": "1M multi-values, unique",
+            "generator": "RMLCCData",
+            "parameters": {
+                "data_type": "multivalues",
+                "unique": true, 
+                "add_values": 1000000, 
+                "data_format": "json",
+                "engine": "TODO ADD ENGINE NAME"
+            }
+        }
+    ]
+}

@@ -1,0 +1,67 @@
+{
+    "@id": "http://example.com/new-rml-benchmark/joins/relations/",
+    "name": "JoinsRelation",
+    "description": "Scaling the number of join relations in a [R2]RML mapping",
+    "instances": [
+        {
+            "@id": "http://example.com/new-rml-benchmark/joins/relation/1-5#50",
+            "name": "Join Relation 1-5 50%",
+            "generator": "JoinsRelation",
+            "parameters": {
+                "percentage": 50.0,
+                "n": 1,
+                "m": 5,
+                "number_of_members": 100000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "TODO ADD ENGINE NAME"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/joins/relation/5-1#50",
+            "name": "Join Relation 5-1 50%",
+            "generator": "JoinsRelation",
+            "parameters": {
+                "percentage": 50.0,
+                "n": 5,
+                "m": 1,
+                "number_of_members": 100000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "TODO ADD ENGINE NAME"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/joins/relation/5-3#50",
+            "name": "Join Relation 5-3 50%",
+            "generator": "JoinsRelation",
+            "parameters": {
+                "percentage": 50.0,
+                "n": 5,
+                "m": 3,
+                "number_of_members": 100000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "TODO ADD ENGINE NAME"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/joins/relation/3-5#50",
+            "name": "Join Relation 3-5 50%",
+            "generator": "JoinsRelation",
+            "parameters": {
+                "percentage": 50.0,
+                "n": 3,
+                "m": 5,
+                "number_of_members": 100000,
+                "number_of_properties": 20,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "TODO ADD ENGINE NAME"
+            }
+        }
+    ]
+}
