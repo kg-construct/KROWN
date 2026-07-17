@@ -13,7 +13,7 @@
                 "number_of_members": 100000,
                 "number_of_properties": 30,
                 "value_size": 0,
-                "data_format": "postgresql",
+                "data_format": "csv",
                 "engine": "RMLMapper"
             }
         },
@@ -27,7 +27,7 @@
                 "number_of_members": 100000,
                 "number_of_properties": 30,
                 "value_size": 0,
-                "data_format": "postgresql",
+                "data_format": "csv",
                 "engine": "RMLMapper"
             }
         },
@@ -41,7 +41,7 @@
                 "number_of_members": 100000,
                 "number_of_properties": 30,
                 "value_size": 0,
-                "data_format": "postgresql",
+                "data_format": "csv",
                 "engine": "RMLMapper"
             }
         },
@@ -55,7 +55,49 @@
                 "number_of_members": 100000,
                 "number_of_properties": 30,
                 "value_size": 0,
-                "data_format": "postgresql",
+                "data_format": "csv",
+                "engine": "RMLMapper"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/mappings#20TM1POM",
+            "name": "20TM + 1POM",
+            "generator": "Mappings",
+            "parameters": {
+                "number_of_tms": 20,
+                "number_of_poms": 1,
+                "number_of_members": 100000,
+                "number_of_properties": 30,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLMapper"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/mappings#20TM3POM",
+            "name": "20TM + 3POM",
+            "generator": "Mappings",
+            "parameters": {
+                "number_of_tms": 20,
+                "number_of_poms": 3,
+                "number_of_members": 100000,
+                "number_of_properties": 30,
+                "value_size": 0,
+                "data_format": "csv",
+                "engine": "RMLMapper"
+            }
+        },
+        {
+            "@id": "http://example.com/new-rml-benchmark/mappings#20TM10POM",
+            "name": "20TM + 10POM",
+            "generator": "Mappings",
+            "parameters": {
+                "number_of_tms": 20,
+                "number_of_poms": 10,
+                "number_of_members": 100000,
+                "number_of_properties": 30,
+                "value_size": 0,
+                "data_format": "csv",
                 "engine": "RMLMapper"
             }
         }
